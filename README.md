@@ -10,7 +10,7 @@ The objectives of the onboarding process in ISBE include the following:
 
 4. Eventually, assign an **identity to one or more employees of the organization** to enable them to act on behalf of the organization in relation to ISBE and other entities in the ecosystem. This is typically required in organizations where the legal representative is not going to be involved in the daily operations and tasks in ISBE.
 
-The most efficient way to achieve objectives 1, 2 and 3 is with an eIDAS **certificate of representation**, especially in Spain where those certificates have a wide adoption.
+The most efficient way to achieve objectives 1, 2 and 3 is with an **eIDAS certificate of representation**, especially in Spain where those certificates have a wide adoption.
 
 Objective 4 is achieved by issuing a Verifiable Credential to one or more employees, as a (Qualified) Electronic Attestation of Attributes, or (Q)EAA, **attesting that the legal representative of the organization has delegated a given set of powers to the employee** holding the VC.
 
@@ -38,9 +38,9 @@ Instead of inventing identifiers which are specific to ISBE, it makes sense to u
 
 - a registration number as registered in a national business register recognized at EU level.
 
-This is easily achieved by requiring that organizations use an eIDAS **certificate of representation or a certificate for seals**, issued by a Qualified Trust Service Provider (**QTSP**). These are the certificates typically used to electronically sign contracts or electronic invoices, so **this is "business as usual" for the Spanish organizations**.
+This is easily achieved by requiring that organizations use an **eIDAS certificate of representation or a certificate for seals**, issued by a Qualified Trust Service Provider (**QTSP**). These are the certificates typically used to electronically sign contracts or electronic invoices, so **this is "business as usual" for the Spanish organizations**.
 
-The key idea here is that the X.509 certificate issued by QTSPs includes, by regulation, an attribute named `organizationIdentifier` which **already contains one of those unique identifiers** mentioned above.
+The key idea here is that the X.509 certificate issued by QTSPs already includes, by regulation, an attribute named `organizationIdentifier` which **already contains one of those unique official identifiers** mentioned above. We do not care which identifier is actually used, as long as it is unique. However, in Spain the identifier is almost always the TAX identifier (this is so for the private sector organizations).
 
 This identifier is standardized in [ETSI EN 319 412-1 V1.6.1 (2025-06)](https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.06.01_60/en_31941201v010601p.pdf), specifically in section *"5.1.4 Legal person semantics identifier"*.
 
@@ -58,7 +58,7 @@ Using the existing official identifier inside an eIDAS certificate issued by a Q
 
 - The official identifiers are assigned by regulated entities in all Member States, as soon as an organization is created or starts operating in some specific area of activity. We do not need to stablish a process for creating new identifiers, because they already exist and they have official recognition.
 
-- If we created new identifiers (either centrally by ISBE or by each organization themselves), we would have to perform a costly validation process to make sure that the new identifier is assigned to the real-world organization. This is already done by the QTSP that issued the certificate for signature/seal to the organization, as part of the process of including an official identifier inside the certificate. This process has a level of assurance (LoA) High, something that ISBE can not achieve (unless ISBE itself is a QTSP, of course).
+- If we created new identifiers (either centrally by ISBE or by each organization themselves), we would have to perform a costly validation process to make sure that the new identifier is assigned to the real-world organization. With the proposed approach we avoid th verification because it is already done by the QTSP that issued the certificate for signature/seal to the organization, as part of the process of including an official identifier inside the certificate. This process has a level of assurance (LoA) High, something that ISBE can not achieve (unless ISBE itself is a QTSP, of course).
 
 - In addition, creating new identifiers and performing validation in ISBE limits the usage of the identifiers to ISBE. Using the official identifiers which already have cross-border recognition in the EU is a much better option enabling wider interoperability.
 
@@ -66,9 +66,9 @@ In particular, using the proposed identifiers is superior to the mechanism used 
 
 # Verification of the real-world identity of the Organization
 
-When using an eIDAS certificate (either a certificate of representation or a certificate for seals) for the onboarding process, the verification of the identity of the organization comes for free and with a LoA (level of assurance) which is substantial or high depending on whether an advanced or qualified electronic signature was used.
+When using an eIDAS certificate for the onboarding process (either a certificate of representation or a certificate for seals), the verification of the identity of the organization comes for free and with a LoA (level of assurance) which is substantial or high depending on whether an advanced or qualified electronic signature was used.
 
-This is because the verification has been already performed by the QTSP which issued the certificate to the organization. For examples, see section '3.2 Validación inicial de la identidad' in ['Declaración de prácticas de certificación de DIGITELTS'](https://pki.digitelts.es/dpc/DIGITELTS_DPC.v2.1.pdf) or section '3.2 Validación inicial de la identidad' in ['Declaración de Prácticas de Confianza de LOGALTY para los servicios de certificación y de sellado de tiempo electrónico'](https://www.logalty.com/certificateauthority/dpc/LGT_DPC-PKI_v2r5_fdo.pdf).
+This is because the verification has been already performed by the QTSP which issued the certificate to the organization. For examples, see section *"3.2 Validación inicial de la identidad"* in ['Declaración de prácticas de certificación de DIGITELTS'](https://pki.digitelts.es/dpc/DIGITELTS_DPC.v2.1.pdf) or section *"3.2 Validación inicial de la identidad"* in ['Declaración de Prácticas de Confianza de LOGALTY para los servicios de certificación y de sellado de tiempo electrónico'](https://www.logalty.com/certificateauthority/dpc/LGT_DPC-PKI_v2r5_fdo.pdf).
 
 When in ISBE we receive a document (in PDF, XML or JSON format) signed/sealed with an advanced or qualified signature using such eIDAS certificates, and the signature verification is successful, we **obtain for free the verification of the real identity of the organization**, leveraging on the verifications performed by the QTSPs on certificate issuance.
 
@@ -78,7 +78,7 @@ In addition, we also obtain a **unique official identifier of the organization w
 > 
 > The proposal is to use the eIDAS certificate issued to the organization by a QTSP and rely on the verifications performed by the QTSP regarding the real identity of the organization, and also the relationship of the unique identifier with the identity of the organization.
 > 
-> Additionally, we can use this verification to check that the organization has  an establishment legally recognized in a country of the EU, as the certificate includes the country code.
+> Additionally, we can use this verification to check that the organization has an establishment legally recognized in a country of the EU, as the certificate includes the country code.
 
 # Verification of the identity of the legal representative
 
