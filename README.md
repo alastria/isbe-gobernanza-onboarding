@@ -52,7 +52,7 @@ they electronically sign legal documents like contracts or invoices. In Spain, t
 when possible.
 
 A Verifiable Credential issued by an organization is a document in a structured format, which in most cases
-carry legal and/or financial implications. That means that in ISBE we should treat Verifiable Credentials
+carries legal and/or financial implications. That means that in ISBE we should treat Verifiable Credentials
 issued by organizatiuons in a similar way to invoices, contracts or any other type of relevant document.
 
 ## Relationship between the NIF and advanced and qualified signatures of documents
@@ -93,7 +93,7 @@ The relevant properties for ISBE are:
 2. The NIF's Role in Attributing Legal Identity
 
    -  **Verification of Identity**: When an electronic signature (based on an eIDAS certificate) is applied to
-      a structured document (e.g., a Facturae XML file or a Verifiable Credential in JSOn format), the
+      a structured document (e.g., a Facturae XML file or a Verifiable Credential in JSON format), the
       receiving system can verify the signature. During this verification process, the system reads the
       certificate embedded within the signature.
 
@@ -108,17 +108,21 @@ The relevant properties for ISBE are:
 
 3. Non-Repudiation and Auditability
 
--  The combination of the NIF as a unique legal identifier and the cryptographic properties of
-   advanced/qualified electronic signatures ensures non-repudiation. An organization cannot deny having signed
-   a document if its NIF is clearly linked to a valid eIDAS certificate used to apply that signature.
+   -  The combination of the NIF as a unique legal identifier and the cryptographic properties of
+      advanced/qualified electronic signatures ensures non-repudiation. An organization cannot deny having
+      signed a document if its NIF is clearly linked to a valid eIDAS certificate used to apply that
+      signature.
 
--  This also provides a high level of auditability. In case of a dispute, the signed document, with its
-   embedded NIF-linked certificate, serves as irrefutable evidence of the originating organization's identity.
+   -  This also provides a high level of auditability. In case of a dispute, the signed document, with its
+      embedded NIF-linked certificate, serves as irrefutable evidence of the originating organization's
+      identity.
 
-In essence, the NIF is not just data within a structured document; it's a fundamental component of the digital
-identity of the organization encapsulated within the advanced and qualified electronic signatures themselves.
-This integration is what gives these signatures their legal weight and enables the seamless, secure, and
-legally binding automated exchange of documents and data in Spain.
+> [!IMPORTANT]
+>
+> In essence, the NIF is not just data within a structured document; it's a fundamental component of the
+> digital identity of the organization encapsulated within the advanced and qualified electronic signatures
+> themselves. This integration is what gives these signatures their legal weight and enables the seamless,
+> secure, and legally binding automated exchange of documents and data in Spain.
 
 ## Advantages of electronic signatures with an eIDAS certificate
 
@@ -168,13 +172,16 @@ the verification of the real identity of the organization**, leveraging on the v
 QTSPs on certificate issuance.
 
 In addition, we also obtain a **unique official identifier of the organization which is cryptographically
-bound to the document being signed by the organization**. This identifier is standardized in [ETSI EN 319 412-1 V1.6.1 (2025-06)](https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.06.01_60/en_31941201v010601p.pdf), specifically in section _"5.1.4 Legal person semantics identifier"_.
-The standard enables the coexistence of the NIF with other types of legally valid identifiers used in the EU, by including the unique organization identifier in an attribute of the certificate (called `organizationIdentifier`).
+bound to the document being signed by the organization**. This identifier is standardized in
+[ETSI EN 319 412-1 V1.6.1 (2025-06)](https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.06.01_60/en_31941201v010601p.pdf),
+specifically in section _"5.1.4 Legal person semantics identifier"_. The standard enables the coexistence of
+the NIF with other types of legally valid identifiers used in the EU, by including the unique organization
+identifier in an attribute of the certificate (called `organizationIdentifier`).
 
-We only have to include the `organizationIdentifier`
-attribute in all relevant documents signed by the organization, and on verification of the signature, verify
-that the `organizationIdentifier`in the document being signed is the same as the `organizationIdentifier`
-included inside the certificate issued by the QTSP to the organization.
+We only have to include the `organizationIdentifier` attribute in all relevant documents signed by the
+organization, and on verification of the signature, verify that the `organizationIdentifier`in the document
+being signed is the same as the `organizationIdentifier` included inside the certificate issued by the QTSP to
+the organization.
 
 > [!IMPORTANT]
 >
@@ -278,8 +285,6 @@ described.
 >
 > In general, any electronic procedure with the Administration (applications, declarations, notifications,
 > etc.) requires the identification of the citizen or company through their NIF.
-
-
 
 # Verification of the identity of the legal representative
 
