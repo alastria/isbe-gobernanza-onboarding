@@ -1,6 +1,4 @@
-# Onboarding in ISBE - Identity of Organizations and of Employees of Organizations - Verifiable Credentials
-
-# Onboarding in ISBE
+# Onboarding in ISBE - Identity of Organizations and of Employees of Organizations
 
 The objectives of the onboarding process in ISBE include the following:
 
@@ -38,7 +36,7 @@ at the same time:
 
 The rest of this document elaborates on the concrete mechanisms used to achieve the objectives.
 
-## Identifier of the Organizations
+# Identifier of the Organizations
 
 In Spain, the **Tax Identification Number (NIF) is the fundamental identifier used in practically all
 structured data exchange systems**, both in interactions between companies and the Public Administration (B2G)
@@ -57,7 +55,7 @@ A Verifiable Credential issued by an organization is a document in a structured 
 carries legal and/or financial implications. That means that in ISBE we should treat Verifiable Credentials
 issued by organizatiuons in a similar way to invoices, contracts or any other type of relevant document.
 
-### Relationship between the NIF and advanced and qualified signatures of documents
+## Relationship between the NIF and advanced and qualified signatures of documents
 
 The relationship between the NIF of an organization in Spain and its advanced or qualified electronic
 signatures for structured document exchange is fundamental and symbiotic. The NIF is the **unique identifier
@@ -126,7 +124,7 @@ The relevant properties for ISBE are:
 > themselves. This integration is what gives these signatures their legal weight and enables the seamless,
 > secure, and legally binding automated exchange of documents and data in Spain.
 
-Some additional advantages of electronic signatures with an eIDAS certificate
+## Advantages of electronic signatures with an eIDAS certificate
 
 -  **General Commercial Transactions (B2B)**:
 
@@ -145,12 +143,17 @@ Some additional advantages of electronic signatures with an eIDAS certificate
    based on a qualified certificate issued in one EU country is legally recognized in all other EU countries,
    facilitating cross-border trade and services without additional legal hurdles.
 
+   Providers and Certificates in Spain: In Spain, Qualified Trust Service Providers (QTSPs) like the Fábrica
+   Nacional de Moneda y Timbre (FNMT) issue eIDAS-compliant qualified certificates. These certificates can be
+   issued for natural persons (including those acting as representatives of legal entities) and for legal
+   entities themselves (electronic seal certificates).
+
 In conclusion, eIDAS certificates, particularly qualified ones, are the cornerstone of trust, legal validity,
 and interoperability in Spain's structured data exchange systems. They provide the necessary assurances of
 identity, integrity, and non-repudiation that are essential for the digital transformation of administrative
 and commercial processes.
 
-## Verification of the real-world identity of the Organization
+# Verification of the real-world identity of the Organization
 
 When using an eIDAS certificate for the onboarding process (either a certificate of representation or a
 certificate for seals), the verification of the identity of the organization comes for free and with a LoA
@@ -189,7 +192,7 @@ the organization.
 > Additionally, we can use this verification to check that the organization has an establishment legally
 > recognized in a country of the EU, as the certificate includes the country code.
 
-### Relationship with onboarding of relying parties in the EUDIW ecosystem
+## Relationship with onboarding of relying parties in the EUDIW ecosystem
 
 The system described above is virtually identical to the approach used in the EUDI Wallet ecosystem for
 onboarding and registering wallet-relying parties: the eIDAS2 regulation specifies that onboarding requires
@@ -226,7 +229,7 @@ When such a certificate is used by an organization to login or to sign/seal a do
 is provided automatically in a secure and automated way because it is included in the certifi5cate used by the
 organization in the respective operation (login or signature/seal).
 
-### Comparison to other options
+## Comparison to other options
 
 Using the existing official identifier inside an eIDAS certificate issued by a QTSP to the organization is
 superior to other options, like "inventing" a new identifier in ISBE (by some centralised governance entity),
@@ -250,11 +253,9 @@ or letting the organizations "invent" a new identifier of their choosing:
 In particular, using the proposed identifiers is superior to the mechanism used in EBSI, for the reasons just
 described.
 
-### Examples of NIF as unique identifier of organizations
+## Examples of NIF as unique identifier of organizations
 
-> [!NOTE] 
->
-> For example, in all valid **electronic invoice** formats in Spain, the NIF is a mandatory field and
+> [!NOTE] For example, in all valid **electronic invoice** formats in Spain, the NIF is a mandatory field and
 > the primary identifier for both the issuer and the recipient. This includes Facturae (B2G and B2B), UBL
 > (Universal Business Language) and CEFACT (B2B): Although these last two formats are international standards,
 > when used in Spain, the NIF is included in the fiscal identification fields of the parties (issuer and
