@@ -160,8 +160,8 @@ certificate for seals), the verification of the identity of the organization com
 (Level of Assurance) which is substantial or high depending on whether an advanced or qualified electronic
 signature was used.
 
-This is because the verification has been already performed by the QTSP which issued the certificate to the
-organization. For examples, see section _"3.2 Validación inicial de la identidad"_ in
+This is because **the verification has been already performed by the QTSP which issued the certificate to the
+organization**. For examples, see section _"3.2 Validación inicial de la identidad"_ in
 ['Declaración de prácticas de certificación de DIGITELTS'](https://pki.digitelts.es/dpc/DIGITELTS_DPC.v2.1.pdf)
 or section _"3.2 Validación inicial de la identidad"_ in
 ['Declaración de Prácticas de Confianza de LOGALTY para los servicios de certificación y de sellado de tiempo electrónico'](https://www.logalty.com/certificateauthority/dpc/LGT_DPC-PKI_v2r5_fdo.pdf).
@@ -192,14 +192,14 @@ the organization.
 > Additionally, we can use this verification to check that the organization has an establishment legally
 > recognized in a country of the EU, as the certificate includes the country code.
 
-## Comparison with onboarding of relying parties in the EUDIW ecosystem
+## Relationship with onboarding of relying parties in the EUDIW ecosystem
 
-Instead of inventing identifiers which are specific to ISBE, it makes sense to use an approach very similar
-(if not identical) to the one used in the EUDI Wallet ecosystem for onboarding and registering wallet-relying
-parties: during onboarding we require one or more **identifiers of the organization, as stated in an official
-record** together with identification data of that official record, expressed as one of the following:
+The system described above is virtually identical to the approach used in the EUDI Wallet ecosystem for
+onboarding and registering wallet-relying parties: the eIDAS2 regulation specifies that onboarding requires
+one or more **identifiers of the organization, as stated in an official record** together with identification
+data of that official record, expressed as one of the following:
 
--  a value-added tax (‘VAT’) registration number;
+-  **a value-added tax (‘VAT’) registration number (this is the NIF in Spain)**;
 
 -  an economic operators registration and identification (‘EORI’) number as referred to in Commission
    Implementing Regulation (EU) No 1352/2013 (1);
@@ -213,10 +213,8 @@ record** together with identification data of that official record, expressed as
 
 -  a registration number as registered in a national business register recognized at EU level.
 
-This is easily achieved by requiring that organizations use an **eIDAS certificate of representation or a
-certificate for seals**, issued by a Qualified Trust Service Provider (**QTSP**). These are the certificates
-typically used to electronically sign contracts or electronic invoices, so **this is "business as usual" for
-the Spanish organizations**.
+This is easily achieved by requiring that organizations use a certificate issued by a Qualified Trust Service
+Provider (**QTSP**).
 
 The key idea here is that the X.509 certificate issued by QTSPs already includes, by regulation, an attribute
 named `organizationIdentifier` which **already contains one of those unique official identifiers** mentioned
@@ -230,16 +228,6 @@ specifically in section _"5.1.4 Legal person semantics identifier"_.
 When such a certificate is used by an organization to login or to sign/seal a document, the unique identifier
 is provided automatically in a secure and automated way because it is included in the certifi5cate used by the
 organization in the respective operation (login or signature/seal).
-
-> [!IMPORTANT]
->
-> The proposal is that **onboarding in ISBE requires the use of an eIDAS certificate issued to the
-> organization willing to onboard, and that the identifier of the organization in ISBE is the one included (by
-> regulation) inside that certificate**.
->
-> We do not have to "invent" or create new identifiers of organizations. We just use the existing unique
-> official identifiers that organizations already have, and that are used when they electronically sign legal
-> documents like contracts or invoices.
 
 ## Comparison to other options
 
