@@ -356,10 +356,10 @@ centralised governance entity), or letting the organizations "invent" a new iden
 
 -  **Resiliency**: Other methods like `did:ala` or `did:ebsi` require the identifiers and associated DID
    documents to be registered in the blockchain network for resolution and other processes. `did:elsi` is
-   based on the existing eIDAS framework and infrastructure (which is regulated, audited and must comply with
-   all cybersecurity requirements), so it does not require any new or additional infrastructure in ISBE.
-   Resolution of a did is virtually identical to the verification of an eIDAS signature, so it is well known
-   and has proven to be reliable.
+   based on the existing eIDAS framework and infrastructure, which is in production for many years, is
+   regulated, audited and must comply with all cybersecurity requirements. So, `did:elsi` does not require any
+   new or additional infrastructure in ISBE. Resolution of a did is virtually identical to the verification of
+   an eIDAS signature, which is a well known process and has proven to be reliable.
 
 -  **Easier for ISBE**: If we created new identifiers (either centrally by ISBE or by each organization
    themselves), we would have to perform a costly validation process to make sure that the new identifier is
