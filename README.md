@@ -38,7 +38,7 @@ at the same time:
 
 The rest of this document elaborates on the concrete mechanisms used to achieve the objectives.
 
-## Identifier of the Organizations
+## Identifiers of Organizations
 
 In Spain, the **Tax Identification Number (NIF) is the fundamental identifier used in practically all
 structured data exchange systems**, both in interactions between companies and the Public Administration (B2G)
@@ -48,14 +48,35 @@ This is in fact true not only for electronic interactions within Spain, but in g
 are used and the mandatory nature of a legal identifier for the organization is stablished, Spanish
 organizations use the NIF (or an identifier derived from the NIF).
 
-Instead of inventing identifiers which are specific to ISBE, the proposal is that onboarding in ISBE requires
-the use of the existing unique official identifiers that organizations already have, and that are used when
-they electronically sign legal documents like contracts or invoices. In Spain, this means that we use the NIF
-when possible.
+> [!NOTE]
+>
+> For example, in all valid **electronic invoice** formats in Spain, the NIF is a mandatory field and the
+> primary identifier for both the issuer and the recipient. This includes Facturae (B2G and B2B), UBL
+> (Universal Business Language) and CEFACT (B2B): Although these last two formats are international standards,
+> when used in Spain, the NIF is included in the fiscal identification fields of the parties (issuer and
+> recipient). The European standard EN 16931, which UBL and CEFACT can comply with, establishes the mandatory
+> nature of a legal identifier for the seller and buyer, which in Spain is the NIF.
+>
+> This is in fact true for all **Electronic Data Interchange** (EDI) Systems: in any type of exchange of
+> commercial documents via EDI (EDIFACT, proprietary XML, or others) in Spain, the NIF is a fundamental piece
+> of data for identifying the parties involved, to ensure that the **documents are correctly associated with
+> the corresponding legal and fiscal entities**.
+>
+> To participate in **tenders, submit bids, or sign contracts with any Spanish Public Administration**,
+> companies must identify themselves with their NIF. The Public Sector Procurement Platform, for example, uses
+> the NIF as the primary identifier for bidders and contractors.
+>
+> In general, any electronic procedure with the Administration (applications, declarations, notifications,
+> etc.) requires the identification of the citizen or company through their NIF.
+
+Instead of inventing identifiers which are specific to ISBE, the onboarding process in ISBE requires the use
+of existing unique official identifiers that organizations already have, and that are used when they
+electronically sign legal documents like contracts or invoices. In Spain, this means that we use the NIF when
+possible.
 
 A Verifiable Credential issued by an organization is a document in a structured format, which in most cases
 carries legal and/or financial implications. That means that in ISBE we should treat Verifiable Credentials
-issued by organizatiuons in a similar way to invoices, contracts or any other type of relevant document.
+issued by organizations in a similar way to invoices, contracts or any other type of relevant document.
 
 ### Relationship between the NIF and advanced and qualified signatures of documents
 
@@ -226,54 +247,7 @@ When such a certificate is used by an organization to login or to sign/seal a do
 is provided automatically in a secure and automated way because it is included in the certifi5cate used by the
 organization in the respective operation (login or signature/seal).
 
-### Comparison to other options
-
-Using the existing official identifier inside an eIDAS certificate issued by a QTSP to the organization is
-superior to other options, like "inventing" a new identifier in ISBE (by some centralised governance entity),
-or letting the organizations "invent" a new identifier of their choosing:
-
--  The official identifiers are assigned by regulated entities in all Member States, as soon as an
-   organization is created or starts operating in some specific area of activity. We do not need to stablish a
-   process for creating new identifiers, because they already exist and they have official recognition.
-
--  If we created new identifiers (either centrally by ISBE or by each organization themselves), we would have
-   to perform a costly validation process to make sure that the new identifier is assigned to the real-world
-   organization. With the proposed approach we avoid th verification because it is already done by the QTSP
-   that issued the certificate for signature/seal to the organization, as part of the process of including an
-   official identifier inside the certificate. This process has a level of assurance (LoA) High, something
-   that ISBE can not achieve (unless ISBE itself is a QTSP, of course).
-
--  In addition, creating new identifiers and performing validation in ISBE limits the usage of the identifiers
-   to ISBE. Using the official identifiers which already have cross-border recognition in the EU is a much
-   better option enabling wider interoperability.
-
-In particular, using the proposed identifiers is superior to the mechanism used in EBSI, for the reasons just
-described.
-
-### Examples of NIF as unique identifier of organizations
-
-> [!NOTE] 
->
-> For example, in all valid **electronic invoice** formats in Spain, the NIF is a mandatory field and
-> the primary identifier for both the issuer and the recipient. This includes Facturae (B2G and B2B), UBL
-> (Universal Business Language) and CEFACT (B2B): Although these last two formats are international standards,
-> when used in Spain, the NIF is included in the fiscal identification fields of the parties (issuer and
-> recipient). The European standard EN 16931, which UBL and CEFACT can comply with, establishes the mandatory
-> nature of a legal identifier for the seller and buyer, which in Spain is the NIF.
->
-> This is in fact true for all Electronic Data Interchange (EDI) Systems: in any type of exchange of
-> commercial documents via EDI (EDIFACT, proprietary XML, or others) in Spain, the NIF is a fundamental piece
-> of data for identifying the parties involved, to ensure that the **documents are correctly associated with
-> the corresponding legal and fiscal entities**.
->
-> To participate in tenders, submit bids, or sign contracts with any Spanish Public Administration, companies
-> must identify themselves with their NIF. The Public Sector Procurement Platform, for example, uses the NIF
-> as the primary identifier for bidders and contractors.
->
-> In general, any electronic procedure with the Administration (applications, declarations, notifications,
-> etc.) requires the identification of the citizen or company through their NIF.
-
-# Verification of the identity of the legal representative
+## Verification of the identity of the legal representative
 
 In ISBE, we require the verification of the legal representative of the organization, to provide a high level
 of legal certainty to the relationship.
@@ -299,6 +273,116 @@ representation.
 > The proposal is to require a certificate of representation to sign the contractual agreements with ISBE.
 > Only in the case that this is not possible, accept documents sealed with a certificate for seals, performing
 > additional verifications of the identity of the legal representative.
+
+# The NIF and Verifiable Credentials issued by organizations
+
+## The Verifiable Credential as a legally binding document
+
+In the context of ISBE, a Verifiable Credential issued by an organization is a document in a structured
+format, which in most cases carries legal and/or financial implications. From now on, we will use the eIDAS2
+terminology to refer to a Verifiable Credential: **(Qualified) Electronic Attestation of Attributes**, or
+**(Q)EAA** for short.
+
+We want to achieve with a (Q)EAA the same level of legal certainty as with any other legally binding document
+in other formats (like PDF or XML). This means that in ISBE we should treat Verifiable Credentials issued by
+organizations in a similar way to invoices, contracts or any other type of relevant document.
+
+In particular, we need that:
+
+-  The NIF of the organization issuing the (Q)EAA must be included as an attribute in the document (the unique
+   identifier of the issuer). This is the same unique identifier we register when onboarding the organization
+   in ISBE.
+
+-  The (Q)EAA must be signed or sealed with an eIDAS certificate issued by a QTSP to the organization issuing
+   the (Q)EAA. This certificate must have in the `organizationIdentifier` attribute of the Subject field the
+   NIF of the organization, matching the NIF in the document being signed.
+
+For a Verifiable Credential format (as is the (Q)EAA), we want to use a special format for the unique
+identifiers of the organizations involved, called a DID.
+
+Given the above requirements, we need a DID which includes the NIF of the organization, and this is why the
+`did:elsi` method covers the requirements of ISBE. `did:elsi` is decribed below.
+
+## The `did:elsi` method
+
+The complete specification of the `did:method` can be found in
+[DID ETSI Legal person Semantic Identifier Method Specification (did:elsi)](https://alastria.github.io/did-method-elsi/),
+but we make here a brief summary.
+
+This is a DID method for **legal persons**, bridging the world of the eIDAS regulation with the world of W3C
+Verifiable Credentials, maximising at the same time **regulatory compliance** and **decentralisation**.
+
+As an example, the DID identifier of Alastria is `did:elsi:VATES-G87936159`, because the NIF of Alastria is
+`G87936159` and the string `VATES-G87936159` corresponds to the `organizationIdentifier` attribute included in
+the eIDAS certificate issued by a QTSP to Alastria. For example, in the certificate of representation used by
+the President of Alastria to sign documents).
+
+As simple as that: The method is purely derivative, based on the `organizationIdentifier` attribute in eIDAS
+certificates. This means that it is extremely simple to manage, it does not require look ups in any additional
+registry, and the DID document does not have to contain a verificationMethod property.
+
+Any legal person than can operate in the digital economy and that can digitally sign a document using an
+advanced or qualified signature valid in the EU (like an invoice or a contract) has already a DID identifier
+under the `did:elsi` method without any further action and which can be used without any intervention by any
+third party.
+
+## Comparison with other DID methods
+
+Using `did:elsi` in ISBE is superior to other options, like "inventing" a new identifier in ISBE (by some
+centralised governance entity), or letting the organizations "invent" a new identifier of their choosing:
+
+-  **Legal Validity**: With other DID methods, the signature of the Verifiable Credential can not be an
+   advanced/qualified signature under eIDAS, and so they have lower legal certainty and it may be more
+   cumbersome in case of disputes or repudiation of the signature. With `did:elsi`, because the private key
+   used to sign is the one associated to the eIDAS certificate, and the unique identifier of the organization
+   is included inside the certificate used to sign, it provides the necessary legal link for the signature to
+   have the same validity as a handwritten signature (in the case of a Qualified Electronic Signature/Seal) or
+   strong probative value (for an Advanced Electronic Signature/Seal).
+
+-  **Scalability**: With `did:elsi`, any organization than can operate in the digital economy in the EU
+   (`did:elsi` is not limited to Spain or to ISBE) and that can digitally sign a document using an advanced or
+   qualified signature (like an invoice or a contract) has **automatically** a DID identifier, without any
+   further action and without any intervention by any third party. In other words, there is no need for any
+   trusted party in ISBE to be involved in the generation or management of the unique identifier of the
+   organization used in `did:elsi`. We do not need to stablish a process for creating new identifiers, because
+   they already exist and they have official recognition.
+
+-  **Low barrier of entry**: In Spain, the adoption of eIDAS certificates for organizations is very high, and
+   the profile of the organizations which will participate in ISBE (using Verifiable Credentials, Blockchain
+   and related technologies) is assumed to be technology-oriented and highly digitalized. It should never be a
+   problem for these organizations to use an eIDAS certificate. In addition, the Onboarding process in ISBE
+   requires the electronic signature of some documents, so organizations have to use anyway an eIDAS
+   certificate.
+
+-  **Resiliency**: Other methods like `did:ala` or `did:ebsi` require the identifiers and associated DID
+   documents to be registered in the blockchain network for resolution and other processes. `did:elsi` is
+   based on the existing eIDAS framework and infrastructure (which is regulated, audited and must comply with
+   all cybersecurity requirements), so it does not require any new or additional infrastructure in ISBE.
+   Resolution of a did is virtually identical to the verification of an eIDAS signature, so it is well known
+   and has proven to be reliable.
+
+-  **Easier for ISBE**: If we created new identifiers (either centrally by ISBE or by each organization
+   themselves), we would have to perform a costly validation process to make sure that the new identifier is
+   assigned to the real-world organization. With `did:elsi` we avoid the verification because it is already
+   done by the QTSP that issued the certificate for signature/seal to the organization, as part of the process
+   of including an official identifier inside the certificate. This process has a level of assurance (LoA)
+   High, something that ISBE can not achieve (unless ISBE itself is a QTSP, of course).
+
+-  **Wider interoperability**: In addition, creating new identifiers and performing validation in ISBE limits
+   the usage of the identifiers to ISBE. Using the official identifiers which already have cross-border
+   recognition in the EU is a much better option enabling wider interoperability.
+
+-  **Automatic updatability**: In `did:elsi` the cryptographic material associated to the unique identifier of
+   the organization is created and managed in a fully eIDAS-compliant way, with full regulatory support. Their
+   full life-cycle (initialization, creation, revocation, update) is already well-known and follows the eIDAS
+   regulation. In other DID methods, like `did:ala` or `did:ebsi`, this process has to be implemented from
+   scratch and have not been proven in production, so they are subject to many bugs and problems at least at
+   the beginning.
+
+   Other DID methods have to define how to update the private/public keys and how to ensure that they are
+   really associated to the real-world identity of the organization. All of this complexity does not exist
+   with `did:elsi`, or better said, the complexity is already implemented many years ago and is in full
+   conformance with the eIDAS regulation.
 
 # Identity of an employee acting on behalf of the organization
 
