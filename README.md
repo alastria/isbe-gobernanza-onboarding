@@ -315,7 +315,7 @@ Verifiable Credentials, maximising at the same time **regulatory compliance** an
 As an example, the DID identifier of Alastria is `did:elsi:VATES-G87936159`, because the NIF of Alastria is
 `G87936159` and the string `VATES-G87936159` corresponds to the `organizationIdentifier` attribute included in
 the eIDAS certificate issued by a QTSP to Alastria. For example, in the certificate of representation used by
-the President of Alastria to sign documents).
+the President of Alastria to sign documents.
 
 As simple as that: The method is purely derivative, based on the `organizationIdentifier` attribute in eIDAS
 certificates. This means that it is extremely simple to manage, it does not require look ups in any additional
