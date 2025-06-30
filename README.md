@@ -44,6 +44,8 @@ In Spain, the **Tax Identification Number (NIF) is the fundamental identifier us
 structured data exchange systems**, both in interactions between companies and the Public Administration (B2G)
 and between companies themselves (B2B), due to its legal and fiscal nature.
 
+The NIF (Número de Identificación Fiscal) is also the single most crucial and consistent unique identifier for the issuing organization in documents directed at citizens in Spain. It is universally required for legal, fiscal, and commercial purposes.
+
 This is in fact true not only for electronic interactions within Spain, but in general when European standards
 are used and the mandatory nature of a legal identifier for the organization is stablished, Spanish
 organizations use the NIF (or an identifier derived from the NIF).
