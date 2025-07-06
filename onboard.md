@@ -247,7 +247,7 @@ Electronic Attestation of Attributes.
 
 ## The Verifiable Credential as a Mandate
 
-As in the PDF version, this Verifiable Credential is composed is composed of several related objects:
+As in the PDF version, this Verifiable Credential is composed of several related objects:
 `mandator`, `mandatee`, `power` and `signer`. The mandate is signed or sealed with an advanced or qualified
 signature or seal using an eIDAS certificate. Ideally, a certificate of representation is used for the
 signature of the mandate (the Verifiable Credential).
