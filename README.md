@@ -1,5 +1,26 @@
 # Onboarding in ISBE - Identity of Organizations and of Employees of Organizations - Verifiable Credentials
 
+- [Onboarding in ISBE - Identity of Organizations and of Employees of Organizations - Verifiable Credentials](#onboarding-in-isbe---identity-of-organizations-and-of-employees-of-organizations---verifiable-credentials)
+- [Onboarding in ISBE](#onboarding-in-isbe)
+  - [Identifiers of Organizations](#identifiers-of-organizations)
+    - [Relationship between the NIF and advanced and qualified signatures of documents](#relationship-between-the-nif-and-advanced-and-qualified-signatures-of-documents)
+  - [Verification of the real-world identity of the Organization](#verification-of-the-real-world-identity-of-the-organization)
+    - [Relationship with onboarding of relying parties in the EUDIW ecosystem](#relationship-with-onboarding-of-relying-parties-in-the-eudiw-ecosystem)
+  - [Verification of the identity of the legal representative](#verification-of-the-identity-of-the-legal-representative)
+- [The NIF and Verifiable Credentials issued by organizations](#the-nif-and-verifiable-credentials-issued-by-organizations)
+  - [The Verifiable Credential as a legally binding document](#the-verifiable-credential-as-a-legally-binding-document)
+  - [The `did:elsi` method](#the-didelsi-method)
+  - [Comparison with other DID methods](#comparison-with-other-did-methods)
+- [Identity of an employee acting on behalf of the organization](#identity-of-an-employee-acting-on-behalf-of-the-organization)
+  - [Attaching specific authorizations to the identity of the employee](#attaching-specific-authorizations-to-the-identity-of-the-employee)
+  - [The mandate as a (Q)EAA](#the-mandate-as-a-qeaa)
+    - [Mandator](#mandator)
+    - [Mandatee](#mandatee)
+    - [Signer](#signer)
+    - [Powers](#powers)
+  - [On the signature of the mandate](#on-the-signature-of-the-mandate)
+
+
 # Onboarding in ISBE
 
 The objectives of the onboarding process in ISBE include the following:
@@ -555,3 +576,4 @@ of the credential can be automated thanks to its machine-readable format.
 That means that the Verifiable Credential can be used everywhere the PDF is used, with the same level of risk
 and legal certainty, but the processing can be instantaneous, compared to the typical longer processing times
 of a PDF-based process.
+
