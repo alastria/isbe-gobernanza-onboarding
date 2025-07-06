@@ -20,7 +20,6 @@
     - [Powers](#powers)
   - [On the signature of the mandate](#on-the-signature-of-the-mandate)
 
-
 # Onboarding in ISBE
 
 The objectives of the onboarding process in ISBE include the following:
