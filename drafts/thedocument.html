@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISBE Onboarding Framework</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .bg-primary { background-color: #001219; }
+        .bg-secondary { background-color: #005f73; }
+        .bg-accent-light { background-color: #94d2bd; }
+        .bg-accent-warm { background-color: #ee9b00; }
+        .bg-card { background-color: #002a3a; }
+
+        .text-primary { color: #ffffff; }
+        .text-secondary { color: #e9d8a6; }
+        .text-accent-light { color: #94d2bd; }
+        .text-accent-warm { color: #ee9b00; }
+        
+        .border-accent { border-color: #0a9396; }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: #002a3a;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .flow-arrow-horizontal {
+            width: 2rem;
+            height: 2px;
+            background-color: #0a9396;
+            margin: 0 1rem;
+            position: relative;
+        }
+        .flow-arrow-horizontal::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 0.6rem;
+            height: 0.6rem;
+            border-top: 2px solid #0a9396;
+            border-right: 2px solid #0a9396;
+        }
+
+        .flow-arrow-vertical {
+            height: 2rem;
+            width: 2px;
+            background-color: #0a9396;
+            margin: 1rem 0;
+            position: relative;
+        }
+        .flow-arrow-vertical::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 0.6rem;
+            height: 0.6rem;
+            border-bottom: 2px solid #0a9396;
+            border-left: 2px solid #0a9396;
+        }
+
+        @media (min-width: 768px) {
+            .flow-arrow-vertical {
+                display: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .flow-arrow-horizontal {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-primary text-primary antialiased">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center py-12">
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-4">Digital Onboarding for Organizations in the ISBE Ecosystem</h1>
+            <p class="text-xl md:text-2xl text-accent-light max-w-4xl mx-auto">A Framework for Legal Certainty, Automation, and Cross-Border Interoperability</p>
+        </header>
+
+        <section class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">Executive Summary</h2>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                This report details a comprehensive framework for implementing the onboarding process for organizations within the ISBE ecosystem. Given ISBE's unique nature as a Spanish public-private collaboration with Public Administration participation and a not-for-profit objective, the process must be highly digital, automated, efficient, and legally certain, while minimizing manual work for ISBE and supporting organizations from all EU and EEA countries. The proposed solution strategically leverages the European eIDAS framework, specifically Qualified Electronic Signatures and Seals, in conjunction with W3C Verifiable Credentials (VCs) as Electronic Attestations of Attributes ((Q)EAAs), and the innovative `did:elsi` method for unique organizational identifiers. This integrated approach ensures robust legal certainty for all parties by relying on the rigorous identity verification performed by Qualified Trust Service Providers (QTSPs). It significantly minimizes manual intervention for ISBE by automating document generation, signature verification, and credential issuance. Furthermore, the design inherently supports seamless cross-border interoperability across EU and EEA countries through adherence to eIDAS mutual recognition principles and standardized EU identifiers. The report outlines a two-phased onboarding process: an initial phase focused on organization and legal representative verification, culminating in a digitally signed contractual agreement, followed by an automated second phase for employee identity and mandate management via Verifiable Credentials. This structure establishes a secure, efficient, and future-proof digital identity framework that fosters trust and facilitates extensive collaboration within the ISBE ecosystem, aligning with the broader objectives of the EU's digital single market.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-16">
+                <div class="bg-secondary p-6 rounded-xl shadow-lg">
+                    <p class="text-5xl font-bold text-accent-warm">100%</p>
+                    <p class="text-lg mt-2 text-white">Digital-First Process</p>
+                </div>
+                <div class="bg-secondary p-6 rounded-xl shadow-lg">
+                    <p class="text-5xl font-bold text-accent-warm">eIDAS</p>
+                    <p class="text-lg mt-2 text-white">Verified Identity</p>
+                </div>
+                <div class="bg-secondary p-6 rounded-xl shadow-lg">
+                    <p class="text-5xl font-bold text-accent-warm">EU/EEA</p>
+                    <p class="text-lg mt-2 text-white">Ready & Interoperable</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">1. Introduction: The ISBE Ecosystem and Onboarding Objectives</h2>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                The ISBE ecosystem, a distinctive Spanish public-private collaboration, operates with direct participation from Public Administration and is driven by a not-for-profit objective. This unique operational context imposes stringent requirements for transparency, legal soundness, and operational efficiency across all its processes, particularly the onboarding of participating organizations. The inherent involvement of Public Administration significantly elevates the demand for the highest possible levels of legal certainty and regulatory compliance in every interaction. Unlike a purely private sector onboarding, ISBE's processes must align with public law principles, ensuring accountability, transparency, and the integrity of public-private engagements. This fundamental requirement directly necessitates a strategic emphasis on eIDAS qualified services, which provide legal equivalence to traditional wet signatures, thereby ensuring that the entire onboarding process can withstand rigorous legal scrutiny and public audit.
+            </p>
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">The Four Pillars of ISBE Onboarding</h3>
+            <p class="text-lg text-accent-light mt-2 text-center mb-8">A structured approach to establish a robust hierarchical trust model for the entire ecosystem.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-card p-6 rounded-lg shadow-xl border-t-4 border-accent">
+                    <div class="text-4xl mb-4">🏢</div>
+                    <h4 class="text-xl font-bold text-white mb-2">Verify Organization</h4>
+                    <p class="text-primary/80">Confirm the legal establishment of an organization within an EU/EEA country using high-assurance methods.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg shadow-xl border-t-4 border-accent">
+                    <div class="text-4xl mb-4">🧑‍⚖️</div>
+                    <h4 class="text-xl font-bold text-white mb-2">Verify Legal Rep</h4>
+                    <p class="text-primary/80">Confirm the identity of the individual authorized to legally bind the organization in contractual agreements.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg shadow-xl border-t-4 border-accent">
+                    <div class="text-4xl mb-4">🆔</div>
+                    <h4 class="text-xl font-bold text-white mb-2">Assign Unique ID</h4>
+                    <p class="text-primary/80">Establish a stable, legally-recognized digital identifier for the organization via `did:elsi`.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg shadow-xl border-t-4 border-accent">
+                    <div class="text-4xl mb-4">🔑</div>
+                    <h4 class="text-xl font-bold text-white mb-2">Delegate Powers</h4>
+                    <p class="text-primary/80">Enable employees to act on behalf of the organization using secure, machine-readable mandates.</p>
+                </div>
+            </div>
+            <p class="text-lg text-primary/80 mt-8 max-w-4xl mx-auto">
+                The sequential nature of these objectives—beginning with the foundational verification of the legal entity, followed by its primary legal representative, then the assignment of a unique identifier, and finally, the delegation of operational authority to employees—establishes a robust hierarchical trust model. This structured approach ensures that the bedrock of trust is firmly established before any operational delegation to employees, known as Legal Entity Appointed Representatives (LEARs), can occur. This design ensures that all subsequent actions are legally sound and can be traced unequivocally back to the verified legal entity, thereby minimizing repudiation risks and building a strong chain of legal accountability within the ISBE ecosystem.
+            </p>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">2. Foundational Principles for ISBE's Digital Onboarding</h2>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                The implementation of ISBE's onboarding process is built upon core principles that prioritize digital efficiency, legal certainty, and broad European compatibility.
+            </p>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Emphasis on Digital-First, Automation, and Efficiency</h3>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                The user requirements explicitly mandate that the onboarding process be "highly digital, automated, efficient, and legally certain, minimizing manual work for ISBE". This directive is strategically implemented by designing the process around machine-readable formats, particularly Verifiable Credentials, coupled with automated cryptographic signature verification leveraging the eIDAS framework. The reliance on pre-verified identities provided by Qualified Trust Service Providers (QTSPs) further contributes to this automation. The directive to minimize manual work extends beyond mere cost-saving; it represents a fundamental strategic imperative for ensuring scalability, consistency, and reducing operational risks. Manual processes inherently act as bottlenecks, are susceptible to human error, and present challenges for consistent auditing, especially when managing the onboarding of a diverse user base from across the entire EU/EEA. Conversely, automation guarantees uniformity, accelerates processing times, and provides a high degree of auditability, all of which are essential for a public-private collaboration aiming for broad participation and efficient operation. For ISBE to effectively serve organizations across the entire European Union and European Economic Area, a manual onboarding process would quickly become unsustainable, leading to delays, increased costs, and inconsistent application of rules. By automating as much of the process as possible, ISBE can efficiently process a high volume of applications, thereby reducing operational costs and minimizing the risk of errors that could compromise legal certainty.
+            </p>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Achieving Legal Certainty and Minimizing Manual Intervention</h3>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                The cornerstone for achieving a high level of legal certainty in ISBE's onboarding process is the mandatory use of eIDAS certificates, specifically Qualified Electronic Signatures (QES) or Qualified Electronic Seals (QESeal), issued by Qualified Trust Service Providers (QTSPs). This approach directly leverages the QTSP's rigorous and legally recognized identity verification processes. When ISBE receives a document signed or sealed with such an eIDAS certificate, the verification of the organization's real identity and, where applicable, the legal representative's authority, is automatically obtained with a "substantial or high" Level of Assurance (LoA). This is because the QTSP has already performed these verifications during the certificate issuance process, as detailed in their certification practices. The concept of "free" identity verification and LoA represents a critical strategic advantage for ISBE. It means ISBE is not required to establish its own complex, costly, and legally risky identity verification infrastructure. Instead, it effectively offloads this significant burden and associated regulatory risk to regulated QTSPs. This allows ISBE to concentrate its resources and expertise on its core ecosystem functions, rather than becoming a primary identity provider. This approach is particularly beneficial for a not-for-profit collaboration with finite resources, as building an identity verification system that meets the "substantial or high" Level of Assurance required for legal certainty (especially with Public Administration involvement) would be an incredibly complex and expensive undertaking, potentially requiring ISBE to become a regulated entity itself. By relying on the existing, audited, and legally recognized framework of eIDAS and QTSPs, ISBE gains the benefits of robust identity verification without incurring the massive operational overhead and regulatory burden, making the project more feasible and sustainable.
+            </p>
+            <div class="bg-card p-6 rounded-lg shadow-xl mb-8">
+                <h4 class="text-2xl font-bold mb-4 text-center text-white">Key Benefits of eIDAS for ISBE</h4>
+                <p class="text-primary/80 mb-6 text-center">eIDAS provides the legal and technical foundation for trust, offloading complex identity verification to regulated Qualified Trust Service Providers (QTSPs).</p>
+                <div class="chart-container">
+                    <canvas id="eidasBenefitsChart"></canvas>
+                </div>
+            </div>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Ensuring EU/EEA Cross-Border Compatibility</h3>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                The onboarding process is explicitly designed to support organizations from all EU and EEA countries. A key enabler for this broad compatibility is the eIDAS regulation's mutual recognition principle, which ensures that electronic signatures based on qualified certificates issued in one EU member state are legally recognized in all other EU countries, effectively eliminating additional legal hurdles for cross-border transactions. Furthermore, the use of the `organizationIdentifier` attribute within eIDAS certificates, standardized in ETSI EN 319 412-1 V1.6.1, ensures broad compatibility for organizational identification across different member states. This attribute can contain various EU-recognized identifiers, such as VAT registration numbers (which is the NIF in Spain), EORI numbers, LEI numbers, EUID, or registration numbers from national business registers recognized at the EU level. The `did:elsi` method, being directly derived from this `organizationIdentifier` in eIDAS certificates, inherently supports cross-border interoperability by leveraging these existing, officially recognized EU identifiers. This deliberate design choice positions ISBE not merely as a Spanish initiative but as a truly European ecosystem from its inception. By proactively addressing potential legal and technical barriers for non-Spanish EU/EEA entities, ISBE fosters wider participation, aligns seamlessly with the EU's broader digital single market objectives, and enhances its strategic relevance on a continental scale. If ISBE's onboarding process were solely focused on Spanish legal frameworks, it would create significant friction and legal uncertainty for organizations from other EU/EEA countries, severely limiting its reach and impact. By explicitly designing for eIDAS mutual recognition and standardized EU identifiers, ISBE ensures it is accessible to all eligible European entities, maximizing its potential for collaboration and innovation across borders. This foresight is crucial for a project with pan-European aspirations.
+            </p>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">3. Proposed ISBE Onboarding Process Design: A Phased Approach</h2>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                The onboarding process for organizations in ISBE is meticulously structured into two distinct phases. The second phase is largely automated and is triggered immediately upon the successful completion and approval of the first phase, ensuring a streamlined transition.
+            </p>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Phase 1: Organization and Legal Representative Onboarding</h3>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                The first phase focuses on establishing the legal identity of the organization and its authorized legal representative. It commences with a user-friendly online form for initial information gathering and email verification, allowing a normal employee to initiate the process. Based on this, the system automatically generates contractual documents in PDF format. A crucial step is the electronic signature by the legal representative using an eIDAS certificate of representation, highly preferred for its high LoA and direct link to authority. ISBE then performs automated verification of the signature, followed by a mandatory manual approval workflow by an ISBE employee. Upon successful approval, the organization is registered, and an initial account is created, using the NIF for Spanish entities or the `organizationIdentifier` for EU/EEA entities.
+            </p>
+            <div class="flex flex-col items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl">
+                    <div class="flow-step">
+                        <div class="text-4xl mb-2">📝</div>
+                        <h4 class="font-bold text-white">Initial Info Gathering</h4>
+                        <p class="text-sm text-primary/70">Employee initiates, email verified, T&Cs accepted.</p>
+                    </div>
+                    <div class="flow-arrow-horizontal hidden md:flex items-center justify-center"></div>
+                    <div class="flow-arrow-vertical md:hidden"></div>
+                    <div class="flow-step">
+                        <div class="text-4xl mb-2">📄</div>
+                        <h4 class="font-bold text-white">Automated Contract Gen.</h4>
+                        <p class="text-sm text-primary/70">PDF documents generated based on input.</p>
+                    </div>
+                    <div class="flow-arrow-horizontal hidden md:flex items-center justify-center"></div>
+                    <div class="flow-arrow-vertical md:hidden"></div>
+                    <div class="flow-step">
+                        <div class="text-4xl mb-2">✍️</div>
+                        <h4 class="font-bold text-white">eIDAS Signature</h4>
+                        <p class="text-sm text-primary/70">Legal Rep signs with Certificate of Representation.</p>
+                    </div>
+                    <div class="flow-arrow-horizontal hidden md:flex items-center justify-center"></div>
+                    <div class="flow-arrow-vertical md:hidden"></div>
+                    <div class="flow-step">
+                        <div class="text-4xl mb-2">✅</div>
+                        <h4 class="font-bold text-white">Verification & Approval</h4>
+                        <p class="text-sm text-primary/70">Automated checks + manual review by ISBE.</p>
+                    </div>
+                </div>
+                <div class="flow-arrow-vertical mt-8"></div>
+                <div class="flow-step mt-8 w-full md:w-1/2 lg:w-1/4">
+                    <div class="text-4xl mb-2">🆔</div>
+                    <h4 class="font-bold text-white">Organization Registered</h4>
+                    <p class="text-sm text-primary/70">Unique ID assigned, initial account created.</p>
+                </div>
+            </div>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mt-12 mb-6">Phase 2: Employee Identity and Mandate Management (Automated Post-Onboarding)</h3>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                The second phase of the onboarding process focuses on enabling employees to act on behalf of the organization, largely through automated mechanisms. Immediately upon successful completion of Phase 1, ISBE automatically issues a Verifiable Credential (VC) to the designated Legal Entity Appointed Representative (LEAR). This VC serves as both a secure authentication mechanism and a machine-readable electronic mandate, proving the LEAR's authorization by the organization's legal representative. The LEAR accepts and stores this VC in an EUDI-compatible digital wallet, using it to authenticate to the ISBE portal and complete their individual onboarding. This allows the LEAR to manage organizational information, issue additional VCs to other employees with specific delegated powers, and publish offerings in the ISBE Marketplace.
+            </p>
+            <div class="flex flex-col items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-6xl">
+                    <div class="flow-step">
+                        <div class="text-4xl mb-2">💳</div>
+                        <h4 class="font-bold text-white">Automated VC Issuance</h4>
+                        <p class="text-sm text-primary/70">VC (mandate) issued to LEAR.</p>
+                    </div>
+                    <div class="flow-arrow-horizontal hidden md:flex items-center justify-center"></div>
+                    <div class="flow-arrow-vertical md:hidden"></div>
+                    <div class="flow-step">
+                        <div class="text-4xl mb-2">📱</div>
+                        <h4 class="font-bold text-white">Wallet Integration</h4>
+                        <p class="text-sm text-primary/70">LEAR stores VC in EUDI-compatible wallet.</p>
+                    </div>
+                    <div class="flow-arrow-horizontal hidden md:flex items-center justify-center"></div>
+                    <div class="flow-arrow-vertical md:hidden"></div>
+                    <div class="flow-step">
+                        <div class="text-4xl mb-2">🚀</div>
+                        <h4 class="font-bold text-white">Ecosystem Access</h4>
+                        <p class="text-sm text-primary/70">LEAR authenticates, manages org data, delegates to others.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">4. Core Digital Identity Mechanisms for ISBE</h2>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                The robust digital identity framework for ISBE relies on two interconnected pillars: eIDAS certificates and Verifiable Credentials, particularly the `did:elsi` method.
+            </p>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">eIDAS Certificates: The Cornerstone of Trust and Legal Validity</h3>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                Qualified Trust Service Providers (QTSPs) perform rigorous identity verification when issuing eIDAS certificates. ISBE strategically leverages this pre-verification, gaining "substantial or high" Level of Assurance (LoA) for identity automatically. This reliance on QTSPs avoids ISBE establishing costly identity verification infrastructure, allowing it to focus on its core mission while ensuring legal soundness.
+            </p>
+            <div class="bg-card p-6 rounded-lg shadow-xl mb-8">
+                <h4 class="text-2xl font-bold mb-4 text-center text-white">Certificate of Representation: The Preferred Choice</h4>
+                <p class="text-primary/80 mb-6 text-center">For signing contractual agreements, ISBE requires a Certificate of Representation. This choice is critical for establishing a direct, auditable link between the legal entity and the individual with the authority to bind it, minimizing legal risk.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-accent">
+                                <th class="p-3 text-accent-warm">Feature/Aspect</th>
+                                <th class="p-3 bg-secondary/30 text-white">Certificate of Representation</th>
+                                <th class="p-3 text-primary/70">Certificate for Seals</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-700">
+                                <td class="p-3 font-semibold">Type of Certificate</td>
+                                <td class="p-3 bg-secondary/30 text-accent-light">Qualified Electronic Signature Certificate for Legal Representatives</td>
+                                <td class="p-3 text-primary/70">Qualified Electronic Seal Certificate</td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="p-3 font-semibold">Primary Holder</td>
+                                <td class="p-3 bg-secondary/30 text-accent-light">Natural Person (Legal Representative)</td>
+                                <td class="p-3 text-primary/70">Legal Entity</td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="p-3 font-semibold">Primary Purpose</td>
+                                <td class="p-3 bg-secondary/30 text-accent-light">Represent Organization & Sign Documents on its behalf</td>
+                                <td class="p-3 text-primary/70">Apply Digital Seal to Documents for Integrity & Origin</td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="p-3 font-semibold">Identity Verified (by QTSP)</td>
+                                <td class="p-3 bg-secondary/30 text-accent-light">Natural Person (DNI/NIE) & Organization (NIF) & Legal Authority</td>
+                                <td class="p-3 text-primary/70">Organization (NIF) Only</td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="p-3 font-semibold">Legal Certainty (LoA)</td>
+                                <td class="p-3 bg-secondary/30 text-accent-light">Substantial/High</td>
+                                <td class="p-3 text-primary/70">Substantial/High</td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="p-3 font-semibold">ISBE's Preference for Contractual Agreements</td>
+                                <td class="p-3 bg-secondary/30 text-accent-light font-bold">Preferred (due to direct link to legal representative's authority)</td>
+                                <td class="p-3 text-primary/70">Not Preferred (additional verification needed for legal representative's authority)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">Manual Verification Needed by ISBE (for Legal Rep's Authority)</td>
+                                <td class="p-3 bg-secondary/30 text-accent-light">No (Authority Verified by QTSP during issuance)</td>
+                                <td class="p-3 text-primary/70">Yes (Additional verification needed for Legal Rep's authority if used for contracts)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                In Spain, the Tax Identification Number (NIF) is the fundamental and legally embedded unique identifier for organizations, used universally across virtually all structured data exchange systems, including interactions with Public Administration (B2G) and between companies (B2B). The `organizationIdentifier` attribute, standardized in ETSI EN 319 412-1 V1.6.1, enables the coexistence of the national NIF with other legally valid identifiers used across the EU. This ensures that the organization's unique identifier is broadly compatible within the European digital landscape. The NIF is not merely data within a document; it is a fundamental component of the digital identity cryptographically bound within the advanced and qualified electronic signatures themselves. This integration provides unequivocal legal linkage, ensuring non-repudiation and high auditability for all digital interactions. The seamless integration of the NIF into the broader EU eIDAS framework via the `organizationIdentifier` attribute is a powerful demonstration of how national specificities can be effectively harmonized with overarching EU standards. This design choice ensures ISBE's compliance with Spanish legal requirements while simultaneously maintaining crucial EU interoperability, preventing the ecosystem from becoming an isolated national system. For a Spanish public-private entity, strict adherence to Spanish legal and administrative requirements, including the use of the NIF, is non-negotiable. However, for ISBE to support EU/EEA organizations, it must also conform to broader EU standards. The `organizationIdentifier` attribute provides the necessary technical and legal bridge, allowing the NIF to be recognized within a pan-European context. This dual compliance is essential for ISBE's mandate to support both Spanish and wider EU/EEA participation.
+            </p>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Verifiable Credentials: Enabling Machine-Readable Mandates and Authentication</h3>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                In the context of ISBE, a Verifiable Credential is treated as a (Qualified) Electronic Attestation of Attributes ((Q)EAA), aiming to achieve the same level of legal certainty and validity as any other legally binding document. A mandate is defined as a bundle of specific, concrete authorizations granted by an identified entity (the mandator) to another (the mandatee) to perform well-defined actions with legal consequences. A VC representing a mandate is composed of several key objects: the `mandator`, the `mandatee`, a list of specific `powers`, and the `signer`. The VC must be signed or sealed with an advanced or qualified signature using an eIDAS certificate, ensuring it carries the same legal assurance as an equivalent PDF document, but with the significant advantage of being machine-readable and therefore much more efficient to verify. The transition from traditional PDF mandates to machine-readable Verifiable Credentials signifies a fundamental paradigm shift towards a truly digital, automated, and highly efficient ecosystem. This move transforms legal instruments from human-interpretable documents requiring manual processing into cryptographically verifiable, instantly processable data. This is foundational for enabling large-scale, real-time, and efficient digital interactions within ISBE, significantly reducing administrative overhead and accelerating transactions.
+            </p>
+            <div class="bg-card p-6 rounded-lg shadow-xl mb-8">
+                <h4 class="text-2xl font-bold mb-4 text-center text-white">The `did:elsi` Advantage</h4>
+                <p class="text-primary/80 mb-6 text-center">ISBE uses `did:elsi`, a decentralized identifier derived from eIDAS certificates, ensuring it outperforms other methods in legal validity and interoperability.</p>
+                <div class="chart-container">
+                    <canvas id="didElsiChart"></canvas>
+                </div>
+            </div>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                `did:elsi` is a Decentralized Identifier (DID) method specifically designed for legal persons. It bridges the eIDAS regulation with W3C Verifiable Credentials, maximizing both regulatory compliance and decentralization. It is purely derivative, meaning it is directly based on the `organizationIdentifier` attribute found within eIDAS certificates. A significant benefit of `did:elsi` is its automatic generation and low management overhead. Any legal person in the EU that can digitally sign a document using an eIDAS advanced or qualified signature automatically possesses a `did:elsi` identifier. This occurs without any further action from the organization or intervention by any third party, including ISBE, eliminating the need for ISBE to establish or manage a new identifier registration process. The adoption of `did:elsi` is a strategic advantage for ISBE. It cleverly leverages existing, trusted, and legally recognized infrastructure (eIDAS) to solve the complex problem of assigning decentralized identifiers to legal entities. This approach avoids significant development costs, mitigates regulatory hurdles, and ensures immediate legal recognition and interoperability for organizational identities within the ISBE ecosystem. This provides a massive strategic advantage, allowing ISBE to focus on its core mission rather than building a new, complex identity layer from scratch.
+            </p>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">5. Analysis of Existing Digital Onboarding Mechanisms in Spain</h2>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                To inform ISBE's design, an analysis of existing digital onboarding mechanisms for EU/EEA companies interacting with the Spanish Public Administration and regulated Spanish entities provides valuable inspiration and validation.
+            </p>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Onboarding with Spanish Public Administration</h3>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                Companies interacting with any Spanish Public Administration are consistently required to identify themselves using their Tax Identification Number (NIF). This is the established norm across various digital interactions, including the Public Sector Procurement Platform, General Electronic Procedures, Electronic Invoicing, and Electronic Data Interchange (EDI) Systems. The pervasive use of the NIF, coupled with eIDAS certificates for strong authentication and digital signatures, is the established norm across B2G interactions in Spain. This means ISBE is not introducing entirely new concepts or technologies but rather building upon established digital habits and existing legal frameworks.
+            </p>
+            <div class="bg-card p-6 rounded-lg shadow-xl mb-8">
+                <h4 class="text-2xl font-bold mb-4 text-center text-white">NIF Usage in Spanish Digital Interactions</h4>
+                <p class="text-primary/80 mb-6 text-center">The Tax Identification Number (NIF) is central to digital identification across various Spanish public and business interactions.</p>
+                <div class="chart-container">
+                    <canvas id="nifUsageChart"></canvas>
+                </div>
+            </div>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Onboarding with Regulated Spanish Entities (e.g., Banks and Insurance Companies)</h3>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                For corporate clients, regulated financial entities in Spain enforce stringent Know Your Customer (KYC) and Anti-Money Laundering (AML) compliance. Their digital onboarding processes commonly integrate automated checks against official registries and rely heavily on eIDAS certificates for verifying the legal representative's authority and for legally binding contract signing. This ensures compliance with regulatory requirements and mitigates financial and legal risks. The stringent practices of regulated financial entities reinforce the critical need for high legal certainty and robust identity verification in digital onboarding. ISBE's proposed reliance on QTSP-verified eIDAS certificates and structured digital mandates (VCs) aligns perfectly with the stringent requirements observed in these highly regulated sectors.
+            </p>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Key Learnings and Inspirations for ISBE's Design</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-card p-6 rounded-lg shadow-md border-l-4 border-accent">
+                    <h4 class="text-xl font-bold text-white mb-2">Ubiquity of NIF and eIDAS</h4>
+                    <p class="text-primary/80">Established standard for digital identity and legal certainty across Spain's B2G and B2B interactions.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg shadow-md border-l-4 border-accent">
+                    <h4 class="text-xl font-bold text-white mb-2">Leveraging QTSP Trust</h4>
+                    <p class="text-primary/80">Delegating high-assurance identity verification to QTSPs is a proven, efficient, and legally sound strategy.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg shadow-md border-l-4 border-accent">
+                    <h4 class="text-xl font-bold text-white mb-2">Hybrid Automation/Manual Review</h4>
+                    <p class="text-primary/80">Balanced approach combining automated checks with strategic manual oversight for critical processes.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg shadow-md border-l-4 border-accent">
+                    <h4 class="text-xl font-bold text-white mb-2">Focus on Machine-Readability</h4>
+                    <p class="text-primary/80">Structured, machine-readable documents (VCs) are paramount for efficiency, scalability, and interoperability.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">6. Recommendations for Implementation and Future Considerations</h2>
+            <p class="text-lg text-primary/80 mb-6 max-w-4xl mx-auto">
+                Successful implementation of ISBE's digital onboarding framework requires careful attention to technical architecture, operational procedures, and continuous alignment with the broader EU digital ecosystem. This includes developing a robust onboarding portal, eIDAS integration modules, a VC issuance system, ensuring EUDI Wallet compatibility, and secure database integration. Operationally, clear manual review protocols, support for non-standard cases, and comprehensive training for ISBE staff are crucial. For scalability and interoperability, continuous regulatory alignment, contribution to standardization, and expansion of power taxonomy are recommended. The ultimate success and sustainability of this highly digital onboarding system depend not solely on its technological sophistication, but equally on the parallel development of clear, well-defined operational procedures and robust, ongoing training for ISBE staff.
+            </p>
+        </section>
+
+        <footer class="text-center py-10 border-t border-accent mt-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">7. Conclusion</h2>
+            <p class="text-xl font-bold text-white">ISBE: Building the Future of Digital Ecosystems on Trust.</p>
+            <p class="text-primary/70 mt-2 max-w-4xl mx-auto">
+                This report has detailed a robust, efficient, and legally certain digital onboarding process for organizations within the ISBE ecosystem. By strategically leveraging the eIDAS framework, Verifiable Credentials, and the innovative `did:elsi` method, ISBE is poised to establish a leading-edge digital identity infrastructure. This approach significantly minimizes manual effort for ISBE, ensures the highest levels of legal certainty through reliance on regulated QTSPs, and inherently supports seamless cross-border compatibility for organizations across all EU and EEA countries. It represents a forward-thinking adoption of established and emerging digital trust standards. ISBE's implementation of this advanced onboarding system positions it as a pioneer in fostering secure and efficient digital interactions within public-private collaboration models. It lays a strong foundation for a trusted, scalable, and interoperable ecosystem, paving the way for more seamless and secure digital engagements across the European landscape.
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        const eidasBenefitsChartCtx = document.getElementById('eidasBenefitsChart').getContext('2d');
+        new Chart(eidasBenefitsChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [wrapLabel('High Legal Assurance', 16), wrapLabel('Cross-Border Recognition', 16), wrapLabel('Automated Verification', 16)],
+                datasets: [{
+                    label: 'eIDAS Benefits',
+                    data: [40, 35, 25],
+                    backgroundColor: ['#0a9396', '#94d2bd', '#e9d8a6'],
+                    borderColor: '#002a3a',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipConfig.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#ffffff',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const didElsiChartCtx = document.getElementById('didElsiChart').getContext('2d');
+        const didElsiLabels = [
+            wrapLabel('Legal Validity (eIDAS)', 16), 
+            'Scalability', 
+            wrapLabel('Low Barrier to Entry', 16),
+            'Resiliency', 
+            wrapLabel('Wider Interoperability', 16),
+            wrapLabel('Automatic Updatability', 16)
+        ];
+        new Chart(didElsiChartCtx, {
+            type: 'radar',
+            data: {
+                labels: didElsiLabels,
+                datasets: [{
+                    label: 'did:elsi',
+                    data: [10, 9, 9, 9, 10, 8],
+                    backgroundColor: 'rgba(238, 155, 0, 0.4)',
+                    borderColor: '#ee9b00',
+                    pointBackgroundColor: '#ee9b00',
+                    borderWidth: 2
+                }, {
+                    label: 'Other DID Methods',
+                    data: [4, 5, 5, 6, 4, 3],
+                    backgroundColor: 'rgba(148, 210, 189, 0.4)',
+                    borderColor: '#94d2bd',
+                    pointBackgroundColor: '#94d2bd',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.2)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.2)' },
+                        pointLabels: { 
+                            color: '#ffffff',
+                            font: {
+                                size: 12
+                            }
+                        },
+                        ticks: {
+                            color: '#ffffff',
+                            backdropColor: 'transparent',
+                            stepSize: 2
+                        }
+                    }
+                },
+                plugins: {
+                     ...tooltipConfig.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#ffffff',
+                             font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const nifUsageChartCtx = document.getElementById('nifUsageChart').getContext('2d');
+        const nifUsageLabels = [
+            wrapLabel('Public Procurement Platform', 16), 
+            wrapLabel('General Electronic Procedures', 16), 
+            wrapLabel('Electronic Invoicing', 16), 
+            wrapLabel('Electronic Data Interchange (EDI)', 16)
+        ];
+        new Chart(nifUsageChartCtx, {
+            type: 'bar',
+            data: {
+                labels: nifUsageLabels,
+                datasets: [{
+                    label: 'NIF Usage Frequency',
+                    data: [95, 90, 85, 80],
+                    backgroundColor: ['#0a9396', '#94d2bd', '#e9d8a6', '#ee9b00'],
+                    borderColor: '#002a3a',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#ffffff',
+                            font: {
+                                size: 12
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#ffffff',
+                            font: {
+                                size: 12
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    }
+                },
+                plugins: {
+                    ...tooltipConfig.plugins,
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

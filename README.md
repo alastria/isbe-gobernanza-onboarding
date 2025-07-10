@@ -1,18 +1,15 @@
-# Onboarding in ISBE - Identity of Organizations and of Employees of Organizations - Verifiable Credentials
+# Onboarding process in ISBE - Identity of Organizations and of Employees of Organizations - Verifiable Credentials
 
-The objectives of the onboarding process in ISBE include the following:
+The objectives of the onboarding process in ISBE include, among others, the following:
 
 1. Verify the **real-world identity of the organization** which is onboarding in ISBE. In particular, we have
    to verify with a high degree of certainty that the organization has an establishment in a country in the
    EU, and so that it is subject to the EU regulations.
-
 2. Verify the **real-world identity of the legal representative** of the organization who signs the
    contractual agreements related to the onboarding in ISBE.
-
 3. Determine a **unique identifier for the organization**, which will be used later for any relevant activity
    of the organization in the ISBE ecosystem, including economic, administrative or for issuance of Verifiable
    Credentials.
-
 4. Eventually, assign an **identity to one or more employees of the organization** to enable them to act on
    behalf of the organization in relation to ISBE and other entities in the ecosystem. This is typically
    required in organizations where the legal representative is not going to be involved in the daily
@@ -28,11 +25,10 @@ has delegated a given set of powers to the employee** holding the VC.
 This Verifiable Credential can be issued as a subproduct of the onboarding process and can fulfil two purposes
 at the same time:
 
--  As an authentication mechanism for the employee, serving as the digital identity of that employee in ISBE
-   and with other participants.
-
--  As a mandate, proving that the employee has been authorized by the organization (strictly speaking, by a
-   legal representative of the organization) to perform specific activities on behalf of the organization.
+- As an authentication mechanism for the employee, serving as the digital identity of that employee in ISBE
+  and with other participants.
+- As a mandate, proving that the employee has been authorized by the organization (strictly speaking, by a
+  legal representative of the organization) to perform specific activities on behalf of the organization.
 
 The rest of this document elaborates on the concrete mechanisms used to achieve the objectives.
 
@@ -83,7 +79,7 @@ The following sections provide more details.
     - [Powers](#powers)
   - [On the signature of the mandate](#on-the-signature-of-the-mandate)
 - [Identifiers of Organizations](#identifiers-of-organizations)
-    - [Relationship between the NIF and advanced and qualified signatures of documents](#relationship-between-the-nif-and-advanced-and-qualified-signatures-of-documents)
+  - [Relationship between the NIF and advanced and qualified signatures of documents](#relationship-between-the-nif-and-advanced-and-qualified-signatures-of-documents)
   - [Verification of the real-world identity of the Organization](#verification-of-the-real-world-identity-of-the-organization)
     - [Relationship with onboarding of relying parties in the EUDIW ecosystem](#relationship-with-onboarding-of-relying-parties-in-the-eudiw-ecosystem)
   - [Verification of the identity of the legal representative](#verification-of-the-identity-of-the-legal-representative)
@@ -91,7 +87,6 @@ The following sections provide more details.
   - [The Verifiable Credential as a legally binding document](#the-verifiable-credential-as-a-legally-binding-document)
   - [The `did:elsi` method](#the-didelsi-method)
   - [Comparison with other DID methods](#comparison-with-other-did-methods)
-
 
 # Gather information
 
@@ -108,7 +103,6 @@ In any case, the person driving the process has to verify his/her email address.
 3. The ISBE onboarding system sends an email to the specified address with a verification mechanism (a one-time verification code).
 4. The person uses the code to verify his/her email address.
 5. The ISBE onboarding system stores the registration with that email address, and allows the person to continue with the process
-
 
 ## Accept terms and conditions
 
@@ -140,7 +134,7 @@ This is needed because normally the legal representative of the organization is 
 
 The aim of the Legal Entity Appointed Representative (LEAR) Form is twofold: first, to provide legal certainty for ISBE that the actions taken by the people operating the account of a company are legally binding to the company, either vis-à-vis ISBE and the partners of the ISBE ecosystem; and second, as a consequence of the first, to generate a plus of trust in the ISBE ecosystem partners regarding the identity of the company.
 
-Further, the LEAR having full power to bind the entity she/he represents is coherent with the verifiable credentials scheme that ISBE uses to allow a swift, fully digital and trustworthy system to structure communications and transactions within the ecosystem. 
+Further, the LEAR having full power to bind the entity she/he represents is coherent with the verifiable credentials scheme that ISBE uses to allow a swift, fully digital and trustworthy system to structure communications and transactions within the ecosystem.
 
 The verifiable credentials system implemented in ISBE is based on the claim that the people operating the account of an organization have the authority to represent that organization and to legally bind it.
 
@@ -155,7 +149,7 @@ That means that an entity can appoint as its LEAR either an employee (regardless
 However, the entity appointing a LEAR should carefully consider who is the right person to fill the role.
 
 This person should be someone who is trusted by the entity’s management and with the right qualifications and skills to hold this position, for his/her actions may yield legal liabilities on the entity.
- 
+
 Also, the same individual can be appointed as the LEAR by more than one entity. Each appointment will generate its own and separate verifiable credential, so the individual can only represent one single entity at a time when operating in the Marketplace.
 
 # Generate contractual documents
@@ -189,11 +183,10 @@ Immediately after this and automatically, the ISBE onboarding system generates a
 
 This Verifiable Credential fulfils two purposes at the same time:
 
--  As an **authentication** mechanism for the employee, serving as the digital identity of that employee in ISBE
-   and with other participants.
-
--  As a **mandate**, proving that the employee has been authorized by the organization (strictly speaking, by a
-   legal representative of the organization) to perform specific activities on behalf of the organization.
+- As an **authentication** mechanism for the employee, serving as the digital identity of that employee in ISBE
+  and with other participants.
+- As a **mandate**, proving that the employee has been authorized by the organization (strictly speaking, by a
+  legal representative of the organization) to perform specific activities on behalf of the organization.
 
 # Identity of an employee acting on behalf of the organization
 
@@ -300,10 +293,10 @@ The following image represents the structure of such credential.
 The mandator identifies the employee of the company who is delegating a subset of her powers on the mandatee.
 The mandator is either:
 
--  a **legal representative of the company**, according to the official records associated to the
-   incorporation of the organisation (e.g., the business registry of the country of incorporation); or
--  an employee who is a mandatee in another mandate where the mandator is a legal representative of the
-   company. We do not support more than two levels of delegation.
+- a **legal representative of the company**, according to the official records associated to the
+  incorporation of the organisation (e.g., the business registry of the country of incorporation); or
+- an employee who is a mandatee in another mandate where the mandator is a legal representative of the
+  company. We do not support more than two levels of delegation.
 
 The Mandator section includes always the identification of the organization, that is, the
 `organizationIdentifier`described in previous sections.
@@ -318,16 +311,16 @@ mandator. For example, an employee (the mandatee) can be empowered by the legal 
 The object mandatee identifies the employee on whom a subset of powers is delegated. The mandatee object
 contains:
 
--  A set of **attributes of the employee** (e.g. name, surname, email) which are required by the specific use
-   case where the Verifiable Credential will be used. Those attributes can be considered equivalent to the
-   fields that would be filled in a form when a "classical" PDF document would be used to authorise an
-   employee.
--  A **public key associated to the employee** and where the employee is the sole controller of the associated
-   private key. This is required to enable the use of the Verifiable Credential containing the mandate as an
-   efficient, scalable and secure **authentication and authorisation** mechanism. More on this later in this
-   document. The private key controlled by the employee is used to prove to Relying parties receiving the
-   Verifiable Credential that the holder and presenter of the credential is the same person identified in the
-   mandatee object.
+- A set of **attributes of the employee** (e.g. name, surname, email) which are required by the specific use
+  case where the Verifiable Credential will be used. Those attributes can be considered equivalent to the
+  fields that would be filled in a form when a "classical" PDF document would be used to authorise an
+  employee.
+- A **public key associated to the employee** and where the employee is the sole controller of the associated
+  private key. This is required to enable the use of the Verifiable Credential containing the mandate as an
+  efficient, scalable and secure **authentication and authorisation** mechanism. More on this later in this
+  document. The private key controlled by the employee is used to prove to Relying parties receiving the
+  Verifiable Credential that the holder and presenter of the credential is the same person identified in the
+  mandatee object.
 
 ### Signer
 
@@ -364,7 +357,6 @@ of the credential can be automated thanks to its machine-readable format.
 That means that the Verifiable Credential can be used everywhere the PDF is used, with the same level of risk
 and legal certainty, but the processing can be instantaneous, compared to the typical longer processing times
 of a PDF-based process.
-
 
 # Identifiers of Organizations
 
@@ -419,56 +411,48 @@ The relevant properties for ISBE are:
 
 1. NIF as the Core Identifier in the Certificate
 
-   -  **Issuance of Certificates**: When an organization (a legal entity) in Spain obtains an eIDAS-compliant
-      electronic signature certificate (whether advanced or qualified), this certificate is issued by a
-      Qualified Trust Service Provider (QTSP) like [DIGITELTS](https://www.digitelts.es/) or
-      [LOGALTY](https://www.logalty.com/).
+   - **Issuance of Certificates**: When an organization (a legal entity) in Spain obtains an eIDAS-compliant
+     electronic signature certificate (whether advanced or qualified), this certificate is issued by a
+     Qualified Trust Service Provider (QTSP) like [DIGITELTS](https://www.digitelts.es/) or
+     [LOGALTY](https://www.logalty.com/).
+   - **Certificate Content**: Crucially, this certificate contains specific identifying information about the
+     organization. For a legal entity in Spain, this must include its NIF (in a way which is compatible and
+     can coexist with other identifiers legally valid in the EU). It also typically includes the
+     organization's full legal name (razón social).
+   - **Types of Certificates** for Organizations:
 
-   -  **Certificate Content**: Crucially, this certificate contains specific identifying information about the
-      organization. For a legal entity in Spain, this must include its NIF (in a way which is compatible and
-      can coexist with other identifiers legally valid in the EU). It also typically includes the
-      organization's full legal name (razón social).
-
-   -  **Types of Certificates** for Organizations:
-
-      -  Qualified Electronic Seal Certificates (**Certificado de Sello Electrónico Cualificado**): These
-         certificates are specifically designed for legal entities. They allow an organization to apply a
-         digital "seal" to documents and data, ensuring their origin and integrity, without necessarily
-         attributing it to a specific natural person within the organization. The NIF of the organization is
-         the primary identifier contained in this type of certificate.
-
-      -  Qualified Electronic Signature Certificates for Legal Representatives (**Certificado de Representante
-         de Persona Jurídica**): These certificates are issued to a natural person (e.g., the administrator or
-         legal representative) who then acts on behalf of the organization. While the certificate identifies
-         the natural person (with their DNI/NIE and name), it also explicitly links them to the organization
-         they represent, including the organization's NIF.
-
+     - Qualified Electronic Seal Certificates (**Certificado de Sello Electrónico Cualificado**): These
+       certificates are specifically designed for legal entities. They allow an organization to apply a
+       digital "seal" to documents and data, ensuring their origin and integrity, without necessarily
+       attributing it to a specific natural person within the organization. The NIF of the organization is
+       the primary identifier contained in this type of certificate.
+     - Qualified Electronic Signature Certificates for Legal Representatives (**Certificado de Representante
+       de Persona Jurídica**): These certificates are issued to a natural person (e.g., the administrator or
+       legal representative) who then acts on behalf of the organization. While the certificate identifies
+       the natural person (with their DNI/NIE and name), it also explicitly links them to the organization
+       they represent, including the organization's NIF.
 2. The NIF's Role in Attributing Legal Identity
 
-   -  **Verification of Identity**: When an electronic signature (based on an eIDAS certificate) is applied to
-      a structured document (e.g., a Facturae XML file or a Verifiable Credential in JSON format), the
-      receiving system can verify the signature. During this verification process, the system reads the
-      certificate embedded within the signature.
-
-   -  **Link to Legal Entity**: The presence of the NIF in the certificate allows the receiving system to
-      unequivocally identify which specific legal entity (identified by its unique NIF) signed or sealed the
-      document. This is critical for legal traceability and compliance.
-
-   -  **Legal Validity**: Because the NIF is a legally recognized identifier in Spain for tax and
-      administrative purposes, its inclusion in an eIDAS-compliant certificate provides the necessary legal
-      link for the signature to have the same validity as a handwritten signature (in the case of a Qualified
-      Electronic Signature/Seal) or strong probative value (for an Advanced Electronic Signature/Seal).
-
+   - **Verification of Identity**: When an electronic signature (based on an eIDAS certificate) is applied to
+     a structured document (e.g., a Facturae XML file or a Verifiable Credential in JSON format), the
+     receiving system can verify the signature. During this verification process, the system reads the
+     certificate embedded within the signature.
+   - **Link to Legal Entity**: The presence of the NIF in the certificate allows the receiving system to
+     unequivocally identify which specific legal entity (identified by its unique NIF) signed or sealed the
+     document. This is critical for legal traceability and compliance.
+   - **Legal Validity**: Because the NIF is a legally recognized identifier in Spain for tax and
+     administrative purposes, its inclusion in an eIDAS-compliant certificate provides the necessary legal
+     link for the signature to have the same validity as a handwritten signature (in the case of a Qualified
+     Electronic Signature/Seal) or strong probative value (for an Advanced Electronic Signature/Seal).
 3. Non-Repudiation and Auditability
 
-   -  The combination of the NIF as a unique legal identifier and the cryptographic properties of
-      advanced/qualified electronic signatures ensures non-repudiation. An organization cannot deny having
-      signed a document if its NIF is clearly linked to a valid eIDAS certificate used to apply that
-      signature.
-
-   -  This also provides a high level of auditability. In case of a dispute, the signed document, with its
-      embedded NIF-linked certificate, serves as irrefutable evidence of the originating organization's
-      identity.
+   - The combination of the NIF as a unique legal identifier and the cryptographic properties of
+     advanced/qualified electronic signatures ensures non-repudiation. An organization cannot deny having
+     signed a document if its NIF is clearly linked to a valid eIDAS certificate used to apply that
+     signature.
+   - This also provides a high level of auditability. In case of a dispute, the signed document, with its
+     embedded NIF-linked certificate, serves as irrefutable evidence of the originating organization's
+     identity.
 
 > [!IMPORTANT]
 >
@@ -479,22 +463,21 @@ The relevant properties for ISBE are:
 
 Some additional advantages of electronic signatures with an eIDAS certificate
 
--  **General Commercial Transactions (B2B)**:
+- **General Commercial Transactions (B2B)**:
 
-   While not always strictly mandatory by law for all B2B transactions (a simple or advanced electronic
-   signature can be admissible), the use of QES based on eIDAS certificates provides the highest level of
-   legal security. Companies are increasingly adopting them for contracts, agreements, and other critical
-   documents to mitigate risks and streamline processes.
+  While not always strictly mandatory by law for all B2B transactions (a simple or advanced electronic
+  signature can be admissible), the use of QES based on eIDAS certificates provides the highest level of
+  legal security. Companies are increasingly adopting them for contracts, agreements, and other critical
+  documents to mitigate risks and streamline processes.
 
-   Increased Trust and Efficiency: By using eIDAS certificates, businesses can be confident in the identity of
-   the parties they are transacting with and the integrity of the data exchanged, leading to more efficient,
-   paperless workflows and reduced administrative burdens.
+  Increased Trust and Efficiency: By using eIDAS certificates, businesses can be confident in the identity of
+  the parties they are transacting with and the integrity of the data exchanged, leading to more efficient,
+  paperless workflows and reduced administrative burdens.
+- **Cross-Border Interoperability**:
 
--  **Cross-Border Interoperability**:
-
-   A key benefit of eIDAS is its mutual recognition principle across EU member states. An electronic signature
-   based on a qualified certificate issued in one EU country is legally recognized in all other EU countries,
-   facilitating cross-border trade and services without additional legal hurdles.
+  A key benefit of eIDAS is its mutual recognition principle across EU member states. An electronic signature
+  based on a qualified certificate issued in one EU country is legally recognized in all other EU countries,
+  facilitating cross-border trade and services without additional legal hurdles.
 
 In conclusion, eIDAS certificates, particularly qualified ones, are the cornerstone of trust, legal validity,
 and interoperability in Spain's structured data exchange systems. They provide the necessary assurances of
@@ -547,19 +530,14 @@ onboarding and registering wallet-relying parties: the eIDAS2 regulation specifi
 one or more **identifiers of the organization, as stated in an official record** together with identification
 data of that official record, expressed as one of the following:
 
--  **a value-added tax (‘VAT’) registration number (this is the NIF in Spain)**;
-
--  an economic operators registration and identification (‘EORI’) number as referred to in Commission
-   Implementing Regulation (EU) No 1352/2013 (1);
-
--  a legal entity identifier (‘LEI’) as referred to in Commission Implementing Regulation (EU) 2022/1860 (2);
-
--  an European unique identifier (‘EUID’) as referred to in Commission Implementing Regulation (EU) 2021/1042
-   (4);
-
--  an excise number as referred to in Article 2(12) of Council Regulation (EU) No 389/2012 (3);
-
--  a registration number as registered in a national business register recognized at EU level.
+- **a value-added tax (‘VAT’) registration number (this is the NIF in Spain)**;
+- an economic operators registration and identification (‘EORI’) number as referred to in Commission
+  Implementing Regulation (EU) No 1352/2013 (1);
+- a legal entity identifier (‘LEI’) as referred to in Commission Implementing Regulation (EU) 2022/1860 (2);
+- an European unique identifier (‘EUID’) as referred to in Commission Implementing Regulation (EU) 2021/1042
+  (4);
+- an excise number as referred to in Article 2(12) of Council Regulation (EU) No 389/2012 (3);
+- a registration number as registered in a national business register recognized at EU level.
 
 This is easily achieved by requiring that organizations use a certificate issued by a Qualified Trust Service
 Provider (**QTSP**).
@@ -619,13 +597,12 @@ organizations in a similar way to invoices, contracts or any other type of relev
 
 In particular, we need that:
 
--  The NIF of the organization issuing the (Q)EAA must be included as an attribute in the document (the unique
-   identifier of the issuer). This is the same unique identifier we register when onboarding the organization
-   in ISBE.
-
--  The (Q)EAA must be signed or sealed with an eIDAS certificate issued by a QTSP to the organization issuing
-   the (Q)EAA. This certificate must have in the `organizationIdentifier` attribute of the Subject field the
-   NIF of the organization, matching the NIF in the document being signed.
+- The NIF of the organization issuing the (Q)EAA must be included as an attribute in the document (the unique
+  identifier of the issuer). This is the same unique identifier we register when onboarding the organization
+  in ISBE.
+- The (Q)EAA must be signed or sealed with an eIDAS certificate issued by a QTSP to the organization issuing
+  the (Q)EAA. This certificate must have in the `organizationIdentifier` attribute of the Subject field the
+  NIF of the organization, matching the NIF in the document being signed.
 
 For a Verifiable Credential format (as is the (Q)EAA), we want to use a special format for the unique
 identifiers of the organizations involved, called a DID.
@@ -661,55 +638,49 @@ third party.
 Using `did:elsi` in ISBE is superior to other options, like "inventing" a new identifier in ISBE (by some
 centralised governance entity), or letting the organizations "invent" a new identifier of their choosing:
 
--  **Legal Validity**: With other DID methods, the signature of the Verifiable Credential can not be an
-   advanced/qualified signature under eIDAS, and so they have lower legal certainty and it may be more
-   cumbersome in case of disputes or repudiation of the signature. With `did:elsi`, because the private key
-   used to sign is the one associated to the eIDAS certificate, and the unique identifier of the organization
-   is included inside the certificate used to sign, it provides the necessary legal link for the signature to
-   have the same validity as a handwritten signature (in the case of a Qualified Electronic Signature/Seal) or
-   strong probative value (for an Advanced Electronic Signature/Seal).
+- **Legal Validity**: With other DID methods, the signature of the Verifiable Credential can not be an
+  advanced/qualified signature under eIDAS, and so they have lower legal certainty and it may be more
+  cumbersome in case of disputes or repudiation of the signature. With `did:elsi`, because the private key
+  used to sign is the one associated to the eIDAS certificate, and the unique identifier of the organization
+  is included inside the certificate used to sign, it provides the necessary legal link for the signature to
+  have the same validity as a handwritten signature (in the case of a Qualified Electronic Signature/Seal) or
+  strong probative value (for an Advanced Electronic Signature/Seal).
+- **Scalability**: With `did:elsi`, any organization than can operate in the digital economy in the EU
+  (`did:elsi` is not limited to Spain or to ISBE) and that can digitally sign a document using an advanced or
+  qualified signature (like an invoice or a contract) has **automatically** a DID identifier, without any
+  further action and without any intervention by any third party. In other words, there is no need for any
+  trusted party in ISBE to be involved in the generation or management of the unique identifier of the
+  organization used in `did:elsi`. We do not need to stablish a process for creating new identifiers, because
+  they already exist and they have official recognition.
+- **Low barrier of entry**: In Spain, the adoption of eIDAS certificates for organizations is very high, and
+  the profile of the organizations which will participate in ISBE (using Verifiable Credentials, Blockchain
+  and related technologies) is assumed to be technology-oriented and highly digitalized. It should never be a
+  problem for these organizations to use an eIDAS certificate. In addition, the Onboarding process in ISBE
+  requires the electronic signature of some documents, so organizations have to use anyway an eIDAS
+  certificate.
+- **Resiliency**: Other methods like `did:ala` or `did:ebsi` require the identifiers and associated DID
+  documents to be registered in the blockchain network for resolution and other processes. `did:elsi` is
+  based on the existing eIDAS framework and infrastructure, which is in production for many years, is
+  regulated, audited and must comply with all cybersecurity requirements. So, `did:elsi` does not require any
+  new or additional infrastructure in ISBE. Resolution of a did is virtually identical to the verification of
+  an eIDAS signature, which is a well known process and has proven to be reliable.
+- **Easier for ISBE**: If we created new identifiers (either centrally by ISBE or by each organization
+  themselves), we would have to perform a costly validation process to make sure that the new identifier is
+  assigned to the real-world organization. With `did:elsi` we avoid the verification because it is already
+  done by the QTSP that issued the certificate for signature/seal to the organization, as part of the process
+  of including an official identifier inside the certificate. This process has a level of assurance (LoA)
+  High, something that ISBE can not achieve (unless ISBE itself is a QTSP, of course).
+- **Wider interoperability**: In addition, creating new identifiers and performing validation in ISBE limits
+  the usage of the identifiers to ISBE. Using the official identifiers which already have cross-border
+  recognition in the EU is a much better option enabling wider interoperability.
+- **Automatic updatability**: In `did:elsi` the cryptographic material associated to the unique identifier of
+  the organization is created and managed in a fully eIDAS-compliant way, with full regulatory support. Their
+  full life-cycle (initialization, creation, revocation, update) is already well-known and follows the eIDAS
+  regulation. In other DID methods, like `did:ala` or `did:ebsi`, this process has to be implemented from
+  scratch and have not been proven in production, so they are subject to many bugs and problems at least at
+  the beginning.
 
--  **Scalability**: With `did:elsi`, any organization than can operate in the digital economy in the EU
-   (`did:elsi` is not limited to Spain or to ISBE) and that can digitally sign a document using an advanced or
-   qualified signature (like an invoice or a contract) has **automatically** a DID identifier, without any
-   further action and without any intervention by any third party. In other words, there is no need for any
-   trusted party in ISBE to be involved in the generation or management of the unique identifier of the
-   organization used in `did:elsi`. We do not need to stablish a process for creating new identifiers, because
-   they already exist and they have official recognition.
-
--  **Low barrier of entry**: In Spain, the adoption of eIDAS certificates for organizations is very high, and
-   the profile of the organizations which will participate in ISBE (using Verifiable Credentials, Blockchain
-   and related technologies) is assumed to be technology-oriented and highly digitalized. It should never be a
-   problem for these organizations to use an eIDAS certificate. In addition, the Onboarding process in ISBE
-   requires the electronic signature of some documents, so organizations have to use anyway an eIDAS
-   certificate.
-
--  **Resiliency**: Other methods like `did:ala` or `did:ebsi` require the identifiers and associated DID
-   documents to be registered in the blockchain network for resolution and other processes. `did:elsi` is
-   based on the existing eIDAS framework and infrastructure, which is in production for many years, is
-   regulated, audited and must comply with all cybersecurity requirements. So, `did:elsi` does not require any
-   new or additional infrastructure in ISBE. Resolution of a did is virtually identical to the verification of
-   an eIDAS signature, which is a well known process and has proven to be reliable.
-
--  **Easier for ISBE**: If we created new identifiers (either centrally by ISBE or by each organization
-   themselves), we would have to perform a costly validation process to make sure that the new identifier is
-   assigned to the real-world organization. With `did:elsi` we avoid the verification because it is already
-   done by the QTSP that issued the certificate for signature/seal to the organization, as part of the process
-   of including an official identifier inside the certificate. This process has a level of assurance (LoA)
-   High, something that ISBE can not achieve (unless ISBE itself is a QTSP, of course).
-
--  **Wider interoperability**: In addition, creating new identifiers and performing validation in ISBE limits
-   the usage of the identifiers to ISBE. Using the official identifiers which already have cross-border
-   recognition in the EU is a much better option enabling wider interoperability.
-
--  **Automatic updatability**: In `did:elsi` the cryptographic material associated to the unique identifier of
-   the organization is created and managed in a fully eIDAS-compliant way, with full regulatory support. Their
-   full life-cycle (initialization, creation, revocation, update) is already well-known and follows the eIDAS
-   regulation. In other DID methods, like `did:ala` or `did:ebsi`, this process has to be implemented from
-   scratch and have not been proven in production, so they are subject to many bugs and problems at least at
-   the beginning.
-
-   Other DID methods have to define how to update the private/public keys and how to ensure that they are
-   really associated to the real-world identity of the organization. All of this complexity does not exist
-   with `did:elsi`, or better said, the complexity is already implemented many years ago and is in full
-   conformance with the eIDAS regulation.
+  Other DID methods have to define how to update the private/public keys and how to ensure that they are
+  really associated to the real-world identity of the organization. All of this complexity does not exist
+  with `did:elsi`, or better said, the complexity is already implemented many years ago and is in full
+  conformance with the eIDAS regulation.

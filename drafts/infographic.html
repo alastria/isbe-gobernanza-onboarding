@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISBE Onboarding Process Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .bg-primary { background-color: #001219; }
+        .bg-secondary { background-color: #005f73; }
+        .bg-accent-light { background-color: #94d2bd; }
+        .bg-accent-warm { background-color: #ee9b00; }
+        .bg-card { background-color: #002a3a; }
+
+        .text-primary { color: #ffffff; }
+        .text-secondary { color: #e9d8a6; }
+        .text-accent-light { color: #94d2bd; }
+        .text-accent-warm { color: #ee9b00; }
+        
+        .border-accent { border-color: #0a9396; }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        .flow-arrow::after {
+            content: '➔';
+            font-size: 2rem;
+            color: #0a9396;
+            line-height: 1;
+        }
+        .flow-arrow-down::after {
+            content: '⬇';
+            font-size: 2rem;
+            color: #0a9396;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-primary text-primary antialiased">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center py-12">
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-4">Onboarding to ISBE</h1>
+            <p class="text-xl md:text-2xl text-accent-light max-w-4xl mx-auto">A Secure, Automated, and Pan-European Framework for Digital Trust and Collaboration</p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-16">
+            <div class="bg-secondary p-6 rounded-xl shadow-lg">
+                <p class="text-5xl font-bold text-accent-warm">100%</p>
+                <p class="text-lg mt-2 text-white">Digital-First Process</p>
+            </div>
+            <div class="bg-secondary p-6 rounded-xl shadow-lg">
+                <p class="text-5xl font-bold text-accent-warm">eIDAS</p>
+                <p class="text-lg mt-2 text-white">Verified Identity</p>
+            </div>
+            <div class="bg-secondary p-6 rounded-xl shadow-lg">
+                <p class="text-5xl font-bold text-accent-warm">EU/EEA</p>
+                <p class="text-lg mt-2 text-white">Ready & Interoperable</p>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">The Four Pillars of ISBE Onboarding</h2>
+                <p class="text-lg text-accent-light mt-2">A structured approach to establish a robust hierarchical trust model for the entire ecosystem.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-card p-6 rounded-lg shadow-xl border-t-4 border-accent">
+                    <div class="text-4xl mb-4">🏢</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Verify Organization</h3>
+                    <p class="text-primary/80">Confirm the legal establishment of an organization within an EU/EEA country using high-assurance methods.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg shadow-xl border-t-4 border-accent">
+                    <div class="text-4xl mb-4">🧑‍⚖️</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Verify Legal Rep</h3>
+                    <p class="text-primary/80">Confirm the identity of the individual authorized to legally bind the organization in contractual agreements.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg shadow-xl border-t-4 border-accent">
+                    <div class="text-4xl mb-4">🆔</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Assign Unique ID</h3>
+                    <p class="text-primary/80">Establish a stable, legally-recognized digital identifier for all ecosystem activities via `did:elsi`.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg shadow-xl border-t-4 border-accent">
+                    <div class="text-4xl mb-4">🔑</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Delegate Powers</h3>
+                    <p class="text-primary/80">Enable employees to act on behalf of the organization using secure, machine-readable mandates.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">The Onboarding Journey</h2>
+                <p class="text-lg text-accent-light mt-2">A streamlined, two-phase process from initial registration to operational empowerment.</p>
+            </div>
+            
+            <div class="bg-card rounded-lg shadow-xl p-8">
+                <h3 class="text-2xl font-bold text-accent-warm mb-6 text-center">Phase 1: Foundation of Trust</h3>
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4">
+                    <div class="text-center flex-1">
+                        <div class="text-3xl">📝</div>
+                        <h4 class="font-bold mt-2">Info Gathering</h4>
+                        <p class="text-sm text-primary/70">Employee initiates process online</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block"></div>
+                    <div class="flow-arrow-down md:hidden"></div>
+                    <div class="text-center flex-1">
+                        <div class="text-3xl">📄</div>
+                        <h4 class="font-bold mt-2">Automated Contracts</h4>
+                        <p class="text-sm text-primary/70">System generates legal documents</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block"></div>
+                    <div class="flow-arrow-down md:hidden"></div>
+                    <div class="text-center flex-1">
+                         <div class="text-3xl">✍️</div>
+                        <h4 class="font-bold mt-2">eIDAS Signature</h4>
+                        <p class="text-sm text-primary/70">Legal Rep signs with a Qualified Certificate</p>
+                    </div>
+                     <div class="flow-arrow hidden md:block"></div>
+                    <div class="flow-arrow-down md:hidden"></div>
+                    <div class="text-center flex-1">
+                        <div class="text-3xl">🔍</div>
+                        <h4 class="font-bold mt-2">Verification</h4>
+                        <p class="text-sm text-primary/70">Automated check + Manual approval</p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="flex justify-center my-8">
+                <div class="flow-arrow-down"></div>
+            </div>
+
+            <div class="bg-card rounded-lg shadow-xl p-8 mt-8">
+                <h3 class="text-2xl font-bold text-accent-warm mb-6 text-center">Phase 2: Empowering Operations</h3>
+                 <div class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4">
+                    <div class="text-center flex-1">
+                        <div class="text-3xl">🤖</div>
+                        <h4 class="font-bold mt-2">Automated VC Issuance</h4>
+                        <p class="text-sm text-primary/70">A mandate is issued to the LEAR</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block"></div>
+                    <div class="flow-arrow-down md:hidden"></div>
+                    <div class="text-center flex-1">
+                        <div class="text-3xl">📱</div>
+                        <h4 class="font-bold mt-2">Wallet Integration</h4>
+                        <p class="text-sm text-primary/70">LEAR stores VC in an EUDI-Wallet</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block"></div>
+                    <div class="flow-arrow-down md:hidden"></div>
+                    <div class="text-center flex-1">
+                        <div class="text-3xl">🚀</div>
+                        <h4 class="font-bold mt-2">Ecosystem Access</h4>
+                        <p class="text-sm text-primary/70">LEAR authenticates & operates on behalf of the org</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Core Technology Deep Dive</h2>
+                <p class="text-lg text-accent-light mt-2">Understanding the technologies that guarantee security, efficiency, and legal compliance.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <div class="bg-card p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-center text-white">Why eIDAS is Essential</h3>
+                    <p class="text-primary/80 mb-6 text-center">The eIDAS regulation provides the legal and technical foundation for trust, offloading complex identity verification to regulated Qualified Trust Service Providers (QTSPs).</p>
+                    <div class="chart-container">
+                        <canvas id="eidasChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-center text-white">The `did:elsi` Advantage</h3>
+                     <p class="text-primary/80 mb-6 text-center">ISBE uses `did:elsi`, a decentralized identifier derived from eIDAS certificates, ensuring it outperforms other methods in legal validity and interoperability.</p>
+                    <div class="chart-container">
+                        <canvas id="didElsiChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 rounded-lg shadow-xl lg:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4 text-center text-white">Certificate of Representation: The Preferred Choice</h3>
+                    <p class="text-primary/80 mb-6 text-center">For signing contractual agreements, ISBE requires a Certificate of Representation. This choice is critical for establishing a direct, auditable link between the legal entity and the individual with the authority to bind it, minimizing legal risk.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="border-b border-accent">
+                                    <th class="p-3 text-accent-warm">Feature</th>
+                                    <th class="p-3 bg-secondary/30 text-white">Certificate of Representation</th>
+                                    <th class="p-3 text-primary/70">Certificate for Seals</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-700">
+                                    <td class="p-3 font-semibold">Primary Holder</td>
+                                    <td class="p-3 bg-secondary/30 text-accent-light">Natural Person (Legal Rep)</td>
+                                    <td class="p-3 text-primary/70">Legal Entity</td>
+                                </tr>
+                                <tr class="border-b border-gray-700">
+                                    <td class="p-3 font-semibold">Identity Verified</td>
+                                    <td class="p-3 bg-secondary/30 text-accent-light">Organization + Legal Rep + Authority</td>
+                                    <td class="p-3 text-primary/70">Organization Only</td>
+                                </tr>
+                                <tr class="border-b border-gray-700">
+                                    <td class="p-3 font-semibold">ISBE Preference</td>
+                                    <td class="p-3 bg-secondary/30 text-accent-light font-bold">✓ Strongly Preferred</td>
+                                    <td class="p-3 text-primary/70">Not Preferred for Contracts</td>
+                                </tr>
+                                 <tr>
+                                    <td class="p-3 font-semibold">Risk Level</td>
+                                    <td class="p-3 bg-secondary/30 text-accent-light">Minimized Legal Risk</td>
+                                    <td class="p-3 text-primary/70">Requires Manual Verification</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-10 border-t border-accent mt-12">
+            <p class="text-xl font-bold text-white">ISBE: Building the Future of Digital Ecosystems on Trust.</p>
+            <p class="text-primary/70 mt-2">This framework ensures a secure, compliant, and efficient gateway for all EU/EEA organizations.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        const eidasChartCtx = document.getElementById('eidasChart').getContext('2d');
+        new Chart(eidasChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['High Legal Assurance', 'Cross-Border Recognition', 'Automated Verification'],
+                datasets: [{
+                    label: 'eIDAS Benefits',
+                    data: [40, 35, 25],
+                    backgroundColor: ['#0a9396', '#94d2bd', '#e9d8a6'],
+                    borderColor: '#002a3a',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipConfig.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#ffffff',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const didElsiChartCtx = document.getElementById('didElsiChart').getContext('2d');
+        const didElsiLabels = [
+            wrapLabel('Legal Validity (eIDAS)', 16), 
+            'Scalability', 
+            wrapLabel('Low Barrier to Entry', 16),
+            'Resiliency', 
+            wrapLabel('Wider Interoperability', 16),
+            wrapLabel('Automatic Updatability', 16)
+        ];
+        new Chart(didElsiChartCtx, {
+            type: 'radar',
+            data: {
+                labels: didElsiLabels,
+                datasets: [{
+                    label: 'did:elsi',
+                    data: [10, 9, 9, 9, 10, 8],
+                    backgroundColor: 'rgba(238, 155, 0, 0.4)',
+                    borderColor: '#ee9b00',
+                    pointBackgroundColor: '#ee9b00',
+                    borderWidth: 2
+                }, {
+                    label: 'Other DID Methods',
+                    data: [4, 5, 5, 6, 4, 3],
+                    backgroundColor: 'rgba(148, 210, 189, 0.4)',
+                    borderColor: '#94d2bd',
+                    pointBackgroundColor: '#94d2bd',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.2)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.2)' },
+                        pointLabels: { 
+                            color: '#ffffff',
+                            font: {
+                                size: 12
+                            }
+                        },
+                        ticks: {
+                            color: '#ffffff',
+                            backdropColor: 'transparent',
+                            stepSize: 2
+                        }
+                    }
+                },
+                plugins: {
+                     ...tooltipConfig.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#ffffff',
+                             font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
