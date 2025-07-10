@@ -31,9 +31,9 @@ Una estimación razonable es que el uso de **QSeal o certificados de representac
 - **Mantener un nivel de certeza legal máximo** (presunción reglamentaria bajo eIDAS) y reducir el riesgo para ISBE.
 - **Cumplir con DSA, AML y GDPR** de manera eficiente.
 
-En este documento se describe un proceso de onboarding basado en firmas avanzadas o cualificadas usando certificados cualificados. Posteriormente. se describen también las posibles dificultades y puntos de fricción, principalmente para organizaciones no españolas, con una adopción más baja de la firma electrónica basada en dichos certificados.
+En este documento se describe un proceso de onboarding basado en firmas avanzadas o cualificadas usando certificados cualificados. Posteriormente. se describen también las posibles dificultades y puntos de fricción, principalmente para organizaciones en países diferentes a España, con una adopción más baja de la firma electrónica basada en dichos certificados.
 
-El proceso de onboarding no acaba con el registro de la organización en ISBE, sino que además debemos permitir que un empleado de la organización (o quien nomine esta) pueda hacer login en el portal adminitrativo de ISBE y realizar tareas por parte de la organización. Este empleado estará nominado en el contrato firmado entre la organización e ISBE.
+El proceso de onboarding no acaba con el registro de la organización en ISBE, sino que además debemos permitir que un empleado de la organización (o quien nomine esta) pueda hacer login en el portal administrativo de ISBE y realizar tareas por parte de la organización. Este empleado estará nominado en el contrato firmado entre la organización e ISBE.
 
 Es decir, el proceso de onboarding en ISBE se compone de dos fases:
 
@@ -71,35 +71,35 @@ En cualquier caso, quien gestiona el proceso debe verificar su dirección de cor
 
 La persona que gestione el proceso deberá aceptar los términos y condiciones de ISBE. El formulario anterior es solo un ejemplo. La aceptación se registrará en la base de datos de onboarding.
 
-### Recoger información sobre la empresa
+### Recoger información sobre la organización
 
 ![Company information](img/companyinfo.png)
 
-La persona que gestiona el proceso ingresará información sobre la empresa. El formulario anterior es solo un ejemplo.
+La persona que gestiona el proceso ingresará información sobre la organización. El formulario anterior es solo un ejemplo.
 
-**Limitación del país** : Solo permitimos organizaciones que tengan la sede constituida en un país de la UE/EEE, o un representante legal en un país de la UE/EEE. El usuario debe seleccionar el país de una lista de países permitidos. Comprobaremos que el país sea correcto al verificar posteriormente la firma electrónica del contrato que la empresa enviará a ISBE.
+**Limitación del país** : Solo permitimos organizaciones que tengan la sede constituida en un país de la UE/EEE, o un representante legal en un país de la UE/EEE. El usuario debe seleccionar el país de una lista de países permitidos. Comprobaremos que el país sea correcto al verificar posteriormente la firma electrónica del contrato que la organización enviará a ISBE.
 
 ### Recoger información sobre el LEAR
 
 ![LEAR information](img/learinfo.png)
 
-En esta sección se identifica a la persona que actuará como **LEAR** de la empresa.
+En esta sección se identifica a la persona que actuará como **LEAR** de la organización.
 
-El LEAR es el Representante Designado de la Entidad Legal y puede ser cualquier persona autorizada por un representante legal de la empresa para actuar en nombre de la empresa dentro del ecosistema ISBE.
+El LEAR es el Representante Designado de la Entidad Legal y puede ser cualquier persona autorizada por un representante legal de la organización para actuar en nombre de la organización dentro del ecosistema ISBE.
 
-Esto es necesario porque, normalmente, el representante legal de la organización no puede realizar las operaciones diarias requeridas en ISBE. Permitimos que la empresa (su representante legal) designe a una persona para que actúe en su nombre ante ISBE.
+Esto es necesario porque, normalmente, el representante legal de la organización no puede realizar las operaciones diarias requeridas en ISBE. Permitimos que la organización (su representante legal) designe a una persona para que actúe en su nombre ante ISBE.
 
-#### *¿Por qué necesitamos un formulario de cita LEAR?*
+#### ¿Por qué necesitamos un formulario de nombramiento de LEAR?
 
-El objetivo del Formulario de Representante Designado de Entidad Legal (LEAR) es doble: primero, brindar seguridad jurídica a ISBE de que las acciones tomadas por las personas que operan la cuenta de una empresa son legalmente vinculantes para la empresa, ya sea frente a ISBE y los socios del ecosistema ISBE; y segundo, como consecuencia de lo primero, generar un plus de confianza en los socios del ecosistema ISBE respecto de la identidad de la empresa.
+El objetivo del formulario de Representante Designado de Entidad Legal (LEAR) es doble: primero, brindar seguridad jurídica a ISBE respecto a que las acciones tomadas por las personas que operan la cuenta de una empresa son legalmente vinculantes para la empresa, ya sea frente a ISBE o los socios del ecosistema ISBE; y segundo, como consecuencia de lo primero, generar un plus de confianza en los socios del ecosistema ISBE respecto de la identidad de la empresa.
 
-Además, el hecho de que LEAR tenga pleno poder para vincular a la entidad que representa es coherente con el esquema de credenciales verificables que utiliza ISBE para permitir un sistema rápido, totalmente digital y confiable para estructurar las comunicaciones y transacciones dentro del ecosistema.
+Además, el hecho de que el LEAR tenga poder para vincular a la entidad que representa en el ámbito de ISBE es coherente con el esquema de credenciales verificables que utiliza ISBE para permitir un sistema rápido, totalmente digital y confiable para estructurar las comunicaciones y transacciones dentro del ecosistema.
 
-El sistema de credenciales verificables implementado en ISBE se basa en la afirmación de que las personas que operan la cuenta de una organización tienen la autoridad para representar a esa organización y vincularla legalmente.
+El sistema de credenciales verificables implementado en ISBE se basa en el atestado de que las personas que operan la cuenta de una organización tienen la autoridad para representar a esa organización y vincularla legalmente.
 
-ISBE, emisor de las credenciales verificables, debe verificar que los operadores de la cuenta de la organización en ISBE cuenten con las facultades necesarias para operarla plenamente. Esta verificación se realiza mediante el formulario de nombramiento de LEAR y el resto de la documentación solicitada durante la fase de onboarding.
+ISBE, emisor de las credenciales verificables, debe verificar que los operadores de la cuenta de la organización en ISBE cuenten con los poderes necesarios para operarla plenamente. Esta verificación se realiza mediante el formulario de nombramiento de LEAR y el resto de la documentación solicitada durante la fase de onboarding.
 
-#### *¿Quién puede ser designado como LEAR?*
+#### ¿Quién puede ser designado como LEAR?
 
 Cualquier persona mayor de edad puede ser designada como LEAR de una entidad. No existe ninguna otra limitación al respecto.
 
@@ -111,96 +111,85 @@ Esta persona debe ser alguien de confianza para la dirección de la entidad y co
 
 Además, una misma persona puede ser designada como LEAR por más de una entidad. Cada designación generará su propia credencial verificable, por lo que solo podrá representar a una sola entidad a la vez al operar en el Mercado.
 
-### Generar documentos contractuales
+### Generación de los documentos contractuales
 
 El sistema de onboarding genera automáticamente documentos contractuales utilizando la información proporcionada en los formularios descritos anteriormente. Los documentos están en formato PDF y deben ser firmados por un representante legal de la organización y luego subidos al portal ISBE para continuar con el proceso de onboarding.
 
 ### Firma de los documentos contractuales
 
-La propuesta es exigir al representante legal que firme electrónicamente los documentos utilizando un certificado de representación eIDAS emitido por un QTSP (Proveedor de Servicios de Confianza Cualificado) al representante legal.
+Los documentos deben ser firmados electrónicamente utilizando un certificado cualificado emitido por un QTSP a la organización, bien sea un certificado cualificado de representación o un certificado cualificado de sello. Llamaremos genéricamente a esos certificados como **certificados organizativos eIDAS**.
 
-Los certificados eIDAS, en particular los cualificados, gozan de una amplia adopción en España y son la piedra angular de la confianza, la validez legal y la interoperabilidad en los sistemas estructurados de intercambio de datos españoles. Proporcionan las garantías necesarias de identidad, integridad y no repudio, esenciales para la transformación digital de los procesos administrativos y comerciales.
+Los certificados organizativos eIDAS gozan de una amplia adopción en España y son la piedra angular de la confianza, la validez legal y la interoperabilidad en los sistemas estructurados de intercambio de datos españoles. Proporcionan las garantías necesarias de identidad, integridad y no repudio, esenciales para la transformación digital de los procesos administrativos y comerciales.
 
-Al utilizar un certificado de representación eIDAS, la verificación de la identidad de la organización y del representante legal se realiza de forma gratuita y con un LoA (Nivel de Garantía) que es sustancial o alto dependiendo de si se utilizó una firma electrónica avanzada o cualificada.
+Al utilizar un certificado organizativo eIDAS, la verificación de la identidad de la organización y del representante legal se realiza automáticamente al verificar la firma y con un LoA (Nivel de Garantía) que es sustancial o alto dependiendo de si se utilizó una firma electrónica avanzada o cualificada.
 
-Se recomienda evitar las firmas manuscritas, ya que implican procesos manuales costosos y engorrosos. Si esto no se puede evitar, debe tratarse como un procedimiento excepcional y reducirse al mínimo posible.
+En ISBE se deben evitar las firmas manuscritas, ya que implican procesos manuales costosos y engorrosos. Si esto no se puede evitar, debe tratarse como un procedimiento excepcional y reducirse al mínimo posible.
 
 ### Recepción y verificación de los documentos contractuales
 
-El portal de onboarding de ISBE permite a las organizaciones cargar los documentos contractuales firmados, asociados a la instancia del proceso de onboarding iniciado en los pasos anteriores.
+El portal de onboarding de ISBE permite a las organizaciones subir los documentos contractuales firmados, asociados a la instancia del proceso de onboarding iniciado en los pasos anteriores.
 
 El proceso de onboarding de ISBE realiza algunas verificaciones automáticas (como verificación de firma) y notifica a algunos empleados de ISBE que hay un proceso de onboarding pendiente para revisión y aprobación manual.
 
 ### Registro de la organización y creación de la cuenta inicial
 
-Tras la aprobación de un empleado de ISBE, la nueva organización se registra en ISBE y se crea una cuenta con los datos iniciales. Inmediatamente después, y de forma automática, el sistema de onboarding de ISBE genera una Credencial Verificable para el empleado designado durante la primera fase.
+Tras la aprobación por parte de un empleado de ISBE, la nueva organización se registra en ISBE y se crea una cuenta con los datos iniciales. Inmediatamente después, y de forma automática, el sistema de onboarding de ISBE genera una Credencial Verificable para el empleado designado durante la primera fase.
 
 Esta Credencial Verificable cumple dos propósitos al mismo tiempo:
 
-- Como mecanismo **de autenticación** para el empleado, sirviendo como identidad digital de ese empleado en ISBE y con otros participantes.
+- Como mecanismo **de autenticación** para el empleado, sirviendo como identidad digital de ese empleado en ISBE y con otros participantes que acepten la credencial como mecanismo de autenticación.
 - Como **mandato** , acreditar que el empleado ha sido autorizado por la organización (en rigor, por un representante legal de la organización) para realizar actividades específicas en nombre de la organización.
 
 ## Segunda fase: Generación de la Credencial Verificable para el empleado designado
 
-Tras el registro de la empresa, ISBE genera automáticamente una Credencial Verificable para el empleado designado durante la primera fase. Esta Credencial Verificable es un mandato electrónico que el empleado utilizará para autenticarse ante ISBE y operar la cuenta de la organización.
+Tras el registro de la empresa, ISBE genera automáticamente una Credencial Verificable para el empleado designado durante la primera fase. Esta Credencial Verificable es en realidad un mandato electrónico que el empleado utilizará para autenticarse ante ISBE y operar la cuenta de la organización.
 
 Esta segunda fase se realiza automáticamente después de la primera fase y consta de los siguientes pasos:
 
 1. Se emite una Credencial Verificable al empleado identificado durante la primera fase
-2. El empleado acepta la credencial y la almacena en una billetera compatible con EUDI
+2. El empleado acepta la credencial y la almacena en una cartera digital compatible con EUDI
 3. El empleado utiliza la credencial para autenticarse en el portal ISBE para completar el proceso de onboarding, por ejemplo:
    - Información completa sobre la organización, como logotipo, mensajes comerciales, etc.
    - Emitir credenciales verificables adicionales a empleados adicionales con poderes específicos para permitirles realizar algunas operaciones en el ecosistema ISBE.
    - Añade ofertas de productos y publícalas en el Marketplace de ISBE, para ganar visibilidad y facilitar la venta de los servicios.
 
-
 # Identidad de un empleado que actúa en nombre de la organización
 
-En la mayoría de los casos, una organización no actúa por sí misma, sino que es un empleado de la misma quien interactúa con terceros, actuando en nombre de la organización. Por ejemplo, cuando una organización se integra a ISBE o realiza cualquier otra tarea administrativa, es un empleado quien ejecuta los procesos.
+En la mayoría de los casos, una organización no actúa por sí misma, sino que es un empleado de la misma quien interactúa con terceros, actuando en nombre de la organización. Por ejemplo, cuando una organización se incorpora a ISBE o realiza cualquier otra tarea administrativa, es un empleado quien ejecuta los procesos.
 
-\[\!Nota\]
-
-En otros casos, puede haber una o más máquinas, controladas por la organización, que realizan tareas automatizadas (por ejemplo, llamar a API de terceros). Hablaremos sobre las identidades de las máquinas/cargas de trabajo más adelante en este documento.
+> [!Note]
+>
+> En otros casos, puede haber una o más máquinas, controladas por la organización, que realizan tareas automatizadas (por ejemplo, llamar a API de terceros). Hablaremos sobre las identidades de las máquinas/cargas de trabajo más adelante en este documento.
 
 Si la persona que realiza las actividades es el representante legal, ya contamos con un mecanismo seguro y eficiente para autenticar a dicha persona: mediante el certificado de representación descrito en el apartado anterior.
 
-Sin embargo, **en muchas organizaciones, el representante legal no puede participar en las operaciones diarias de ISBE (ni con otras partes)** . Necesitamos un mecanismo que permita al representante legal de la organización nominar o designar a un empleado y delegarle un conjunto definido de facultades suficientes para realizar las actividades de ISBE.
+Sin embargo, **en muchas organizaciones, el representante legal no puede participar en las operaciones diarias de ISBE (ni con otras partes)** . Necesitamos un mecanismo que permita al representante legal de la organización nominar o designar a un empleado y delegarle un conjunto específico de poderes suficientes para realizar las actividades de ISBE.
 
-En el contexto de ISBE, podemos lograr esto mediante un documento firmado por el representante legal con el mismo certificado de representación utilizado para firmar los demás documentos contractuales. El documento debe designar explícitamente a un empleado para que actúe en nombre de la organización, y si confiamos en el representante legal, no tenemos que realizar ninguna verificación sobre dicho empleado.
+En el contexto de ISBE, podemos lograr esto mediante un documento firmado por el representante legal con el mismo certificado utilizado para firmar los demás documentos contractuales. El documento debe designar explícitamente a un empleado para que actúe en nombre de la organización, y si confiamos en la firma, no tenemos que realizar ninguna verificación sobre dicho empleado.
 
 El documento de nombramiento debe presentarse como parte del proceso de onboarding, junto con los demás documentos.
 
 Después del proceso de onboarding, ISBE emitirá una credencial verificable al empleado designado, que el empleado utilizará para autenticarse en el portal ISBE y cualquier otra entidad dispuesta a aceptar la credencial como mecanismo de autenticación (porque confían en el proceso que ISBE utiliza para emitir la credencial verificable).
 
-Podemos decir que la Credencial Verificable es la identidad del empleado cuando actúa en nombre de la organización. Si bien se emite como parte del proceso de onboarding en ISBE, no se limita a ISBE, ya que se basa en un documento firmado por el representante legal de la empresa, que acredita que la persona identificada en la credencial es un empleado.
-
-\[\!IMPORTANTE\]
-
-La propuesta es emitir una Credencial Verificable a un empleado, con base en un documento firmado por un representante legal o la organización, con el mismo certificado de representación utilizado para firmar los demás documentos contractuales en el proceso de onboarding.
+En cierto sentido, esta Credencial Verificable es la identidad del empleado cuando actúa en nombre de la organización. Si bien se emite como parte del proceso de onboarding en ISBE, no se limita a ISBE, ya que se basa en un documento firmado por la organización, que acredita que la persona identificada en la credencial es un empleado.
 
 Pero no nos detenemos aquí: queremos permitir que más de un empleado actúe en nombre de la organización, y que cada empleado tenga diferentes capacidades, según lo determine la propia organización. Por ejemplo, queremos que la organización designe a un empleado del departamento de finanzas para realizar operaciones financieras con terceros (a los que llamaremos Partes Confiables) y a uno o más empleados del departamento de TI para realizar operaciones técnicas (no financieras).
 
-## Adjuntar autorizaciones específicas a la identidad del empleado
+## Asignar autorizaciones específicas a la identidad del empleado
 
-En otras palabras, queremos permitir que la organización designe a uno o más empleados, cada uno con diferentes autorizaciones para operaciones específicas. Cuando el empleado actúe en nombre de la empresa, deberá presentar a la Parte Confiable un documento que especifique los tipos de operaciones que la organización le ha autorizado a realizar.
+En otras palabras, queremos permitir que la organización designe a uno o más empleados, cada uno con diferentes autorizaciones para operaciones específicas. Cuando el empleado actúe en nombre de la empresa, deberá presentar al Relying Party un documento que especifique los tipos de operaciones que la organización le ha autorizado a realizar.
 
 Esto normalmente se hace con un **mandato** , que puede describirse como:
 
-Un mandato es un conjunto de una o más autorizaciones otorgadas por una entidad identificada (el mandante) a otra entidad identificada (el agente) para realizar acciones bien definidas con consecuencias legales en nombre y por cuenta de la primera. En términos generales, los mandatos pueden ser **unilaterales** (otorgados unilateralmente por el mandante), **contractuales** (p. ej., un mandato otorgado a un contable), **estatutarios** (p. ej., un mandato del director general para representar a una persona jurídica) o **legales** (p. ej., un mandato del padre para representar a su hijo).
+> Un mandato es un conjunto de una o más autorizaciones otorgadas por una entidad identificada (el mandante) a otra entidad identificada (el agente) para realizar acciones bien definidas con consecuencias legales en nombre y por cuenta de la primera. En términos generales, los mandatos pueden ser **unilaterales** (otorgados unilateralmente por el mandante), **contractuales** (p. ej., un mandato otorgado a un contable), **estatutarios** (p. ej., un mandato del director general para representar a una persona jurídica) o **legales** (p. ej., un mandato del padre para representar a su hijo).
 
 En el contexto de ISBE, nos ocupamos únicamente de un tipo de mandato contractual, donde **el representante legal designa a un empleado y le otorga un subconjunto muy específico de poderes, aquellos necesarios para interactuar con ISBE** o en el contexto del ecosistema ISBE.
 
-Este mandato es sólo un acuerdo entre las partes (el representante legal, el empleado y la ISBE), y no requiere reconocimiento "oficial" (por ejemplo, por un notario o cualquier entidad regulada).
+Este mandato es sólo un acuerdo entre las partes (el representante legal, el empleado e ISBE), y no requiere reconocimiento "público" (por ejemplo, por un notario o cualquier entidad regulada).
 
-Normalmente, esto se hace con un documento PDF que es firmado por el representante legal y por el empleado (para aceptar explícitamente los poderes otorgados), y es aceptado por el tercero (ISBE y participantes en ISBE, en este caso).
+Normalmente, esto se hace con un documento PDF que es firmado por el representante legal y por el empleado (para aceptar explícitamente los poderes otorgados), y es reconocido y aceptadoTo improve efficiency,  por el tercero (ISBE y participantes en ISBE, en este caso).
 
-Sin embargo, la propuesta es utilizar una Credencial Verificable para implementar un mandato electrónico, como una Atestación Electrónica (Calificada) de Atributos.
-
-\[\!IMPORTANTE\]
-
-La propuesta es utilizar una credencial verificable para representar la identidad de un empleado que actúa en nombre de la organización.
-
-La credencial está firmada por un representante legal de la organización, por lo que no necesitamos ninguna verificación adicional:
+Para mejorar la eficiencia, en vez de un PDF usaremos una Credencial Verificable para implementar un mandato electrónico, como una Atestación Electrónica (Cualificada) de Atributos.
 
 ## La Credencial Verificable como Mandato
 
