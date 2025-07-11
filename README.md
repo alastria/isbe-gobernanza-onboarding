@@ -6,58 +6,63 @@
 
 Antes de poder interactuar en el ecosistema ISBE, una organización debe registrarse siguiendo el proceso de onboarding de ISBE, independientemente del motivo por el cual la organización desea unirse a ISBE (como por ejemplo añadir un nodo regular a una de las redes blockchain, publicar una solución en el Catálogo ISBE, etc.).
 
-ISBE tiene una naturaleza única, como colaboración público-privada española con participación de la Administración pública y un objetivo sin ánimo de lucro. Por ello, el proceso de onboarding debe ser altamente digital, automatizado, eficiente y jurídicamente seguro, al tiempo que minimiza el trabajo manual para ISBE.
+ISBE tiene una naturaleza única, como colaboración público-privada española con participación de la Administración pública y un objetivo sin ánimo de lucro. Por ello, el proceso de onboarding debe ser eficiente y jurídicamente seguro, altamente digital y automatizado, al tiempo que minimiza el trabajo manual para ISBE.
 
 Para que ISBE cumpla con la regulación aplicable y verifique con alto nivel de certeza legal que una organización (española o de otro país de la UE/EEE) tiene sede o establecimiento en la UE/EEE, debe seguir un proceso de onboarding/KYC mínimo pero robusto.
 
-Aunque todavía está pendiente el determinar exactamente la regulación aplicable a la futura entidad legal que operará ISBE, posiblemente los requisitos regulatorios clave sean:
+> [!Note]
+>
+> Aunque todavía está pendiente el determinar exactamente la regulación aplicable a la futura entidad legal que operará ISBE, posiblemente algunos de los requisitos regulatorios clave sean:
+>
+> 1. **Directivas contra el Blanqueo de Capitales (AML/CFT):**
+>    - 5ª Directiva (UE) 2018/843 y 6ª Directiva (UE) 2021/1237, transpuestas en España por la Ley 10/2010.
+>    - Requieren la verificación de la identidad de clientes empresariales ("Know Your Business Customer" o KYBC), incluyendo sede y beneficiarios reales.
+> 2. **Reglamento de Servicios Digitales (DSA - Digital Services Act, Reglamento (UE) 2022/2065):**
+>    - Artículo 24: Obliga a las plataformas en línea a verificar la información de los "traders" (empresas que venden servicios/bienes).
+>    - Exige recopilar, verificar y mantener datos actualizados de la empresa (nombre, dirección, registro legal, identificación fiscal).
+> 3. **Reglamentos de Mercado Interior (e.g., Directiva de Servicios 2006/123/CE):**
+>    - Requieren no discriminar empresas de otros Estados miembro y basarse en registros oficiales para verificar su legitimidad.
+> 4. **GDPR (Reglamento (UE) 2016/679):**
+>    - Aplica al tratamiento de datos personales durante el onboarding (ej. datos de representantes legales).
 
-1. **Directivas contra el Blanqueo de Capitales (AML/CFT):**
-   - 5ª Directiva (UE) 2018/843 y 6ª Directiva (UE) 2021/1237, transpuestas en España por la Ley 10/2010.
-   - Requieren la verificación de la identidad de clientes empresariales ("Know Your Business Customer" o KYBC), incluyendo sede y beneficiarios reales.
-2. **Reglamento de Servicios Digitales (DSA - Digital Services Act, Reglamento (UE) 2022/2065):**
-   - Artículo 24: Obliga a las plataformas en línea a verificar la información de los "traders" (empresas que venden servicios/bienes).
-   - Exige recopilar, verificar y mantener datos actualizados de la empresa (nombre, dirección, registro legal, identificación fiscal).
-3. **Reglamentos de Mercado Interior (e.g., Directiva de Servicios 2006/123/CE):**
-   - Requieren no discriminar empresas de otros Estados miembro y basarse en registros oficiales para verificar su legitimidad.
-4. **GDPR (Reglamento (UE) 2016/679):**
-   - Aplica al tratamiento de datos personales durante el onboarding (ej. datos de representantes legales).
-
-La utilización de **certificados electrónicos cualificados** (llamados certificados eIDAS, emitidos por un Prestador de Servicios de Confianza Cualificado, *QTSP*) para la firma de un contrato de la organización con ISBE simplifica significativamente el proceso de onboarding, ya que estos instrumentos tienen **valor probatorio reforzado** bajo el Reglamento eIDAS (UE 910/2014) y presunción de autenticidad e integridad, además de minimizar el riesgo legal en caso de repudio de la firma.
+La utilización de **certificados electrónicos cualificados en el marco eIDAS** (que abreviaremos como "certificados eIDAS") para la firma de un contrato de la organización con ISBE simplifica significativamente el proceso de onboarding, ya que estos instrumentos tienen **valor probatorio reforzado** bajo el Reglamento eIDAS (UE 910/2014) y presunción de autenticidad e integridad, además de minimizar el riesgo legal en caso de repudio de la firma.
 
 Una estimación razonable es que el uso de **QSeal o certificados de representación cualificados** permite:
 
 - **Eliminar el 80% de la carga manual** para ISBE (verificación de registros, poderes, documentos físicos).
 - **Mantener un nivel de certeza legal máximo** (presunción reglamentaria bajo eIDAS) y reducir el riesgo para ISBE.
 - **Cumplir con DSA, AML y GDPR** de manera eficiente.
+- **Proporciona un mejor servicio** ya que el proceso de onboarding es más sencillo y rápido al evitar mucho trabajo manual.
 
 En este documento se describe un proceso de onboarding basado en firmas avanzadas o cualificadas usando certificados cualificados. Posteriormente. se describen también las posibles dificultades y puntos de fricción, principalmente para organizaciones en países diferentes a España, con una adopción más baja de la firma electrónica basada en dichos certificados.
 
-El proceso de onboarding no acaba con el registro de la organización en ISBE, sino que además debemos permitir que un empleado de la organización (o quien nomine esta) pueda hacer login en el portal administrativo de ISBE y realizar tareas por parte de la organización. Este empleado estará nominado en el contrato firmado entre la organización e ISBE.
+El proceso de onboarding no acaba con el registro de la organización en ISBE, sino que además debemos permitir que inmediatamente después del onboarding una persona nominada por la organización (puede ser cualquier empleado o incluso un colaborador) pueda hacer login en el portal administrativo de ISBE y realizar tareas por parte de la organización. Esta persona será nominada en el contrato firmado entre la organización e ISBE, para dar seguridad jurídica a sus actos en ISBE.
 
 Es decir, el proceso de onboarding en ISBE se compone de dos fases:
 
-1. **Primera fase**: Verificación y KYC de la organización, firma del contrato y registro de la organización en ISBE.
-
+1. **Primera fase**: Verificación y KYC (Know Your Customer) de la organización, firma del contrato, verificación del mismo por parte de ISBE y registro de la organización en ISBE.
 2. **Segunda fase**: Generación de una Credencial Verificable para el empleado designado durante la primera fase. Esta Credencial Verificable es un mandato electrónico que el empleado utilizará para autenticarse ante ISBE y operar la cuenta de la organización.
 
 ## Primera fase: Verificación de la organización, firma del contrato y registro de la organización
 
 La primera fase consiste en los siguientes pasos:
 
-1. Recopilar información sobre la organización y sobre el empleado que actúa en nombre de la organización en ISBE
-2. Generar automáticamente los documentos contractuales incluyendo esa información
-3. Un representante legal de la organización firma los documentos contractuales
-4. Los documentos son recibidos y verificados por ISBE
-5. La organización está registrada como incorporada en ISBE y tiene una cuenta.
+1. Verificar el correo electrónico de la persona que conduce el proceso
+2. Recoger información sobre la organización y sobre el empleado que actúa en nombre de la organización en ISBE
+3. Generar automáticamente los documentos contractuales incluyendo esa información
+4. Un representante legal de la organización firma los documentos contractuales
+5. Recepción y verificación de los documentos contractuales por ISBE
+6. Registro de la organización y creación de la cuenta inicial en ISBE
 
 ### Verificar el correo electrónico de la persona que conduce el proceso
 
-![Mail verification](img/emailverify.png)
+Debemos permitir que la persona que gestione el proceso de onboarding por parte de la organización sea un empleado normal, en lugar de exigir que lo realice un representante legal de la organización. Posteriormente, esta persona deberá presentar uno o más documentos firmados por un representante legal de la organización para garantizar la seguridad jurídica del proceso de onboarding.
 
-Debemos permitir que la persona que gestione el proceso de onboarding sea un empleado normal, en lugar de exigir que lo realice un representante legal de la organización. Posteriormente, el empleado deberá presentar uno o más documentos firmados por un representante legal de la organización para garantizar la seguridad jurídica del proceso de onboarding.
+![Email verification](img/emailverify.png)
 
-En cualquier caso, quien gestiona el proceso debe verificar su dirección de correo electrónico. Esto se logra de la siguiente manera:
+De esta manera, facilitamos a las organizaciones el iniciar el proceso de onboarding, reducimos la fricción y bajamos la barrera de entrada, pero consiguiendo un nivel alto de certeza legal.
+
+En cualquier caso, quien gestiona el proceso debe verificar inicialmente su dirección de correo electrónico. Esto se logra de la siguiente manera, habitual en este tipo de situaciones:
 
 1. Se muestra un formulario simple en la página de onboarding de ISBE.
 2. La persona ingresa su nombre y correo electrónico.
@@ -65,23 +70,19 @@ En cualquier caso, quien gestiona el proceso debe verificar su dirección de cor
 4. La persona utiliza el código para verificar su dirección de correo electrónico.
 5. El sistema de onboarding de ISBE almacena el registro con esa dirección de correo electrónico y permite que la persona continúe con el proceso.
 
-### Aceptar términos y condiciones
+Por supuesto, el formulario debe contener los textos y mecanismos de cumplimiento de GDPR, entre otros.
 
-![Terms and conditions](img/termsandconditions.png)
-
-La persona que gestione el proceso deberá aceptar los términos y condiciones de ISBE. El formulario anterior es solo un ejemplo. La aceptación se registrará en la base de datos de onboarding.
+La persona que gestione el proceso deberá aceptar los términos y condiciones de ISBE. La aceptación se registrará en la base de datos de onboarding.
 
 ### Recoger información sobre la organización
 
 ![Company information](img/companyinfo.png)
 
-La persona que gestiona el proceso ingresará información sobre la organización. El formulario anterior es solo un ejemplo.
+La persona que gestiona el proceso ingresará información sobre la organización. El formulario anterior es solo un ejemplo, y hay que decidir los datos que se piden.
 
-**Limitación del país** : Solo permitimos organizaciones que tengan la sede constituida en un país de la UE/EEE, o un representante legal en un país de la UE/EEE. El usuario debe seleccionar el país de una lista de países permitidos. Comprobaremos que el país sea correcto al verificar posteriormente la firma electrónica del contrato que la organización enviará a ISBE.
+**Limitación del país** : Solo permitimos organizaciones que tengan la sede constituida en un país de la UE/EEE, o un representante legal en un país de la UE/EEE. El usuario debe seleccionar el país de una lista de países permitidos. Comprobaremos que el país sea correcto al verificar posteriormente la firma electrónica del contrato que la organización enviará a ISBE. Es decir, el código de pais que se encuentra dentro del campo Subject del certificado cualificado usado para la firma PAdES del contrato debe coincidir con el país seleccionado en el formulario.
 
-### Recoger información sobre el LEAR
-
-![LEAR information](img/learinfo.png)
+### Recoger información sobre la persona nominada por la organización
 
 En esta sección se identifica a la persona que actuará como **LEAR** de la organización.
 
@@ -89,15 +90,9 @@ El LEAR es el Representante Designado de la Entidad Legal y puede ser cualquier 
 
 Esto es necesario porque, normalmente, el representante legal de la organización no puede realizar las operaciones diarias requeridas en ISBE. Permitimos que la organización (su representante legal) designe a una persona para que actúe en su nombre ante ISBE.
 
-#### ¿Por qué necesitamos un formulario de nombramiento de LEAR?
+![LEAR information](img/learinfo.png)
 
-El objetivo del formulario de Representante Designado de Entidad Legal (LEAR) es doble: primero, brindar seguridad jurídica a ISBE respecto a que las acciones tomadas por las personas que operan la cuenta de una empresa son legalmente vinculantes para la empresa, ya sea frente a ISBE o los socios del ecosistema ISBE; y segundo, como consecuencia de lo primero, generar un plus de confianza en los socios del ecosistema ISBE respecto de la identidad de la empresa.
-
-Además, el hecho de que el LEAR tenga poder para vincular a la entidad que representa en el ámbito de ISBE es coherente con el esquema de credenciales verificables que utiliza ISBE para permitir un sistema rápido, totalmente digital y confiable para estructurar las comunicaciones y transacciones dentro del ecosistema.
-
-El sistema de credenciales verificables implementado en ISBE se basa en el atestado de que las personas que operan la cuenta de una organización tienen la autoridad para representar a esa organización y vincularla legalmente.
-
-ISBE, emisor de las credenciales verificables, debe verificar que los operadores de la cuenta de la organización en ISBE cuenten con los poderes necesarios para operarla plenamente. Esta verificación se realiza mediante el formulario de nombramiento de LEAR y el resto de la documentación solicitada durante la fase de onboarding.
+La información del formulario será incluida en el documento PDF que se generará automáticamente y que deberá firmar un representante legal de la organización.
 
 #### ¿Quién puede ser designado como LEAR?
 
@@ -109,11 +104,11 @@ Sin embargo, la entidad que designe a un LEAR debe considerar cuidadosamente qui
 
 Esta persona debe ser alguien de confianza para la dirección de la entidad y con las cualificaciones y habilidades adecuadas para ocupar este puesto, ya que sus acciones pueden generar responsabilidades legales para la entidad.
 
-Además, una misma persona puede ser designada como LEAR por más de una entidad. Cada designación generará su propia credencial verificable, por lo que solo podrá representar a una sola entidad a la vez al operar en el Mercado.
+Además, una misma persona puede ser designada como LEAR por más de una entidad.
 
 ### Generación de los documentos contractuales
 
-El sistema de onboarding genera automáticamente documentos contractuales utilizando la información proporcionada en los formularios descritos anteriormente. Los documentos están en formato PDF y deben ser firmados por un representante legal de la organización y luego subidos al portal ISBE para continuar con el proceso de onboarding.
+El sistema de onboarding genera automáticamente documentos contractuales (idealmente solo uno) utilizando la información proporcionada en los formularios descritos anteriormente. Los documentos están en formato PDF y deben ser firmados por un representante legal de la organización y luego subidos al portal ISBE para continuar con el proceso de onboarding.
 
 ### Firma de los documentos contractuales
 
@@ -121,9 +116,15 @@ Los documentos deben ser firmados electrónicamente utilizando un certificado cu
 
 Los certificados organizativos eIDAS gozan de una amplia adopción en España y son la piedra angular de la confianza, la validez legal y la interoperabilidad en los sistemas estructurados de intercambio de datos españoles. Proporcionan las garantías necesarias de identidad, integridad y no repudio, esenciales para la transformación digital de los procesos administrativos y comerciales.
 
-Al utilizar un certificado organizativo eIDAS, la verificación de la identidad de la organización y del representante legal se realiza automáticamente al verificar la firma y con un LoA (Nivel de Garantía) que es sustancial o alto dependiendo de si se utilizó una firma electrónica avanzada o cualificada.
-
 En ISBE se deben evitar las firmas manuscritas, ya que implican procesos manuales costosos y engorrosos. Si esto no se puede evitar, debe tratarse como un procedimiento excepcional y reducirse al mínimo posible.
+
+> :question: Hay que decidir si se acepta un contrato sellado (con un certificado cualificado de sello) o si solo aceptamos firmas (con un certificado cualificado de representante). Permitir sellos puede facilitar mucho el onboarding automatizado de organizaciones de otros países donde los certificados de representante no estén tan implantados como en España.
+>
+> A primera vista, un sello debería ser suficiente para el onboarding de ISBE, y evita solicitar copias físicas del certificado mercantil y verificación manual en registros mercantiles nacionales (ej. vía e-Justice). Pero todo depende de si necesitamos la vinculación de un representante legal.
+
+
+
+
 
 ### Recepción y verificación de los documentos contractuales
 
@@ -399,4 +400,3 @@ El uso de `did:elsi` en ISBE es superior a otras opciones, como "inventar" un nu
 - **Actualizabilidad automática** : En `did:elsi,` el material criptográfico asociado al identificador único de la organización se crea y gestiona de forma totalmente compatible con eIDAS, con pleno soporte regulatorio. Su ciclo de vida completo (inicialización, creación, revocación y actualización) ya es bien conocido y cumple con la normativa eIDAS. En otros métodos DID, como `did:ala` o `did:ebsi` , este proceso debe implementarse desde cero y no se ha probado en producción, por lo que están sujetos a numerosos errores y problemas, al menos al principio.
 
   Otros métodos DID deben definir cómo actualizar las claves privadas y públicas y cómo garantizar que estén realmente asociadas a la identidad real de la organización. Toda esta complejidad no existe con `did:elsi` ; mejor dicho, esta complejidad ya se implementó hace muchos años y cumple plenamente con el reglamento eIDAS.
-
