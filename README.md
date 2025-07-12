@@ -118,23 +118,21 @@ Los certificados organizativos eIDAS gozan de una amplia adopción en España y 
 
 En ISBE se deben evitar las firmas manuscritas, ya que implican procesos manuales costosos y engorrosos. Si esto no se puede evitar, debe tratarse como un procedimiento excepcional y reducirse al mínimo posible.
 
-> :question: Hay que decidir si se acepta un contrato sellado (con un certificado cualificado de sello) o si solo aceptamos firmas (con un certificado cualificado de representante). Permitir sellos puede facilitar mucho el onboarding automatizado de organizaciones de otros países donde los certificados de representante no estén tan implantados como en España.
+> [!Note]
+> 
+> Hay que decidir si se acepta un contrato sellado (con un certificado cualificado de sello) o si solo aceptamos firmas (con un certificado cualificado de representante). Permitir sellos puede facilitar mucho el onboarding automatizado de organizaciones de otros países donde los certificados de representante no estén tan implantados como en España.
 >
 > A primera vista, un sello debería ser suficiente para el onboarding de ISBE, y evita solicitar copias físicas del certificado mercantil y verificación manual en registros mercantiles nacionales (ej. vía e-Justice). Pero todo depende de si necesitamos la vinculación de un representante legal.
-
-
-
-
 
 ### Recepción y verificación de los documentos contractuales
 
 El portal de onboarding de ISBE permite a las organizaciones subir los documentos contractuales firmados, asociados a la instancia del proceso de onboarding iniciado en los pasos anteriores.
 
-El proceso de onboarding de ISBE realiza algunas verificaciones automáticas (como verificación de firma) y notifica a algunos empleados de ISBE que hay un proceso de onboarding pendiente para revisión y aprobación manual.
+El proceso de onboarding de ISBE realiza algunas verificaciones automáticas (como verificación de firma) y notifica a un empleado de ISBE que hay un proceso de onboarding pendiente para revisión y aprobación manual.
 
 ### Registro de la organización y creación de la cuenta inicial
 
-Tras la aprobación por parte de un empleado de ISBE, la nueva organización se registra en ISBE y se crea una cuenta con los datos iniciales. Inmediatamente después, y de forma automática, el sistema de onboarding de ISBE genera una Credencial Verificable para el empleado designado durante la primera fase.
+Tras la aprobación por parte de un empleado de ISBE, la nueva organización se registra en ISBE y se crea una cuenta de la organización con los datos iniciales. Inmediatamente después, y de forma automática, el sistema de onboarding de ISBE genera una Credencial Verificable para el empleado designado durante la primera fase.
 
 Esta Credencial Verificable cumple dos propósitos al mismo tiempo:
 
@@ -150,21 +148,21 @@ Esta segunda fase se realiza automáticamente después de la primera fase y cons
 1. Se emite una Credencial Verificable al empleado identificado durante la primera fase
 2. El empleado acepta la credencial y la almacena en una cartera digital compatible con EUDI
 3. El empleado utiliza la credencial para autenticarse en el portal ISBE para completar el proceso de onboarding, por ejemplo:
-   - Información completa sobre la organización, como logotipo, mensajes comerciales, etc.
+   - Proporcionar información completa sobre la organización, como logotipo, mensajes comerciales, etc.
    - Emitir credenciales verificables adicionales a empleados adicionales con poderes específicos para permitirles realizar algunas operaciones en el ecosistema ISBE.
-   - Añade ofertas de productos y publícalas en el Marketplace de ISBE, para ganar visibilidad y facilitar la venta de los servicios.
+   - Añadir ofertas de productos y publícalas en el Marketplace de ISBE, para ganar visibilidad y facilitar la venta de los servicios.
+
+
 
 # Identidad de un empleado que actúa en nombre de la organización
 
-En la mayoría de los casos, una organización no actúa por sí misma, sino que es un empleado de la misma quien interactúa con terceros, actuando en nombre de la organización. Por ejemplo, cuando una organización se incorpora a ISBE o realiza cualquier otra tarea administrativa, es un empleado quien ejecuta los procesos.
+En la mayoría de los casos, una organización no actúa por sí misma, sino que es un empleado de la misma quien interactúa con terceros, actuando en nombre de la organización. Por ejemplo, cuando una organización se incorpora a ISBE o realiza cualquier otra tarea administrativa, es un empleado quien ejecuta los procesos asociados.
 
 > [!Note]
 >
-> En otros casos, puede haber una o más máquinas, controladas por la organización, que realizan tareas automatizadas (por ejemplo, llamar a API de terceros). Hablaremos sobre las identidades de las máquinas/cargas de trabajo más adelante en este documento.
+> En otros casos, puede haber una o más máquinas controladas por la organización que realizan tareas automatizadas (por ejemplo, llamar a API de terceros). Hablaremos sobre las identidades de las máquinas/cargas de trabajo más adelante en este documento.
 
-Si la persona que realiza las actividades es el representante legal, ya contamos con un mecanismo seguro y eficiente para autenticar a dicha persona: mediante el certificado de representación descrito en el apartado anterior.
-
-Sin embargo, **en muchas organizaciones, el representante legal no puede participar en las operaciones diarias de ISBE (ni con otras partes)** . Necesitamos un mecanismo que permita al representante legal de la organización nominar o designar a un empleado y delegarle un conjunto específico de poderes suficientes para realizar las actividades de ISBE.
+En muchas organizaciones, **el representante legal no puede participar en las operaciones diarias de ISBE (ni con otras partes)**. Por eso necesitamos un mecanismo que permita al representante legal de la organización nominar o designar a un empleado y delegarle un conjunto específico de poderes suficientes para realizar las actividades de ISBE.
 
 En el contexto de ISBE, podemos lograr esto mediante un documento firmado por el representante legal con el mismo certificado utilizado para firmar los demás documentos contractuales. El documento debe designar explícitamente a un empleado para que actúe en nombre de la organización, y si confiamos en la firma, no tenemos que realizar ninguna verificación sobre dicho empleado.
 
@@ -174,71 +172,154 @@ Después del proceso de onboarding, ISBE emitirá una credencial verificable al 
 
 En cierto sentido, esta Credencial Verificable es la identidad del empleado cuando actúa en nombre de la organización. Si bien se emite como parte del proceso de onboarding en ISBE, no se limita a ISBE, ya que se basa en un documento firmado por la organización, que acredita que la persona identificada en la credencial es un empleado.
 
-Pero no nos detenemos aquí: queremos permitir que más de un empleado actúe en nombre de la organización, y que cada empleado tenga diferentes capacidades, según lo determine la propia organización. Por ejemplo, queremos que la organización designe a un empleado del departamento de finanzas para realizar operaciones financieras con terceros (a los que llamaremos Partes Confiables) y a uno o más empleados del departamento de TI para realizar operaciones técnicas (no financieras).
+Pero no nos detenemos aquí: queremos permitir que más de un empleado actúe en nombre de la organización, y que cada empleado tenga diferentes capacidades, según lo determine la propia organización. Por ejemplo, la organización puede querer designar a un empleado del departamento de finanzas para realizar operaciones financieras con terceros y a uno o más empleados del departamento de TI para realizar operaciones técnicas (no financieras).
 
 ## Asignar autorizaciones específicas a la identidad del empleado
 
-En otras palabras, queremos permitir que la organización designe a uno o más empleados, cada uno con diferentes autorizaciones para operaciones específicas. Cuando el empleado actúe en nombre de la empresa, deberá presentar al Relying Party un documento que especifique los tipos de operaciones que la organización le ha autorizado a realizar.
+En otras palabras, queremos permitir que la organización designe a uno o más empleados, cada uno con diferentes autorizaciones para operaciones específicas. Cuando el empleado actúe en nombre de la empresa, deberá presentar al tercero (Relying Party) un documento que especifique los tipos de operaciones que la organización le ha autorizado a realizar.
 
 Esto normalmente se hace con un **mandato** , que puede describirse como:
 
-> Un mandato es un conjunto de una o más autorizaciones otorgadas por una entidad identificada (el mandante) a otra entidad identificada (el agente) para realizar acciones bien definidas con consecuencias legales en nombre y por cuenta de la primera. En términos generales, los mandatos pueden ser **unilaterales** (otorgados unilateralmente por el mandante), **contractuales** (p. ej., un mandato otorgado a un contable), **estatutarios** (p. ej., un mandato del director general para representar a una persona jurídica) o **legales** (p. ej., un mandato del padre para representar a su hijo).
+> Un mandato es un conjunto de una o más autorizaciones otorgadas por una entidad identificada (el poderdante) a otra entidad identificada para realizar acciones bien definidas con consecuencias legales en nombre y por cuenta de la primera. En términos generales, los mandatos pueden ser **unilaterales** (otorgados unilateralmente por el mandante), **contractuales** (p. ej., un mandato otorgado a un contable), **estatutarios** (p. ej., un mandato del director general para representar a una persona jurídica) o **legales** (p. ej., un mandato del padre para representar a su hijo).
 
-En el contexto de ISBE, nos ocupamos únicamente de un tipo de mandato contractual, donde **el representante legal designa a un empleado y le otorga un subconjunto muy específico de poderes, aquellos necesarios para interactuar con ISBE** o en el contexto del ecosistema ISBE.
+En el contexto de ISBE, nos ocupamos únicamente de un tipo de mandato contractual, donde **el representante legal designa a un empleado y le otorga un subconjunto específico de poderes, aquellos necesarios para interactuar con ISBE** o en el contexto del ecosistema ISBE.
 
-Este mandato es sólo un acuerdo entre las partes (el representante legal, el empleado e ISBE), y no requiere reconocimiento "público" (por ejemplo, por un notario o cualquier entidad regulada).
+Este mandato es sólo un acuerdo entre las partes (el representante legal, el empleado e ISBE), y no requiere reconocimiento "público" (por ejemplo, por un notario o cualquier otra entidad regulada).
 
-Normalmente, esto se hace con un documento PDF que es firmado por el representante legal y por el empleado (para aceptar explícitamente los poderes otorgados), y es reconocido y aceptadoTo improve efficiency,  por el tercero (ISBE y participantes en ISBE, en este caso).
+Normalmente, esto se hace con un documento PDF que es firmado por el representante legal y por el empleado (para aceptar explícitamente los poderes otorgados), y es reconocido y aceptadoT por el tercero (ISBE y participantes en ISBE, en este caso).
 
 Para mejorar la eficiencia, en vez de un PDF usaremos una Credencial Verificable para implementar un mandato electrónico, como una Atestación Electrónica (Cualificada) de Atributos.
 
 ## La Credencial Verificable como Mandato
 
-Al igual que en la versión PDF, esta Credencial Verificable se compone de varios objetos relacionados: `mandante` , `mandatario` , `poder` y `firmante` . El mandato se firma o sella con una firma o sello avanzado o cualificado mediante un certificado eIDAS. Idealmente, se utiliza un certificado de representación para la firma del mandato (la Credencial Verificable).
+Al igual que en la versión PDF, esta Credencial Verificable se compone de varios objetos relacionados: `mandator` , `mandatee` , `power` y `signature` . El mandato se firma o sella con una firma o sello avanzado o cualificado mediante un certificado eIDAS. Idealmente, se utiliza un certificado de representación para la firma del mandato (la Credencial Verificable).
 
 La siguiente imagen representa la estructura de dichas credenciales.
 
-![][image5]
+![Mandate overview](img/mandate-overview.png)
 
-### *Mandatario*
+### *Mandator*
 
-El mandante identifica al empleado de la empresa que delega una parte de sus facultades en el mandatario. El mandante es:
+El "mandator" identifica al empleado de la empresa que delega una parte de sus facultades en el "mandatee". El "mandator" es:
 
 - un **representante legal de la empresa** , de acuerdo con los registros oficiales asociados a la constitución de la organización (por ejemplo, el registro mercantil del país de constitución); o
-- Un empleado que es mandatario en otro mandato donde el mandante es representante legal de la empresa. No se admiten más de dos niveles de delegación.
+- Un empleado que es mandatee en otro mandato donde el "mandator" es representante legal de la empresa. No se admiten más de dos niveles de delegación.
 
 La sección Mandator incluye siempre la identificación de la organización, es decir, el `organizationIdentifier` descrito en secciones anteriores.
 
-### *Mandatario*
+### *Mandatee*
 
-El mandatario es la **persona facultada para representar (y actuar como) a la empresa en determinadas acciones con terceros** . Las facultades otorgadas al mandatario deben ser un subconjunto de las facultades del mandante. Por ejemplo, un empleado (el mandatario) puede ser facultado por el representante legal de la empresa (el mandante) para realizar el proceso de onboarding en ISBE.
+El "mandatee" es la **persona facultada para representar (y actuar como) a la empresa en determinadas acciones con terceros** . Las facultades otorgadas al "mandatee" deben ser un subconjunto de las facultades del mandante. Por ejemplo, un empleado (el "mandatee") puede ser facultado por el representante legal de la empresa (el mandante) para realizar el proceso de onboarding en ISBE.
 
-El objeto mandatario identifica al empleado en quien se delega un subconjunto de facultades. El objeto mandatario contiene:
+El objeto "mandatee" identifica al empleado en quien se delega un subconjunto de facultades. El objeto "mandatee" contiene:
 
 - Un conjunto de **atributos del empleado** (p. ej., nombre, apellidos, correo electrónico) requeridos por el caso de uso específico donde se utilizará la Credencial Verificable. Estos atributos pueden considerarse equivalentes a los campos que se rellenarían en un formulario al utilizar un documento PDF tradicional para autorizar a un empleado.
 - Una **clave pública asociada al empleado** , donde este es el único responsable de la clave privada asociada. Esto es necesario para permitir el uso de la Credencial Verificable que contiene el mandato como un mecanismo **de autenticación y autorización eficiente, escalable y seguro** . Se ampliará este tema más adelante en este documento. La clave privada controlada por el empleado se utiliza para demostrar a las partes que confían en la Credencial Verificable que el titular y el presentador de la credencial son la misma persona identificada en el objeto del mandato.
 
-### *Firmante*
+### *Signer*
 
-El firmante es el mandante o un tercero que certifica que el mandante realmente delegó las facultades al mandatario. El firmante es la entidad que realiza una firma o sello avanzado o cualificado mediante un certificado eIDAS.
+El "signer" es el "mandator" o un tercero que certifica que el "mandator" realmente delegó las facultades al "mandatee". El "signer" es la entidad que realiza una firma o sello avanzado o cualificado mediante un certificado eIDAS.
 
-El firmante es la entidad en la que debe confiar el receptor de la credencial verificable.
+El "signer" es la entidad en la que debe confiar el receptor de la credencial verificable.
 
-### *Potestades*
+### *Powers*
 
-Una lista de cada facultad específica delegada del mandante al mandatario. Las facultades deben ser concretas y lo más limitadas posible, y deben seguir una taxonomía con una semántica bien definida.
+Una lista de cada facultad específica delegada del "mandastor" al "mandatee". Las facultades deben ser concretas y lo más limitadas posible, y deben seguir una taxonomía con una semántica bien definida.
 
-En ISBE, debemos especificar una taxonomía de potencia orientada a las interacciones esperadas. Esto significa que las acciones están bien definidas, son homogéneas y están estandarizadas para el ecosistema. Básicamente, estamos reemplazando los mecanismos actuales para los Mandatos (por ejemplo, en papel o PDF) por una representación más eficiente y procesable por máquina en forma de Credencial Verificable.
+En ISBE, debemos especificar una taxonomía de poderes orientada a las interacciones esperadas. Esto significa que las acciones están bien definidas, son homogéneas y están estandarizadas para el ecosistema. Básicamente, estamos reemplazando los mecanismos actuales para los Mandatos (por ejemplo, en papel o PDF) por una representación más eficiente y procesable por máquina en forma de Credencial Verificable.
 
-Nuestra Taxonomía de Poder podría generalizarse a otras acciones que involucren a empresas del sector privado, pero está fuera del alcance de esta versión del documento.
+Nuestra Taxonomía de Poderes podría generalizarse a otras acciones que involucren a empresas del sector privado, pero está fuera del alcance de esta versión del documento.
 
-## A la firma del mandato
+## Sobre la firma del mandato
 
 En ISBE exigimos que la firma electrónica de la Credencial Verificable representativa del mandato se realice de forma equivalente a su homóloga analógica (el documento PDF): debe firmarse con **firma avanzada o cualificada utilizando un certificado cualificado de firma electrónica emitido a nombre de un representante legal o de la organización** (lo que llamamos certificado de representación).
 
 De esta forma, la Credencial Verificable tiene el mismo nivel de seguridad legal que el PDF equivalente, pero es mucho más eficiente de verificar: el PDF requiere la verificación manual del texto que contiene, mientras que la verificación de la credencial se puede automatizar gracias a su formato legible por máquinas.
 
 Esto significa que la Credencial Verificable se puede usar en cualquier lugar donde se utilice el PDF, con el mismo nivel de riesgo y seguridad jurídica, pero el procesamiento puede ser instantáneo, en comparación con los tiempos de procesamiento más largos típicos de un proceso basado en PDF.
+
+## El método `did:elsi`
+
+El método `did:elsi` es un método DID para **personas jurídicas** , que conecta el mundo del reglamento eIDAS con el mundo de las Credenciales Verificables, maximizando al mismo tiempo **el cumplimiento regulatorio** y **la descentralización** .
+
+La especificación completa del `método did:` se puede encontrar en [DID ETSI Legal person Semantic Identifier Method Specification (did:elsi)](https://alastria.github.io/did-method-elsi/), pero aquí hacemos un breve resumen.
+
+Por ejemplo, el identificador DID de Alastria es `did:elsi:VATES-G87936159`, ya que el NIF de Alastria es `G87936159` y la cadena `VATES-G87936159` corresponde al atributo `organizationIdentifier` incluido en el certificado eIDAS emitido por un proveedor de servicios de certificación cualificado (QTSP) para Alastria. Por ejemplo, en el certificado de representación utilizado por el presidente de Alastria para firmar documentos.
+
+Es así de simple: El método es puramente derivativo y se basa en el atributo `organizationIdentifier` de los certificados eIDAS. Esto significa que es extremadamente fácil de administrar, no requiere búsquedas en ningún registro ni base de datos adicional y el documento DID no necesita contener la propiedad "verificationMethod" porque es implícito.
+
+Cualquier organización que pueda operar en la economía digital y que pueda firmar digitalmente un documento utilizando una firma cualificada o avanzada con certificado cualificado válida en la UE (como una factura o un contrato) ya tiene un identificador DID bajo el método `did:elsi` sin ninguna acción adicional y que puede ser utilizado sin ninguna intervención de terceras entidades.
+
+## Comparación con otros métodos DID
+
+El uso de `did:elsi` en ISBE es superior a otras opciones, como las que "inventan" un nuevo identificador en ISBE (por alguna entidad de gobernanza centralizada) o dejar que las organizaciones "inventen" un nuevo identificador de su elección.
+
+A continuación se presenta una breve comparación del método `did:elsi` con el `did:isbe`, basada en la documentación disponible actualmente.
+
+**Madurez**
+- 🟩 elsi: En producción en un contexto internacional desde hace más de un año.
+- 🟥 isbe: Todavía en diseño, y faltan detalles críticos.
+
+**Posibilidad de firma cualificada o avanzada con certificado cualificado**
+- 🟩 elsi: Basado en certificado cualificado emitido por cualquier QTSP Europeo, que permite firma cualificada (certificado cualificado y QSCD) o firma avanzada con certificado cualificado (certificado cualificado sin QSCD).
+  
+  Aunque eIDAS no requiere certificado cualificado para una firma avanzada, tanto el ENS como muchas aplicaciones sectoriales (por ejemplo banca o salud) requieren un certificado cualificado aunque se use una firma avanzada, cuando el nivel de seguridad requerido es medio o alto.
+
+- 🟥 isbe: El documento de diseño no define el marco específico, politicas y entorno regulatorio en el cual se generan las claves privadas, pero de la documentación que existe se puede deducir que no se pueden conseguir ni firmas cualificadas ni firmas avanzadas con certificado cualificado.
+  
+  Esto quiere decir que los sectores y aplicaciones que requieren una firma con certificado cualificado no pueden usar Credenciales Verificables basadas en did:isbe. Por ejemplo, la Administración pública (por el ENS).
+
+**Facilidad de adopción por el sector público**
+- 🟩 elsi: Para las administraciones públicas que actualmente emiten y reciben documentos firmados electrónicamente, una Credencial Verificable con una firma JAdES usando el did:elsi como identificador único se puede considerar como un documento emitido/recibido en un formato adicional, simplemente con un mecanismo de transmisión diferente (OID4VCI/OID4VP). El identificador único de la organización es exactamente el mismo que usan actualmente (con la única diferencia de un prefijo constante). En emisión se puede usar el mismo certificado que se usa para la firma/sello de los otros documentos, y en recepción el proceso de verificación de firma de la organización o representante y sus consideraciones legales/cumplimiento son muy parecidas.
+- 🟥 isbe: Falta información de detalle en como realiza el proceso de firma en did:isbe, pero de la documentación que existe se puede deducir que en emisión el proceso es completamente diferente al que usan actualmente, y además existen muchas dudas sobre el tipo de firma que se puede conseguir (desde luego, nunca puede ser una firma cualificada o una firma con certificado cualificado), ya que el proceso de generación de la clave privada y artefactos asociados no cumple con los requerimientos necesarios para ello.
+
+**Facilidad de adopción por el sector privado**
+
+- 🟩 elsi: Aplican las mismas consideraciones que en el sector público, aunque en entornos B2B se podrían llegar a acuerdos que utilizaran did:isbe, si las entidades privadas están dispuestas a aceptar el riesgo legal y operacional asociado.
+  
+  No obstante, al menos para entidades privadas en sectores regulados, es dudoso que los responsables de cumplimiento acepten esos riesgos asociados al did:isbe, cuando existe la opcion del did:elsi que tiene casi las mismas implicaciones que los sistemas de firma usados actualmente.
+
+  Además, en cuanto las entidades privadas deban interactuar con la Administración pública, aplican las mismas consideraciones que para la Administración pública.
+
+- 🟥 isbe: Ver la justificación en el punto de did:elsi.
+
+**Generación del identificador**
+- 🟩 elsi: Generado por las autoridades competentes en cada pais miembro. El identificador es uno de los identificadores únicos asociados a la organización y de obligado uso por la regulación en su campo de utilización.
+- 🟥 isbe: Generado aleatoriamente, y en principio no asociado a la identidad real de la organización.
+
+**Asociación del identificador con la identidad real de la organización**
+- 🟩 elsi: Asociado por la entidad regulada correspondiente. Hay una relación 1:1 entre el DID y un identificador único asociado por una entidad regulada a la organización. A partir del DID se puede obtener la identidad real de la organización sin necesidad de una entidad intermedia diferente de las reguladas, y sin consultar a ningún repositorio mantenido por entidades diferentes (como ISBE o su red).
+- 🟥 isbe: Asociado por un mecanismo no regulado. En la documentación del método `isbe` todavía no está definido si la asociación será como una declaración responsable o si en ISBE se realizará una validación de la asociación entre el identificador y la identidad real de la organización. En cualquiera de los dos casos, impide realizar firmas cualificadas o incluso avanzadas con certificado cualificado, a menos que ISBE se constituya en un QTSP.
+
+**Interoperabilidad fuera del ecosistema ISBE**
+- 🟩 elsi: El identificador tiene relación 1:1 con alguno de los identificadores únicos oficiales de la organización reconocidos a nivel pan-Europeo (incluso global, como el LEI) y además está asociado por un QTSP con material criptográfico que permite demostrar a la organización esa asociación con un nivel alto de confianza. El uso de did:elsi no está ligado a ISBE y se puede usar fuera del ecosistema por organizaciones que no necesitan ni pertenecer a ISBE ni usar APIs u otros mecanismos específicos a ISBE. Incluso en el caso extremo de que ISBE desapareciese, el mecanismo did:elsi por su naturaleza, seguiría funcionando.
+- 🟥 isbe: Solo aplicable a ecosistema ISBE, requiere que las organizaciones que lo usen pertenezcan a ISBE o usen APIs de terceros que estén en ISBE. Si ISBE desaparece, el mecanismo deja de funcionar, por su alta dependencia.
+
+**Rol de ISBE y descentralización**
+- 🟩 elsi: El mecanismo no depende de ISBE, sino del marco global Europeo eIDAS/eIDAS2 y su infraestructura distribuida, por lo que se consigue la máxima descentralización posible con alto cumplimiento regulatorio. ISBE no tiene ninguna capacidad técnica para modificar la parte core del DID Document, por lo que incluso un compromiso de todo ISBE no afecta a la seguridad del método did:elsi.
+- 🟥 isbe: ISBE tiene la capacidad técnica para modificar cualquier DID Document, y debe realizar un ejercicio consciente de voluntad para no asumir un rol centralizado de control. Un compromiso/hackeo de ISBE puede comprometer la seguridad del DID Document asociado (al menos no existe ningún documento que detalle como se pordría evitar este problema con el did:isbe).
+
+**Robustez y resiliencia**
+- 🟩 elsi: Alta, esecnialmente la misma robustez y resiliencia que los mecanismos actuales de firma electrónica en la UE, existentes desde hace una década. No hay ninguna entidad nueva que requiera infraestructura nueva y no probada.
+- 🟥 isbe: Desconocida, por no existir ninguna implementación en producción todavía. Pero de la documentación existente se deduce que la dependencia de ISBE es muy alta, por lo que su robustez y resiliencia es mucho menor que para did:elsi.
+
+**Multiplicidad de identificadores para una misma organización**
+- 🟩 elsi: Una organización puede tener diferentes identificadores únicos, pero deben ser alguno de los identificadores únicos oficiales que deben ser usados obligatoriamente en los ámbitos correspondientes. Por ejemplo, en la relación con la Administración pública española, una empresa se debe identificar con el NIF, tanto para la contratación, facturación, notificaciones, etc. Cualquier Credencial Verificable que sea usada en este ámbito debe usar como identificador único el NIF, nunca otro identificador no reconocido "inventado".
+- 🟥 isbe: Se basa en potencialmente múltiples identificadores únicos no reconocidos y que no se pueden usar en la mayoría de los casos en que una empresa intercambia Credenciales Verificables con otras empresas, ciudadanos o la Administración pública española.
+
+
+
+- **Validez legal** : Con otros métodos DID, la firma de la Credencial Verificable no puede ser una firma avanzada/cualificada según eIDAS, por lo que ofrece menor seguridad jurídica y puede resultar más engorrosa en caso de disputas o repudio de la firma. Con `did:elsi` , dado que la clave privada utilizada para firmar es la asociada al certificado eIDAS y el identificador único de la organización está incluido en el certificado utilizado para firmar, se proporciona el vínculo legal necesario para que la firma tenga la misma validez que una firma manuscrita (en el caso de una Firma/Sello Electrónico Cualificado) o un fuerte valor probatorio (en el caso de una Firma/Sello Electrónico Avanzado).
+- **Escalabilidad** : Con `did:elsi` , cualquier organización que pueda operar en la economía digital de la UE ( `did:elsi` no se limita a España ni a ISBE) y que pueda firmar digitalmente un documento con firma avanzada o cualificada (como una factura o un contrato) obtiene **automáticamente** un identificador DID, sin necesidad de acciones adicionales ni intervención de terceros. En otras palabras, no es necesario que ninguna parte de confianza de ISBE participe en la generación o gestión del identificador único de la organización utilizado en `did:elsi` . No es necesario establecer un proceso para la creación de nuevos identificadores, ya que estos ya existen y cuentan con reconocimiento oficial.
+- **Baja barrera de entrada** : En España, la adopción de certificados eIDAS por parte de las organizaciones es muy alta, y se asume que el perfil de las organizaciones que participarán en ISBE (utilizando Credenciales Verificables, Blockchain y tecnologías relacionadas) está orientado a la tecnología y altamente digitalizado. Usar un certificado eIDAS nunca debería ser un problema para estas organizaciones. Además, el proceso de onboarding en ISBE requiere la firma electrónica de algunos documentos, por lo que las organizaciones deben usar un certificado eIDAS de todas formas.
+- **Resiliencia** : Otros métodos como `did:ala` o `did:ebsi` requieren que los identificadores y los documentos DID asociados se registren en la red blockchain para su resolución y otros procesos. `did:elsi` se basa en el marco e infraestructura eIDAS existente, que lleva muchos años en producción, está regulado, auditado y debe cumplir con todos los requisitos de ciberseguridad. Por lo tanto, `did:elsi` no requiere infraestructura nueva ni adicional en ISBE. La resolución de un did es prácticamente idéntica a la verificación de una firma eIDAS, un proceso bien conocido y de probada fiabilidad.
+- **Más fácil para ISBE** : Si creáramos nuevos identificadores (ya sea de forma centralizada por ISBE o por cada organización), tendríamos que realizar un costoso proceso de validación para garantizar que el nuevo identificador se asigne a la organización real. Con `did:elsi,` evitamos la verificación, ya que esta ya la realiza el proveedor de servicios de certificación cualificados (QTSP) que emitió el certificado para la firma/sello de la organización, como parte del proceso de inclusión de un identificador oficial en el certificado. Este proceso tiene un nivel de seguridad (NdA) alto, algo que ISBE no puede lograr (a menos que ISBE sea un QTSP, claro está).
+- **Mayor interoperabilidad** : Además, la creación de nuevos identificadores y la validación en ISBE limitan el uso de los identificadores a ISBE. El uso de los identificadores oficiales que ya cuentan con reconocimiento transfronterizo en la UE es una opción mucho mejor que permite una mayor interoperabilidad.
+- **Actualizabilidad automática** : En `did:elsi,` el material criptográfico asociado al identificador único de la organización se crea y gestiona de forma totalmente compatible con eIDAS, con pleno soporte regulatorio. Su ciclo de vida completo (inicialización, creación, revocación y actualización) ya es bien conocido y cumple con la normativa eIDAS. En otros métodos DID, como `did:ala` o `did:ebsi` , este proceso debe implementarse desde cero y no se ha probado en producción, por lo que están sujetos a numerosos errores y problemas, al menos al principio.
+
+  Otros métodos DID deben definir cómo actualizar las claves privadas y públicas y cómo garantizar que estén realmente asociadas a la identidad real de la organización. Toda esta complejidad no existe con `did:elsi` ; mejor dicho, esta complejidad ya se implementó hace muchos años y cumple plenamente con el reglamento eIDAS.
+
+
 
 # Identificadores de organizaciones
 
