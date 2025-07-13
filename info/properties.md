@@ -75,28 +75,6 @@
 <tr>
 <th colspan="2">
 
-**Robustez y resiliencia**
-
-</th>
-</tr>
-
-<tr>
-<td valign="top">
-
-🟩 elsi: Alta, esencialmente la misma robustez y resiliencia que los mecanismos actuales de firma electrónica en la UE, existentes desde hace una década. No hay ninguna entidad nueva que requiera infraestructura nueva y no probada.
-
-</td>
-<td valign="top">
-
-🟥 isbe: Desconocida, por no existir ninguna implementación en producción todavía. Pero de la documentación existente se deduce que la dependencia de ISBE es muy alta, por lo que su robustez y resiliencia es mucho menor que para did:elsi.
-
-</td>
-</tr>
-
-
-<tr>
-<th colspan="2">
-
 **Madurez**
 
 </th>
@@ -289,7 +267,7 @@ Además, en cuanto las entidades privadas deban interactuar con la Administraci�
 <tr>
 <td valign="top">
 
-🟩 elsi: Alta, esecnialmente la misma robustez y resiliencia que los mecanismos actuales de firma electrónica en la UE, existentes desde hace una década. No hay ninguna entidad nueva que requiera infraestructura nueva y no probada.
+🟩 elsi: Alta, esencialmente la misma robustez y resiliencia que los mecanismos actuales de firma electrónica en la UE, existentes desde hace una década. No hay ninguna entidad nueva que requiera infraestructura nueva y no probada.
 
 </td>
 <td valign="top">

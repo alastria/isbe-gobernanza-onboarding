@@ -1,39 +1,5 @@
 # Onboarding en ISBE - Identidad de las organizaciones y de los empleados de las organizaciones - Credenciales verificables
 
-- [Onboarding en ISBE - Identidad de las organizaciones y de los empleados de las organizaciones - Credenciales verificables](#onboarding-en-isbe---identidad-de-las-organizaciones-y-de-los-empleados-de-las-organizaciones---credenciales-verificables)
-- [Onboarding en ISBE](#onboarding-en-isbe)
-  - [Introducción](#introducción)
-  - [Primera fase: Verificación de la organización, firma del contrato y registro de la organización](#primera-fase-verificación-de-la-organización-firma-del-contrato-y-registro-de-la-organización)
-    - [Verificar el correo electrónico de la persona que conduce el proceso](#verificar-el-correo-electrónico-de-la-persona-que-conduce-el-proceso)
-    - [Recoger información sobre la organización](#recoger-información-sobre-la-organización)
-    - [Recoger información sobre la persona nominada por la organización](#recoger-información-sobre-la-persona-nominada-por-la-organización)
-      - [¿Quién puede ser designado como LEAR?](#quién-puede-ser-designado-como-lear)
-    - [Generación de los documentos contractuales](#generación-de-los-documentos-contractuales)
-    - [Firma de los documentos contractuales](#firma-de-los-documentos-contractuales)
-    - [Recepción y verificación de los documentos contractuales](#recepción-y-verificación-de-los-documentos-contractuales)
-    - [Registro de la organización y creación de la cuenta inicial](#registro-de-la-organización-y-creación-de-la-cuenta-inicial)
-  - [Segunda fase: Generación de la Credencial Verificable para el empleado designado](#segunda-fase-generación-de-la-credencial-verificable-para-el-empleado-designado)
-- [Identidad de un empleado que actúa en nombre de la organización](#identidad-de-un-empleado-que-actúa-en-nombre-de-la-organización)
-  - [Asignar autorizaciones específicas a la identidad del empleado](#asignar-autorizaciones-específicas-a-la-identidad-del-empleado)
-  - [La Credencial Verificable como Mandato](#la-credencial-verificable-como-mandato)
-    - [*Mandator*](#mandator)
-    - [*Mandatee*](#mandatee)
-    - [*Signer*](#signer)
-    - [*Powers*](#powers)
-  - [Sobre la firma del mandato](#sobre-la-firma-del-mandato)
-  - [El método `did:elsi`](#el-método-didelsi)
-  - [Comparación con otros métodos DID](#comparación-con-otros-métodos-did)
-- [Identificadores de organizaciones](#identificadores-de-organizaciones)
-    - [*Relación entre el NIF y la firma avanzada y cualificada de documentos*](#relación-entre-el-nif-y-la-firma-avanzada-y-cualificada-de-documentos)
-  - [Verificación de la identidad real de la Organización](#verificación-de-la-identidad-real-de-la-organización)
-    - [*Relación con la onboarding de partes confiantes en el ecosistema EUDIW*](#relación-con-la-onboarding-de-partes-confiantes-en-el-ecosistema-eudiw)
-  - [Verificación de la identidad del representante legal](#verificación-de-la-identidad-del-representante-legal)
-- [El NIF y Credenciales Verificables emitidos por las organizaciones](#el-nif-y-credenciales-verificables-emitidos-por-las-organizaciones)
-  - [La Credencial Verificable como documento legalmente vinculante](#la-credencial-verificable-como-documento-legalmente-vinculante)
-  - [El método `did:elsi`](#el-método-didelsi-1)
-  - [Comparación con otros métodos DID](#comparación-con-otros-métodos-did-1)
-
-
 # Onboarding en ISBE
 
 ## Introducción
