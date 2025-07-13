@@ -1,25 +1,24 @@
 # Onboarding en ISBE - Identidad de las organizaciones y de los empleados de las organizaciones - Credenciales verificables
 
 - [Onboarding en ISBE - Identidad de las organizaciones y de los empleados de las organizaciones - Credenciales verificables](#onboarding-en-isbe---identidad-de-las-organizaciones-y-de-los-empleados-de-las-organizaciones---credenciales-verificables)
-- [Onboarding en ISBE](#onboarding-en-isbe)
-  - [Introducción](#introducción)
-  - [Primera fase: Verificación de la organización, firma del contrato y registro de la organización](#primera-fase-verificación-de-la-organización-firma-del-contrato-y-registro-de-la-organización)
-    - [Verificar el correo electrónico de la persona que conduce el proceso](#verificar-el-correo-electrónico-de-la-persona-que-conduce-el-proceso)
-    - [Recoger información sobre la organización](#recoger-información-sobre-la-organización)
-    - [Recoger información sobre la persona nominada por la organización](#recoger-información-sobre-la-persona-nominada-por-la-organización)
-      - [¿Quién puede ser designado como LEAR?](#quién-puede-ser-designado-como-lear)
-    - [Generación de los documentos contractuales](#generación-de-los-documentos-contractuales)
-    - [Firma de los documentos contractuales](#firma-de-los-documentos-contractuales)
-    - [Recepción y verificación de los documentos contractuales](#recepción-y-verificación-de-los-documentos-contractuales)
-    - [Registro de la organización y creación de la cuenta inicial](#registro-de-la-organización-y-creación-de-la-cuenta-inicial)
-  - [Segunda fase: Generación de la Credencial Verificable para el empleado designado](#segunda-fase-generación-de-la-credencial-verificable-para-el-empleado-designado)
-- [Identidad de un empleado que actúa en nombre de la organización](#identidad-de-un-empleado-que-actúa-en-nombre-de-la-organización)
+- [Introducción](#introducción)
+- [Primera fase: Verificación de la organización, firma del contrato y registro de la organización](#primera-fase-verificación-de-la-organización-firma-del-contrato-y-registro-de-la-organización)
+  - [Verificar el correo electrónico de la persona que conduce el proceso](#verificar-el-correo-electrónico-de-la-persona-que-conduce-el-proceso)
+  - [Recoger información sobre la organización](#recoger-información-sobre-la-organización)
+  - [Recoger información sobre la persona nominada por la organización](#recoger-información-sobre-la-persona-nominada-por-la-organización)
+    - [¿Quién puede ser designado como LEAR?](#quién-puede-ser-designado-como-lear)
+  - [Generación de los documentos contractuales](#generación-de-los-documentos-contractuales)
+  - [Firma de los documentos contractuales](#firma-de-los-documentos-contractuales)
+  - [Recepción y verificación de los documentos contractuales](#recepción-y-verificación-de-los-documentos-contractuales)
+  - [Registro de la organización y creación de la cuenta inicial](#registro-de-la-organización-y-creación-de-la-cuenta-inicial)
+- [Segunda fase: Generación de la Credencial Verificable para el empleado designado](#segunda-fase-generación-de-la-credencial-verificable-para-el-empleado-designado)
+  - [Identidad de un empleado que actúa en nombre de la organización](#identidad-de-un-empleado-que-actúa-en-nombre-de-la-organización)
   - [Asignar autorizaciones específicas a la identidad del empleado](#asignar-autorizaciones-específicas-a-la-identidad-del-empleado)
   - [La Credencial Verificable como Mandato](#la-credencial-verificable-como-mandato)
-    - [*Mandator*](#mandator)
-    - [*Mandatee*](#mandatee)
-    - [*Signer*](#signer)
-    - [*Powers*](#powers)
+    - [Mandator](#mandator)
+    - [Mandatee](#mandatee)
+    - [Signer](#signer)
+    - [Powers](#powers)
   - [Sobre la firma del mandato](#sobre-la-firma-del-mandato)
   - [El método `did:elsi`](#el-método-didelsi)
   - [Comparación con otros métodos DID](#comparación-con-otros-métodos-did)
@@ -34,9 +33,7 @@
   - [Comparación con otros métodos DID](#comparación-con-otros-métodos-did-1)
 
 
-# Onboarding en ISBE
-
-## Introducción
+# Introducción
 
 Antes de poder interactuar en el ecosistema ISBE, una organización debe registrarse siguiendo el proceso de onboarding de ISBE, independientemente del motivo por el cual la organización desea unirse a ISBE (como por ejemplo añadir un nodo regular a una de las redes blockchain, publicar una solución en el Catálogo ISBE, etc.).
 
@@ -77,7 +74,7 @@ Es decir, el proceso de onboarding en ISBE se compone de dos fases:
 1. **Primera fase**: Verificación y KYC (Know Your Customer) de la organización, firma del contrato, verificación del mismo por parte de ISBE y registro de la organización en ISBE.
 2. **Segunda fase**: Generación de una Credencial Verificable para el empleado designado durante la primera fase. Esta Credencial Verificable es un mandato electrónico que el empleado utilizará para autenticarse ante ISBE y operar la cuenta de la organización.
 
-## Primera fase: Verificación de la organización, firma del contrato y registro de la organización
+# Primera fase: Verificación de la organización, firma del contrato y registro de la organización
 
 La primera fase consiste en los siguientes pasos:
 
@@ -88,7 +85,7 @@ La primera fase consiste en los siguientes pasos:
 5. Recepción y verificación de los documentos contractuales por ISBE
 6. Registro de la organización y creación de la cuenta inicial en ISBE
 
-### Verificar el correo electrónico de la persona que conduce el proceso
+## Verificar el correo electrónico de la persona que conduce el proceso
 
 Debemos permitir que la persona que gestione el proceso de onboarding por parte de la organización sea un empleado normal, en lugar de exigir que lo realice un representante legal de la organización. Posteriormente, esta persona deberá presentar uno o más documentos firmados por un representante legal de la organización para garantizar la seguridad jurídica del proceso de onboarding.
 
@@ -108,7 +105,7 @@ Por supuesto, el formulario debe contener los textos y mecanismos de cumplimient
 
 La persona que gestione el proceso deberá aceptar los términos y condiciones de ISBE. La aceptación se registrará en la base de datos de onboarding.
 
-### Recoger información sobre la organización
+## Recoger información sobre la organización
 
 ![Company information](img/companyinfo.png)
 
@@ -116,7 +113,7 @@ La persona que gestiona el proceso ingresará información sobre la organizació
 
 **Limitación del país** : Solo permitimos organizaciones que tengan la sede constituida en un país de la UE/EEE, o un representante legal en un país de la UE/EEE. El usuario debe seleccionar el país de una lista de países permitidos. Comprobaremos que el país sea correcto al verificar posteriormente la firma electrónica del contrato que la organización enviará a ISBE. Es decir, el código de pais que se encuentra dentro del campo Subject del certificado cualificado usado para la firma PAdES del contrato debe coincidir con el país seleccionado en el formulario.
 
-### Recoger información sobre la persona nominada por la organización
+## Recoger información sobre la persona nominada por la organización
 
 En esta sección se identifica a la persona que actuará como **LEAR** de la organización.
 
@@ -128,7 +125,7 @@ Esto es necesario porque, normalmente, el representante legal de la organizació
 
 La información del formulario será incluida en el documento PDF que se generará automáticamente y que deberá firmar un representante legal de la organización.
 
-#### ¿Quién puede ser designado como LEAR?
+### ¿Quién puede ser designado como LEAR?
 
 Cualquier persona mayor de edad puede ser designada como LEAR de una entidad. No existe ninguna otra limitación al respecto.
 
@@ -140,11 +137,11 @@ Esta persona debe ser alguien de confianza para la dirección de la entidad y co
 
 Además, una misma persona puede ser designada como LEAR por más de una entidad.
 
-### Generación de los documentos contractuales
+## Generación de los documentos contractuales
 
 El sistema de onboarding genera automáticamente documentos contractuales (idealmente solo uno) utilizando la información proporcionada en los formularios descritos anteriormente. Los documentos están en formato PDF y deben ser firmados por un representante legal de la organización y luego subidos al portal ISBE para continuar con el proceso de onboarding.
 
-### Firma de los documentos contractuales
+## Firma de los documentos contractuales
 
 Los documentos deben ser firmados electrónicamente utilizando un certificado cualificado emitido por un QTSP a la organización, bien sea un certificado cualificado de representación o un certificado cualificado de sello. Llamaremos genéricamente a esos certificados como **certificados organizativos eIDAS**.
 
@@ -158,13 +155,13 @@ En ISBE se deben evitar las firmas manuscritas, ya que implican procesos manuale
 >
 > A primera vista, un sello debería ser suficiente para el onboarding de ISBE, y evita solicitar copias físicas del certificado mercantil y verificación manual en registros mercantiles nacionales (ej. vía e-Justice). Pero todo depende de si necesitamos la vinculación de un representante legal.
 
-### Recepción y verificación de los documentos contractuales
+## Recepción y verificación de los documentos contractuales
 
 El portal de onboarding de ISBE permite a las organizaciones subir los documentos contractuales firmados, asociados a la instancia del proceso de onboarding iniciado en los pasos anteriores.
 
 El proceso de onboarding de ISBE realiza algunas verificaciones automáticas (como verificación de firma) y notifica a un empleado de ISBE que hay un proceso de onboarding pendiente para revisión y aprobación manual.
 
-### Registro de la organización y creación de la cuenta inicial
+## Registro de la organización y creación de la cuenta inicial
 
 Tras la aprobación por parte de un empleado de ISBE, la nueva organización se registra en ISBE y se crea una cuenta de la organización con los datos iniciales. Inmediatamente después, y de forma automática, el sistema de onboarding de ISBE genera una Credencial Verificable para el empleado designado durante la primera fase.
 
@@ -173,7 +170,7 @@ Esta Credencial Verificable cumple dos propósitos al mismo tiempo:
 - Como mecanismo **de autenticación** para el empleado, sirviendo como identidad digital de ese empleado en ISBE y con otros participantes que acepten la credencial como mecanismo de autenticación.
 - Como **mandato** , acreditar que el empleado ha sido autorizado por la organización (en rigor, por un representante legal de la organización) para realizar actividades específicas en nombre de la organización.
 
-## Segunda fase: Generación de la Credencial Verificable para el empleado designado
+# Segunda fase: Generación de la Credencial Verificable para el empleado designado
 
 Tras el registro de la empresa, ISBE genera automáticamente una Credencial Verificable para el empleado designado durante la primera fase. Esta Credencial Verificable es en realidad un mandato electrónico que el empleado utilizará para autenticarse ante ISBE y operar la cuenta de la organización.
 
@@ -188,7 +185,7 @@ Esta segunda fase se realiza automáticamente después de la primera fase y cons
 
 
 
-# Identidad de un empleado que actúa en nombre de la organización
+## Identidad de un empleado que actúa en nombre de la organización
 
 En la mayoría de los casos, una organización no actúa por sí misma, sino que es un empleado de la misma quien interactúa con terceros, actuando en nombre de la organización. Por ejemplo, cuando una organización se incorpora a ISBE o realiza cualquier otra tarea administrativa, es un empleado quien ejecuta los procesos asociados.
 
@@ -232,7 +229,7 @@ La siguiente imagen representa la estructura de dichas credenciales.
 
 ![Mandate overview](img/mandate-overview.png)
 
-### *Mandator*
+### Mandator
 
 El "mandator" identifica al empleado de la empresa que delega una parte de sus facultades en el "mandatee". El "mandator" es:
 
@@ -241,7 +238,7 @@ El "mandator" identifica al empleado de la empresa que delega una parte de sus f
 
 La sección Mandator incluye siempre la identificación de la organización, es decir, el `organizationIdentifier` descrito en secciones anteriores.
 
-### *Mandatee*
+### Mandatee
 
 El "mandatee" es la **persona facultada para representar (y actuar como) a la empresa en determinadas acciones con terceros** . Las facultades otorgadas al "mandatee" deben ser un subconjunto de las facultades del mandante. Por ejemplo, un empleado (el "mandatee") puede ser facultado por el representante legal de la empresa (el mandante) para realizar el proceso de onboarding en ISBE.
 
@@ -250,13 +247,13 @@ El objeto "mandatee" identifica al empleado en quien se delega un subconjunto de
 - Un conjunto de **atributos del empleado** (p. ej., nombre, apellidos, correo electrónico) requeridos por el caso de uso específico donde se utilizará la Credencial Verificable. Estos atributos pueden considerarse equivalentes a los campos que se rellenarían en un formulario al utilizar un documento PDF tradicional para autorizar a un empleado.
 - Una **clave pública asociada al empleado** , donde este es el único responsable de la clave privada asociada. Esto es necesario para permitir el uso de la Credencial Verificable que contiene el mandato como un mecanismo **de autenticación y autorización eficiente, escalable y seguro** . Se ampliará este tema más adelante en este documento. La clave privada controlada por el empleado se utiliza para demostrar a las partes que confían en la Credencial Verificable que el titular y el presentador de la credencial son la misma persona identificada en el objeto del mandato.
 
-### *Signer*
+### Signer
 
 El "signer" es el "mandator" o un tercero que certifica que el "mandator" realmente delegó las facultades al "mandatee". El "signer" es la entidad que realiza una firma o sello avanzado o cualificado mediante un certificado eIDAS.
 
 El "signer" es la entidad en la que debe confiar el receptor de la credencial verificable.
 
-### *Powers*
+### Powers
 
 Una lista de cada facultad específica delegada del "mandastor" al "mandatee". Las facultades deben ser concretas y lo más limitadas posible, y deben seguir una taxonomía con una semántica bien definida.
 
