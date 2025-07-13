@@ -57,11 +57,7 @@
 
 
 <style>
-
-   .tablecentered th {
-      text-align: center;
-   }
-
+.tablecentered th {text-align: center;}
 </style>
 
 
