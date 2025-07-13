@@ -56,14 +56,15 @@
 
 
 
+<style
+  type="text/css">
+.tablecentered th {text-align: center;}
+.tablecentered td {vertical-align: top;}
+</style>
 
 
 
 <table class="tablecentered">
-<style>
-.tablecentered th {text-align: center;}
-.tablecentered td {vertical-align: top;}
-</style>
 
 <thead>
 <tr>
