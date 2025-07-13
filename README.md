@@ -1,4 +1,4 @@
-# Onboarding en ISBE - Identidad de las organizaciones y de los empleados de las organizaciones - Credenciales verificables
+# Onboarding en ISBE - Identidad de las organizaciones y de los empleados de las organizaciones - Credenciales verificables<!-- omit in toc -->
 
 - [Introducción](#introducción)
 - [Primera fase: Verificación de la organización, firma del contrato y registro de la organización](#primera-fase-verificación-de-la-organización-firma-del-contrato-y-registro-de-la-organización)
