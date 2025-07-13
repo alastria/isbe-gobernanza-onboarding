@@ -58,6 +58,7 @@
 
 <style>
 .tablecentered th {text-align: center;}
+.tablecentered td {vertical-align: top;}
 </style>
 
 
