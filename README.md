@@ -261,7 +261,7 @@ En España, este atributo coincide con el **Número de Identificación Fiscal (N
 
 El NIF (Número de Identificación Fiscal) es también el identificador único, crucial y consistente de la entidad emisora en los documentos dirigidos a los ciudadanos en España. Es un requisito universal para fines legales, fiscales y comerciales.
 
-No obstante, para poder inter-operar en los ecosistemas que esperan un identificador en formato `did` en ciertos campos de una Credencial Verificable (como en el atributo `issuer`), en vez de utilizar directamente el atributo `organizationIdentifier` del certificado cualificado, usaremos el DID Method `did:elsi` que está basado en el contenido del certificado cualificado y proporciona la interoperabilidad necesaria.
+No obstante, para poder interoperar en los ecosistemas que esperan un identificador en formato `did` en ciertos campos de una Credencial Verificable (como en el atributo `issuer`), en vez de utilizar directamente el atributo `organizationIdentifier` del certificado cualificado, usaremos el DID Method `did:elsi` que está basado en el contenido del certificado cualificado y proporciona la interoperabilidad necesaria.
 
 ## El método `did:elsi`
 
@@ -283,23 +283,23 @@ A continuación se presenta una breve comparación del método `did:elsi` con el
 
 **Madurez**
 
-- 🟩 elsi: En producción en un contexto internacional desde hace más de un año.
-- 🟥 isbe: Todavía en diseño, y faltan detalles críticos.
+- 🟩 elsi: Está en producción en un contexto internacional desde hace más de un año.
+- 🟥 isbe: Está todavía en diseño, y faltan detalles críticos.
 
 **Posibilidad de firma cualificada o avanzada con certificado cualificado**
 
-- 🟩 elsi: Basado en certificado cualificado emitido por cualquier QTSP Europeo, que permite firma cualificada (certificado cualificado y QSCD) o firma avanzada con certificado cualificado (certificado cualificado sin QSCD).
+- 🟩 elsi: Está basado en certificado cualificado emitido por cualquier QTSP Europeo, y para la credencial requiere firma cualificada (certificado cualificado y QSCD) o firma avanzada con certificado cualificado (certificado cualificado sin QSCD).
   
-  Aunque eIDAS no requiere certificado cualificado para una firma avanzada, tanto el ENS como muchas aplicaciones sectoriales (por ejemplo banca o salud) requieren un certificado cualificado aunque se use una firma avanzada, cuando el nivel de seguridad requerido es medio o alto.
+  Aunque eIDAS no requiere certificado cualificado para una firma avanzada, tanto el ENS como muchas aplicaciones sectoriales (por ejemplo banca o salud) requieren un certificado cualificado aunque se use una firma avanzada, cuando el nivel de seguridad requerido es medio o alto. Por esto, las Credenciales Verificables que usan `did:elsi` son compatibles con los requerimientos de los entornos mencionados.
 
 - 🟥 isbe: El documento de diseño no define el marco específico, políticas y entorno regulatorio en el cual se generan las claves privadas, pero de la documentación que existe se puede deducir que no se pueden conseguir ni firmas cualificadas ni firmas avanzadas con certificado cualificado.
   
-  Esto quiere decir que los sectores y aplicaciones que requieren una firma con certificado cualificado no pueden usar Credenciales Verificables basadas en did:isbe. Por ejemplo, la Administración pública (por el ENS).
+  Esto quiere decir que los sectores y aplicaciones que requieren una firma con certificado cualificado no pueden usar Credenciales Verificables basadas en `did:isbe`. Por ejemplo, la Administración pública (por el ENS). Esto incluye, por cierto, a las Universidades.
 
 **Facilidad de adopción por el sector público**
 
-- 🟩 elsi: Para las administraciones públicas que actualmente emiten y reciben documentos firmados electrónicamente, una Credencial Verificable con una firma JAdES usando el did:elsi como identificador único se puede considerar como un documento emitido/recibido en un formato adicional, simplemente con un mecanismo de transmisión diferente (OID4VCI/OID4VP). El identificador único de la organización es exactamente el mismo que usan actualmente (con la única diferencia de un prefijo constante). En emisión se puede usar el mismo certificado que se usa para la firma/sello de los otros documentos, y en recepción el proceso de verificación de firma de la organización o representante y sus consideraciones legales/cumplimiento son muy parecidas.
-- 🟥 isbe: Falta información de detalle en como realiza el proceso de firma en did:isbe, pero de la documentación que existe se puede deducir que en emisión el proceso es completamente diferente al que usan actualmente, y además existen muchas dudas sobre el tipo de firma que se puede conseguir (desde luego, nunca puede ser una firma cualificada o una firma con certificado cualificado), ya que el proceso de generación de la clave privada y artefactos asociados no cumple con los requerimientos necesarios para ello.
+- 🟩 elsi: Para las administraciones públicas que actualmente emiten y reciben documentos firmados electrónicamente, una Credencial Verificable con una firma JAdES usando `did:elsi` como identificador único se puede considerar como un documento emitido/recibido en un formato adicional, simplemente con un mecanismo de transmisión diferente (OID4VCI/OID4VP). El identificador único de la organización es exactamente el mismo que usan actualmente (con la única diferencia de un prefijo constante). En emisión se puede usar el mismo certificado que se usa para la firma/sello de los otros documentos, y en recepción el proceso de verificación de firma de la organización o representante y sus consideraciones legales/cumplimiento son muy parecidas.
+- 🟥 isbe: Falta información de detalle en como realiza el proceso de firma en `did:isbe`, pero de la documentación que existe se puede deducir que en emisión el proceso es diferente al que usan actualmente (al menos la gestión del material criptográfico), y además existen dudas sobre el tipo de firma que se puede conseguir (desde luego, nunca puede ser una firma cualificada o una firma con certificado cualificado), ya que el proceso de generación de la clave privada y artefactos asociados no cumple con los requerimientos necesarios para ello. Esto puede complicar mucho la adopción e integración de credenciales usando este método, en cuanto al cumplimiento regulatorio de la Administración pública.
 
 **Facilidad de adopción por el sector privado**
 
@@ -314,12 +314,12 @@ A continuación se presenta una breve comparación del método `did:elsi` con el
 **Generación del identificador**
 
 - 🟩 elsi: Generado por las autoridades competentes en cada país miembro. El identificador es uno de los identificadores únicos asociados a la organización y de obligado uso por la regulación en su campo de utilización.
-- 🟥 isbe: Generado aleatoriamente, y en principio no asociado a la identidad real de la organización.
+- 🟥 isbe: Generado aleatoriamente, y en principio no asociado a la identidad real de la organización. Para que se pueda usar en interacciones electrónicas relevantes es necesario que algo o alguien realice la asociación, con un nivel de confianza suficiente (que en muchos casos debería ser de nivel alto, según el ENS).
 
 **Asociación del identificador con la identidad real de la organización**
 
-- 🟩 elsi: Asociado por la entidad regulada correspondiente. Hay una relación 1:1 entre el DID y un identificador único asociado por una entidad regulada a la organización. A partir del DID se puede obtener la identidad real de la organización sin necesidad de una entidad intermedia diferente de las reguladas, y sin consultar a ningún repositorio mantenido por entidades diferentes (como ISBE o su red).
-- 🟥 isbe: Asociado por un mecanismo no regulado. En la documentación del método `isbe` todavía no está definido si la asociación será como una declaración responsable o si en ISBE se realizará una validación de la asociación entre el identificador y la identidad real de la organización. En cualquiera de los dos casos, impide realizar firmas cualificadas o incluso avanzadas con certificado cualificado, a menos que ISBE se constituya en un QTSP.
+- 🟩 elsi: Asociado por la entidad regulada correspondiente, cuando se genera el identificador. Hay una relación simple bidireccional entre el DID y un identificador único asociado por una entidad regulada a la organización. A partir del DID se puede obtener la identidad real de la organización sin necesidad de una entidad intermedia diferente de las reguladas, y sin consultar a ningún repositorio mantenido por entidades diferentes (como ISBE o su red).
+- 🟥 isbe: Asociado por un mecanismo no regulado y con nivel de confianza por determinar. En la documentación del método `isbe` todavía no está definido si la asociación será como una declaración responsable o si en ISBE se realizará una validación de la asociación entre el identificador y la identidad real de la organización. En cualquiera de los dos casos, impide realizar firmas cualificadas o incluso avanzadas con certificado cualificado, a menos que ISBE se constituya en un QTSP.
 
 **Interoperabilidad fuera del ecosistema ISBE**
 
@@ -340,6 +340,15 @@ A continuación se presenta una breve comparación del método `did:elsi` con el
 
 - 🟩 elsi: Una organización puede tener diferentes identificadores únicos, pero deben ser alguno de los identificadores únicos oficiales que deben ser usados obligatoriamente en los ámbitos correspondientes. Por ejemplo, en la relación con la Administración pública española, una empresa se debe identificar con el NIF, tanto para la contratación, facturación, notificaciones, etc. Cualquier Credencial Verificable que sea usada en este ámbito debe usar como identificador único el NIF, nunca otro identificador no reconocido "inventado".
 - 🟥 isbe: Se basa en potencialmente múltiples identificadores únicos no reconocidos y que no se pueden usar en la mayoría de los casos en que una empresa intercambia Credenciales Verificables con otras empresas, ciudadanos o la Administración pública española.
+
+**Privacidad**
+- 🟨 elsi: El identificador único oficial de una organización es público y consultable en los repositorios oficiales. Esto no es un problema en las Credenciales Verificables, y ocurre lo mismo en cualquier otro documento de cualquier formato intercambiado por la organización.
+  
+  Si por algún motivo algún caso de uso o aplicación quiere grabar cierta actividad de la organización en una red Blockchain (o en cualquier otro repositorio público), y la organización no desea que esa actividad sea pública, entonces la aplicación debe tomar las precauciones apropiadas para "enmascarar" en esa grabación de actividad en Blockchain el identificador y cualquier otro dato que permita identificar a la organización.
+
+- 🟨 isbe: El identificador único usado en `did:isbe` se genera aleatoriamente, pero debe existir algún proceso en el que se asocia a la identidad real de la organización y se hace pública esa asociación, para que otras entidades puedan realizar las verificaciones oportunas (por ejemplo cuando se resuelve el did en un DID Document). La documentación de `did:elsi` disponible menciona que esa asociación se realiza en el proceso de onboarding, y luego aparece de manera pública en el DID Document.
+
+  Eso implica que, al igual que pasa con `did:elsi`, se deben tomar medidas de "enmascaramiento" del identificador cuando se desea privacidad para cierta actividad de la organización grabada en Blockchain.
 
 Como resumen, con `did:elsi` se consiguen las siguientes propiedades:
 
