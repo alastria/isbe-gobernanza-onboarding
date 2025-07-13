@@ -16,8 +16,8 @@
   - [La Credencial Verificable como Mandato](#la-credencial-verificable-como-mandato)
     - [Mandator](#mandator)
     - [Mandatee](#mandatee)
-    - [Signer](#signer)
     - [Powers](#powers)
+    - [Signature](#signature)
   - [Sobre la firma del mandato](#sobre-la-firma-del-mandato)
 - [Identificadores de organizaciones](#identificadores-de-organizaciones)
   - [El método `did:elsi`](#el-método-didelsi)
@@ -229,12 +229,6 @@ El objeto "mandatee" identifica al empleado en quien se delega un subconjunto de
 - Un conjunto de **atributos del empleado** (p. ej., nombre, apellidos, correo electrónico) requeridos por el caso de uso específico donde se utilizará la Credencial Verificable. Estos atributos pueden considerarse equivalentes a los campos que se rellenarían en un formulario al utilizar un documento PDF tradicional para autorizar a un empleado.
 - Una **clave pública asociada al empleado** , donde este es el único responsable de la clave privada asociada. Esto es necesario para permitir el uso de la Credencial Verificable que contiene el mandato como un mecanismo **de autenticación y autorización eficiente, escalable y seguro** . Se ampliará este tema más adelante en este documento. La clave privada controlada por el empleado se utiliza para demostrar a las partes que confían en la Credencial Verificable que el titular y el presentador de la credencial son la misma persona identificada en el objeto del mandato.
 
-### Signer
-
-El "signer" es el "mandator" o un tercero que certifica que el "mandator" realmente delegó las facultades al "mandatee". El "signer" es la entidad que realiza una firma o sello avanzado o cualificado mediante un certificado eIDAS.
-
-El "signer" es la entidad en la que debe confiar el receptor de la credencial verificable.
-
 ### Powers
 
 Una lista de cada facultad específica delegada del "mandastor" al "mandatee". Las facultades deben ser concretas y lo más limitadas posible, y deben seguir una taxonomía con una semántica bien definida.
@@ -243,9 +237,15 @@ En ISBE, debemos especificar una taxonomía de poderes orientada a las interacci
 
 Nuestra Taxonomía de Poderes podría generalizarse a otras acciones que involucren a empresas del sector privado, pero está fuera del alcance de esta versión del documento.
 
+### Signature
+
+La firma se realiza por el "mandator" o por un tercero que certifica que el "mandator" realmente delegó las facultades al "mandatee". El firmante es la entidad que realiza una firma o sello avanzado o cualificado mediante un certificado eIDAS.
+
+El firmante es la entidad en la que debe confiar el receptor de la credencial verificable.
+
 ## Sobre la firma del mandato
 
-En ISBE exigimos que la firma electrónica de la Credencial Verificable representativa del mandato se realice de forma equivalente a su homóloga analógica (el documento PDF): debe firmarse con **firma avanzada o cualificada utilizando un certificado cualificado de firma electrónica emitido a nombre de un representante legal o de la organización** (lo que llamamos certificado de representación).
+En ISBE exigimos que la firma electrónica de la Credencial Verificable que representa el mandato se realice de forma equivalente a su homóloga analógica (el documento PDF): debe firmarse con **firma avanzada o cualificada utilizando un certificado cualificado de firma electrónica emitido a nombre de un representante legal o de la organización** (lo que llamamos certificado de representación).
 
 Alternativamente, se puede firmar por un tercero de confianza que atestigue el contenido de la credencial.
 
