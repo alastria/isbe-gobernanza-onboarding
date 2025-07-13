@@ -22,14 +22,7 @@
 - [Identificadores de organizaciones](#identificadores-de-organizaciones)
   - [El método `did:elsi`](#el-método-didelsi)
   - [Comparación con otros métodos DID](#comparación-con-otros-métodos-did)
-    - [*Relación entre el NIF y la firma avanzada y cualificada de documentos*](#relación-entre-el-nif-y-la-firma-avanzada-y-cualificada-de-documentos)
-  - [Verificación de la identidad real de la Organización](#verificación-de-la-identidad-real-de-la-organización)
-    - [*Relación con la onboarding de partes confiantes en el ecosistema EUDIW*](#relación-con-la-onboarding-de-partes-confiantes-en-el-ecosistema-eudiw)
-  - [Verificación de la identidad del representante legal](#verificación-de-la-identidad-del-representante-legal)
-- [El NIF y Credenciales Verificables emitidos por las organizaciones](#el-nif-y-credenciales-verificables-emitidos-por-las-organizaciones)
-  - [La Credencial Verificable como documento legalmente vinculante](#la-credencial-verificable-como-documento-legalmente-vinculante)
-  - [El método `did:elsi`](#el-método-didelsi-1)
-  - [Comparación con otros métodos DID](#comparación-con-otros-métodos-did-1)
+  - [Beneficio adicional: alineado con el futuro onboarding de wallet-relying parties en EUDIW](#beneficio-adicional-alineado-con-el-futuro-onboarding-de-wallet-relying-parties-en-eudiw)
 
 
 # Introducción
@@ -262,7 +255,7 @@ Esto significa que la Credencial Verificable se puede usar en cualquier lugar do
 
 # Identificadores de organizaciones
 
-La Credencial Verificable mencionada anteriorment requiere identificadores únicos de las organizaciones involucradas (cuando hay más de una). Como mínimo se necesita en el atributo `issuer` de la credencial, que debe ser el identificador único de la organización que firma la credencial.
+La Credencial Verificable mencionada anteriormente requiere uno o más identificadores únicos de las organizaciones involucradas. Como mínimo se necesita en el atributo `issuer` de la credencial, que debe ser el identificador único de la organización que firma la credencial.
 
 Dado que la firma de la credencial es una firma cualificada o una firma avanzada con certificado cualificado, el mecanismo mas sencillo, eficiente y compatible es usar el atributo `organizationIdentifier` que el QTSP ha incluido en el campo Subject del certificado cualificado usado para la firma.
 
@@ -270,7 +263,7 @@ En España, este atributo coincide con el **Número de Identificación Fiscal (N
 
 El NIF (Número de Identificación Fiscal) es también el identificador único, crucial y consistente de la entidad emisora en los documentos dirigidos a los ciudadanos en España. Es un requisito universal para fines legales, fiscales y comerciales.
 
-Para poder interoperar en los ecosistemas que esperan un identificador en formato `did` en ciertos campos de una Credencial Verificable (como en el atributo `issuer`), en vez de utilizar directamente el atributo `organizationIdentifier` del certificado cualificado, usaremos el DID Method `did:elsi` que está basado en el contenido del certificado cualificado y proporciona la interoperabilidad necesaria.
+No obstante, para poder interoperar en los ecosistemas que esperan un identificador en formato `did` en ciertos campos de una Credencial Verificable (como en el atributo `issuer`), en vez de utilizar directamente el atributo `organizationIdentifier` del certificado cualificado, usaremos el DID Method `did:elsi` que está basado en el contenido del certificado cualificado y proporciona la interoperabilidad necesaria.
 
 ## El método `did:elsi`
 
@@ -288,7 +281,7 @@ Cualquier organización que pueda operar en la economía digital y que pueda fir
 
 El uso de `did:elsi` en ISBE es superior a otras opciones, como las que "inventan" un nuevo identificador en ISBE (por alguna entidad de gobernanza centralizada) o dejar que las organizaciones "inventen" un nuevo identificador de su elección.
 
-A continuación se presenta una breve comparación del método `did:elsi` con el `did:isbe`, basada en la documentación disponible actualmente.
+A continuación se presenta una breve comparación del método `did:elsi` con el `did:isbe`, basada en la documentación disponible actualmente para ambos métodos.
 
 **Madurez**
 - 🟩 elsi: En producción en un contexto internacional desde hace más de un año.
@@ -334,14 +327,14 @@ A continuación se presenta una breve comparación del método `did:elsi` con el
 - 🟥 isbe: ISBE tiene la capacidad técnica para modificar cualquier DID Document, y debe realizar un ejercicio consciente de voluntad para no asumir un rol centralizado de control. Un compromiso/hackeo de ISBE puede comprometer la seguridad del DID Document asociado (al menos no existe ningún documento que detalle como se pordría evitar este problema con el did:isbe).
 
 **Robustez y resiliencia**
-- 🟩 elsi: Alta, esecnialmente la misma robustez y resiliencia que los mecanismos actuales de firma electrónica en la UE, existentes desde hace una década. No hay ninguna entidad nueva que requiera infraestructura nueva y no probada.
+- 🟩 elsi: Alta, esencialmente la misma robustez y resiliencia que los mecanismos actuales de firma electrónica en la UE, existentes desde hace una década. No hay ninguna entidad nueva que requiera infraestructura nueva y no probada.
 - 🟥 isbe: Desconocida, por no existir ninguna implementación en producción todavía. Pero de la documentación existente se deduce que la dependencia de ISBE es muy alta, por lo que su robustez y resiliencia es mucho menor que para did:elsi.
 
 **Multiplicidad de identificadores para una misma organización**
 - 🟩 elsi: Una organización puede tener diferentes identificadores únicos, pero deben ser alguno de los identificadores únicos oficiales que deben ser usados obligatoriamente en los ámbitos correspondientes. Por ejemplo, en la relación con la Administración pública española, una empresa se debe identificar con el NIF, tanto para la contratación, facturación, notificaciones, etc. Cualquier Credencial Verificable que sea usada en este ámbito debe usar como identificador único el NIF, nunca otro identificador no reconocido "inventado".
 - 🟥 isbe: Se basa en potencialmente múltiples identificadores únicos no reconocidos y que no se pueden usar en la mayoría de los casos en que una empresa intercambia Credenciales Verificables con otras empresas, ciudadanos o la Administración pública española.
 
-
+Como resumen, con `did:elsi` se consiguen las siguientes propiedades:
 
 - **Validez legal** : Con otros métodos DID, la firma de la Credencial Verificable no puede ser una firma avanzada/cualificada según eIDAS, por lo que ofrece menor seguridad jurídica y puede resultar más engorrosa en caso de disputas o repudio de la firma. Con `did:elsi` , dado que la clave privada utilizada para firmar es la asociada al certificado eIDAS y el identificador único de la organización está incluido en el certificado utilizado para firmar, se proporciona el vínculo legal necesario para que la firma tenga la misma validez que una firma manuscrita (en el caso de una Firma/Sello Electrónico Cualificado) o un fuerte valor probatorio (en el caso de una Firma/Sello Electrónico Avanzado).
 - **Escalabilidad** : Con `did:elsi` , cualquier organización que pueda operar en la economía digital de la UE ( `did:elsi` no se limita a España ni a ISBE) y que pueda firmar digitalmente un documento con firma avanzada o cualificada (como una factura o un contrato) obtiene **automáticamente** un identificador DID, sin necesidad de acciones adicionales ni intervención de terceros. En otras palabras, no es necesario que ninguna parte de confianza de ISBE participe en la generación o gestión del identificador único de la organización utilizado en `did:elsi` . No es necesario establecer un proceso para la creación de nuevos identificadores, ya que estos ya existen y cuentan con reconocimiento oficial.
@@ -353,159 +346,16 @@ A continuación se presenta una breve comparación del método `did:elsi` con el
 
   Otros métodos DID deben definir cómo actualizar las claves privadas y públicas y cómo garantizar que estén realmente asociadas a la identidad real de la organización. Toda esta complejidad no existe con `did:elsi` ; mejor dicho, esta complejidad ya se implementó hace muchos años y cumple plenamente con el reglamento eIDAS.
 
+## Beneficio adicional: alineado con el futuro onboarding de wallet-relying parties en EUDIW
 
+El sistema descrito anteriormente se alinea bien con el enfoque utilizado en el ecosistema EUDI Wallet para el onboarding y el registro de las "wallet-relying parties" en el ecosistema EUDIW: el reglamento eIDAS2 especifica que el onboarding requiere uno o más **identificadores de la organización, tal como se indica en un registro oficial** junto con los datos de identificación de ese registro oficial, expresados como uno de los siguientes:
 
-De hecho, esto es cierto no sólo para las interacciones electrónicas dentro de España, sino que en general cuando se utilizan estándares europeos y se establece la obligatoriedad de un identificador legal para la organización, las organizaciones españolas utilizan el NIF (o un identificador derivado del NIF).
-
-\[\!NOTA\]
-
-**de factura electrónica** válidos en España, el NIF es un campo obligatorio y el identificador principal tanto para el emisor como para el receptor. Esto incluye Facturae (B2G y B2B), UBL (Lenguaje Empresarial Universal) y CEFACT (B2B). Si bien estos dos últimos formatos son estándares internacionales, en España, el NIF se incluye en los campos de identificación fiscal de las partes (emisor y receptor). La norma europea EN 16931, que UBL y CEFACT pueden cumplir, establece la obligatoriedad de un identificador legal para el vendedor y el comprador, que en España es el NIF.
-
-Esto es de hecho cierto para todos los Sistemas de **Intercambio Electrónico de Datos** (EDI): en cualquier tipo de intercambio de documentos comerciales vía EDI (EDIFACT, XML propietario, u otros) en España, el NIF es un dato fundamental para la identificación de las partes implicadas, para asegurar que los **documentos se asocian correctamente a las entidades jurídicas y fiscales correspondientes** .
-
-Para participar en **licitaciones, presentar ofertas o firmar contratos con cualquier Administración Pública española** , las empresas deben identificarse con su NIF. La Plataforma de Contratación del Sector Público, por ejemplo, utiliza el NIF como identificador principal para licitadores y contratistas.
-
-Con carácter general, cualquier trámite electrónico con la Administración (solicitudes, declaraciones, notificaciones, etc.) requiere la identificación del ciudadano o empresa a través de su NIF.
-
-En lugar de inventar identificadores específicos de ISBE, el proceso de onboarding en ISBE requiere el uso de identificadores oficiales únicos existentes que las organizaciones ya poseen y que se utilizan al firmar electrónicamente documentos legales como contratos o facturas. En España, esto significa que utilizamos el NIF siempre que sea posible.
-
-Una Credencial Verificable emitida por una organización es un documento en formato estructurado que, en la mayoría de los casos, conlleva implicaciones legales o financieras. Esto significa que, en ISBE, debemos tratar las Credenciales Verificables emitidas por organizaciones de forma similar a las facturas, contratos o cualquier otro tipo de documento relevante.
-
-### *Relación entre el NIF y la firma avanzada y cualificada de documentos*
-
-La relación entre el NIF de una organización en España y sus firmas electrónicas avanzadas o cualificadas para el intercambio de documentos estructurados es fundamental y simbiótica. El NIF es el **identificador único que se integra legalmente en estas firmas electrónicas, proporcionando el vínculo necesario entre la identidad digital y la entidad jurídica a la que representa** .
-
-Las propiedades relevantes para ISBE son:
-
-1. NIF como identificador principal en el certificado
-
-- **Emisión de Certificados** : Cuando una organización (una entidad legal) en España obtiene un certificado de firma electrónica compatible con eIDAS (ya sea avanzado o cualificado), este certificado es emitido por un Prestador de Servicios de Confianza Cualificado (PSCCT) como [DIGITELTS](https://www.digitelts.es/) o [LOGALTY](https://www.logalty.com/) .
-- **Contenido del certificado** : Fundamentalmente, este certificado contiene información identificativa específica de la organización. Para una persona jurídica en España, debe incluir su NIF (de forma compatible y compatible con otros identificadores válidos en la UE). También suele incluir la razón social completa de la organización.
-- **Tipos de certificados** para organizaciones:
-
-  - **de** Sello Electrónico Cualificado : Estos certificados están diseñados específicamente para personas jurídicas. Permiten a una organización aplicar un sello digital a documentos y datos, garantizando su origen e integridad, sin atribuirlos necesariamente a una persona física específica dentro de la organización. El NIF de la organización es el identificador principal contenido en este tipo de certificado.
-  - Certificados Cualificados de Firma Electrónica para Representantes Legales ( **Certificado de Representante de Persona Jurídica** ): Estos certificados se emiten a una persona física (p. ej., el administrador o representante legal) que actúa en nombre de la organización. Si bien el certificado identifica a la persona física (con su DNI/NIE y nombre), también la vincula explícitamente con la organización a la que representa, incluyendo su NIF.
-
-2. El papel del NIF en la atribución de identidad jurídica
-
-- **Verificación de identidad** : Cuando se aplica una firma electrónica (basada en un certificado eIDAS) a un documento estructurado (p. ej., un archivo XML de Facturae o una Credencial Verificable en formato JSON), el sistema receptor puede verificar la firma. Durante este proceso de verificación, el sistema lee el certificado incrustado en la firma.
-- **Enlace a la entidad legal** : La presencia del NIF en el certificado permite al sistema receptor identificar inequívocamente qué entidad legal específica (identificada por su NIF único) firmó o selló el documento. Esto es fundamental para la trazabilidad y el cumplimiento legal.
-- **Validez Legal** : Debido a que el NIF es un identificador legalmente reconocido en España a efectos fiscales y administrativos, su inclusión en un certificado compatible con eIDAS proporciona el vínculo legal necesario para que la firma tenga la misma validez que una firma manuscrita (en el caso de una Firma/Sello Electrónico Cualificado) o un fuerte valor probatorio (para una Firma/Sello Electrónico Avanzado).
-
-3. No repudio y auditabilidad
-
-- La combinación del NIF como identificador legal único y las propiedades criptográficas de las firmas electrónicas avanzadas/cualificadas garantiza el no repudio. Una organización no puede negar la firma de un documento si su NIF está claramente vinculado a un certificado eIDAS válido utilizado para aplicar dicha firma.
-- Esto también proporciona un alto nivel de auditabilidad. En caso de disputa, el documento firmado, con su certificado NIF incorporado, sirve como prueba irrefutable de la identidad de la organización originaria.
-
-\[\!IMPORTANTE\]
-
-En esencia, el NIF no son solo datos dentro de un documento estructurado; es un componente fundamental de la identidad digital de la organización, encapsulado en las propias firmas electrónicas avanzadas y cualificadas. Esta integración es lo que otorga a estas firmas su validez legal y permite el intercambio automatizado, fluido, seguro y legalmente vinculante de documentos y datos en España.
-
-Algunas ventajas adicionales de la firma electrónica con certificado eIDAS
-
-- **Transacciones comerciales generales (B2B)** :
-
-  Si bien no siempre es estrictamente obligatorio por ley para todas las transacciones B2B (puede admitirse una firma electrónica simple o avanzada), el uso de QES basado en certificados eIDAS proporciona el máximo nivel de seguridad jurídica. Las empresas los adoptan cada vez más en contratos, acuerdos y otros documentos críticos para mitigar riesgos y agilizar los procesos.
-
-  Mayor confianza y eficiencia: al usar certificados eIDAS, las empresas pueden confiar en la identidad de las partes con las que realizan transacciones y en la integridad de los datos intercambiados, lo que genera flujos de trabajo más eficientes y sin papel y reduce las cargas administrativas.
-- **Interoperabilidad transfronteriza** :
-
-  Una ventaja clave del eIDAS es su principio de reconocimiento mutuo entre los Estados miembros de la UE. Una firma electrónica basada en un certificado cualificado emitido en un país de la UE tiene reconocimiento legal en todos los demás países de la UE, lo que facilita el comercio y los servicios transfronterizos sin obstáculos legales adicionales.
-
-En conclusión, los certificados eIDAS, en particular los cualificados, son la piedra angular de la confianza, la validez legal y la interoperabilidad en los sistemas estructurados de intercambio de datos de España. Proporcionan las garantías necesarias de identidad, integridad y no repudio, esenciales para la transformación digital de los procesos administrativos y comerciales.
-
-## Verificación de la identidad real de la Organización
-
-Al utilizar un certificado eIDAS para el proceso de onboarding (ya sea un certificado de representación o un certificado de sellos), la verificación de la identidad de la organización es gratuita y con un LoA (Nivel de Garantía) que es sustancial o alto dependiendo de si se utilizó una firma electrónica avanzada o cualificada.
-
-This is because **the verification has been already performed by the QTSP which issued the certificate to the organization**. For examples, see section *"3.2 Validación inicial de la identidad"* in ['Declaración de prácticas de certificación de DIGITELTS'](https://pki.digitelts.es/dpc/DIGITELTS_DPC.v2.1.pdf) or section *"3.2 Validación inicial de la identidad"* in ['Declaración de Prácticas de Confianza de LOGALTY para los servicios de certificación y de sellado de tiempo electrónico'](https://www.logalty.com/certificateauthority/dpc/LGT_DPC-PKI_v2r5_fdo.pdf).
-
-Cuando en ISBE recibimos un documento (en formato PDF, XML o JSON) firmado/sellado con una firma avanzada o cualificada utilizando dichos certificados eIDAS, y la verificación de la firma es exitosa, **obtenemos de forma gratuita la verificación de la identidad real de la organización** , apoyándonos en las verificaciones realizadas por los QTSPs en la emisión de certificados.
-
-Además, obtenemos un **identificador oficial único de la organización, vinculado criptográficamente al documento que firma** . Este identificador está estandarizado en la norma [ETSI EN 319 412-1 V1.6.1 (2025-06)](https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.06.01_60/en_31941201v010601p.pdf) , concretamente en la sección *«5.1.4 Identificador semántico de persona jurídica»* . El estándar permite la coexistencia del NIF con otros tipos de identificadores legalmente válidos utilizados en la UE, al incluir el identificador único de la organización en un atributo del certificado (denominado `organizationIdentifier` ).
-
-Solo tenemos que incluir el atributo `organizationIdentifier` en todos los documentos relevantes firmados por la organización, y al verificar la firma, verificar que el `organizationIdentifier` en el documento que se está firmando sea el mismo que el `organizationIdentifier` incluido dentro del certificado emitido por el QTSP a la organización.
-
-\[\!IMPORTANTE\]
-
-La propuesta es utilizar el certificado eIDAS emitido a la organización por un QTSP y confiar en las verificaciones realizadas por el QTSP respecto a la identidad real de la organización, y también en la relación del identificador único con la identidad de la organización.
-
-Además, podemos utilizar esta verificación para comprobar que la organización tiene un establecimiento legalmente reconocido en un país de la UE, ya que el certificado incluye el código del país.
-
-### *Relación con la onboarding de partes confiantes en el ecosistema EUDIW*
-
-El sistema descrito anteriormente es prácticamente idéntico al enfoque utilizado en el ecosistema EUDI Wallet para la onboarding y el registro de las partes que confían en la billetera: el reglamento eIDAS2 especifica que la onboarding requiere uno o más **identificadores de la organización, tal como se indica en un registro oficial** junto con los datos de identificación de ese registro oficial, expresados como uno de los siguientes:
-
-- **un número de registro del impuesto sobre el valor añadido («IVA») (es el NIF en España)** ;
-- un número de registro e identificación de operadores económicos («EORI»), tal como se contempla en el Reglamento de Ejecución (UE) n.o 1352/2013 de la Comisión (1);
-- un identificador de entidad jurídica («LEI») según lo dispuesto en el Reglamento de Ejecución (UE) 2022/1860 de la Comisión (2);
-- un identificador único europeo («EUID»), tal como se contempla en el Reglamento de Ejecución (UE) 2021/1042 de la Comisión (4);
-- un número de impuesto especial según lo dispuesto en el artículo 2, apartado 12, del Reglamento (UE) n.o 389/2012 del Consejo (3);
+- **un número de registro del impuesto sobre el valor añadido (VAT) (es el NIF en España)**;
+- un número de registro e identificación de operadores económicos (**EORI**), tal como se contempla en el Reglamento de Ejecución (UE) n.o 1352/2013 de la Comisión (1);
+- un identificador de entidad jurídica (**LEI**) según lo dispuesto en el Reglamento de Ejecución (UE) 2022/1860 de la Comisión (2);
+- un identificador único europeo (**EUID**), tal como se contempla en el Reglamento de Ejecución (UE) 2021/1042 de la Comisión (4);
 - un número de registro tal como figura en un registro mercantil nacional reconocido a nivel de la UE.
 
-Esto se logra fácilmente exigiendo que las organizaciones utilicen un certificado emitido por un Proveedor de Servicios de Confianza Calificado ( **QTSP** ).
+Esto se logra fácilmente exigiendo que las organizaciones utilicen un certificado emitido por un QTSP.
 
-La idea clave es que el certificado X.509 emitido por los proveedores de servicios de certificación cualificados (QTSP) ya incluye, por normativa, un atributo denominado `organizationIdentifier` , que **contiene uno de los identificadores oficiales únicos** mencionados anteriormente. No nos importa qué identificador se utilice, siempre que sea único. Sin embargo, en España, el identificador casi siempre es el identificador fiscal (esto aplica a las organizaciones del sector privado).
-
-Este identificador está estandarizado en [ETSI EN 319 412-1 V1.6.1 (2025-06)](https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.06.01_60/en_31941201v010601p.pdf) , concretamente en el apartado *“5.1.4 Identificador semántico de persona jurídica”* .
-
-Cuando una organización utiliza un certificado de este tipo para iniciar sesión o firmar/sellar un documento, el identificador único se proporciona automáticamente de forma segura y automatizada porque está incluido en el certificado utilizado por la organización en la respectiva operación (inicio de sesión o firma/sello).
-
-## Verificación de la identidad del representante legal
-
-En ISBE, requerimos la verificación del representante legal de la organización, para brindar un alto nivel de certeza jurídica a la relación.
-
-En las secciones anteriores sobre identificadores de organizaciones y verificación de su identidad en el mundo real, dijimos que podemos utilizar un certificado de representación o un certificado de sellos.
-
-Si bien esto es cierto, para una verificación segura y eficiente del representante legal, es preferible utilizar un certificado de representación, que es el que normalmente utilizan los representantes legales para firmar electrónicamente contratos y muchos otros documentos legalmente vinculantes.
-
-Esto se debe a que los QTSP incluyen en el certificado no sólo el identificador oficial único de la organización, sino también la identificación del representante legal, coincidiendo con los registros oficiales de la organización y previa verificación de que la persona física tiene los poderes de representación requeridos.
-
-Si la organización desea utilizar un certificado para sellos, ISBE deberá exigir documentación sobre el representante legal y realizar procesos manuales (y engorrosos) de verificación de dicha documentación. Como alternativa, ISBE deberá asumir un cierto nivel de riesgo que no existiría con un certificado de representación.
-
-\[\!IMPORTANTE\]
-
-Se propone exigir un certificado de representación para la firma de los acuerdos contractuales con ISBE. Solo en caso de que esto no sea posible, se aceptarán documentos sellados con un certificado de precintos, realizando verificaciones adicionales de la identidad del representante legal.
-
-# El NIF y Credenciales Verificables emitidos por las organizaciones
-
-## La Credencial Verificable como documento legalmente vinculante
-
-En el contexto de ISBE, una Credencial Verificable emitida por una organización es un documento en formato estructurado que, en la mayoría de los casos, conlleva implicaciones legales o financieras. De ahora en adelante, utilizaremos la terminología eIDAS2 para referirnos a una Credencial Verificable: **Certificación Electrónica Cualificada de Atributos** , o **(Q)EAA** para abreviar.
-
-Queremos lograr con un (Q)EAA el mismo nivel de seguridad jurídica que con cualquier otro documento legalmente vinculante en otros formatos (como PDF o XML). Esto significa que en ISBE debemos tratar las Credenciales Verificables emitidas por organizaciones de forma similar a las facturas, contratos o cualquier otro tipo de documento relevante.
-
-En particular, necesitamos que:
-
-- El NIF de la organización emisora del (Q)EAA debe incluirse como atributo en el documento (el identificador único del emisor). Este es el mismo identificador único que registramos al dar de alta la organización en ISBE.
-- El (Q)EAA debe firmarse o sellarse con un certificado eIDAS emitido por un QTSP a la organización que lo emite. Este certificado debe incluir en el atributo `organizationIdentifier` del campo Subject el NIF de la organización, que debe coincidir con el NIF del documento que se firma.
-
-Para un formato de Credencial Verificable (como el (Q)EAA), queremos utilizar un formato especial para los identificadores únicos de las organizaciones involucradas, llamado DID.
-
-Dados los requisitos anteriores, necesitamos un DID que incluya el NIF de la organización, y es por esto que el método `did:elsi` cubre los requisitos de ISBE. `did:elsi` se describe a continuación.
-
-## El método `did:elsi`
-
-La especificación completa del `método did:` se puede encontrar en [DID ETSI Legal person Semantic Identifier Method Specification (did:elsi)](https://alastria.github.io/did-method-elsi/) , pero aquí hacemos un breve resumen.
-
-Se trata de un método DID para **personas jurídicas** , que conecta el mundo de la normativa eIDAS con el mundo de las credenciales verificables del W3C, maximizando al mismo tiempo **el cumplimiento normativo** y **la descentralización** .
-
-Por ejemplo, el identificador DID de Alastria es `did:elsi:VATES-G87936159` , ya que el NIF de Alastria es `G87936159` y la cadena `VATES-G87936159` corresponde al atributo `organizationIdentifier` incluido en el certificado eIDAS emitido por un proveedor de servicios de certificación cualificado (QTSP) para Alastria. Por ejemplo, en el certificado de representación utilizado por el presidente de Alastria para firmar documentos.
-
-Así de simple: El método es puramente derivado y se basa en el atributo `organizationIdentifier` de los certificados eIDAS. Esto significa que es extremadamente fácil de administrar, no requiere búsquedas en ningún registro adicional y el documento DID no necesita contener la propiedad "verificationMethod".
-
-Cualquier persona jurídica que pueda operar en la economía digital y que pueda firmar digitalmente un documento utilizando una firma avanzada o cualificada válida en la UE (como una factura o un contrato) ya tiene un identificador DID bajo el método `did:elsi` sin ninguna acción adicional y que puede ser utilizado sin ninguna intervención de terceros.
-
-## Comparación con otros métodos DID
-
-El uso de `did:elsi` en ISBE es superior a otras opciones, como "inventar" un nuevo identificador en ISBE (por alguna entidad de gobernanza centralizada) o dejar que las organizaciones "inventen" un nuevo identificador de su elección:
-
-- **Validez legal** : Con otros métodos DID, la firma de la Credencial Verificable no puede ser una firma avanzada/cualificada según eIDAS, por lo que ofrece menor seguridad jurídica y puede resultar más engorrosa en caso de disputas o repudio de la firma. Con `did:elsi` , dado que la clave privada utilizada para firmar es la asociada al certificado eIDAS y el identificador único de la organización está incluido en el certificado utilizado para firmar, se proporciona el vínculo legal necesario para que la firma tenga la misma validez que una firma manuscrita (en el caso de una Firma/Sello Electrónico Cualificado) o un fuerte valor probatorio (en el caso de una Firma/Sello Electrónico Avanzado).
-- **Escalabilidad** : Con `did:elsi` , cualquier organización que pueda operar en la economía digital de la UE ( `did:elsi` no se limita a España ni a ISBE) y que pueda firmar digitalmente un documento con firma avanzada o cualificada (como una factura o un contrato) obtiene **automáticamente** un identificador DID, sin necesidad de acciones adicionales ni intervención de terceros. En otras palabras, no es necesario que ninguna parte de confianza de ISBE participe en la generación o gestión del identificador único de la organización utilizado en `did:elsi` . No es necesario establecer un proceso para la creación de nuevos identificadores, ya que estos ya existen y cuentan con reconocimiento oficial.
-- **Baja barrera de entrada** : En España, la adopción de certificados eIDAS por parte de las organizaciones es muy alta, y se asume que el perfil de las organizaciones que participarán en ISBE (utilizando Credenciales Verificables, Blockchain y tecnologías relacionadas) está orientado a la tecnología y altamente digitalizado. Usar un certificado eIDAS nunca debería ser un problema para estas organizaciones. Además, el proceso de onboarding en ISBE requiere la firma electrónica de algunos documentos, por lo que las organizaciones deben usar un certificado eIDAS de todas formas.
-- **Resiliencia** : Otros métodos como `did:ala` o `did:ebsi` requieren que los identificadores y los documentos DID asociados se registren en la red blockchain para su resolución y otros procesos. `did:elsi` se basa en el marco e infraestructura eIDAS existente, que lleva muchos años en producción, está regulado, auditado y debe cumplir con todos los requisitos de ciberseguridad. Por lo tanto, `did:elsi` no requiere infraestructura nueva ni adicional en ISBE. La resolución de un did es prácticamente idéntica a la verificación de una firma eIDAS, un proceso bien conocido y de probada fiabilidad.
-- **Más fácil para ISBE** : Si creáramos nuevos identificadores (ya sea de forma centralizada por ISBE o por cada organización), tendríamos que realizar un costoso proceso de validación para garantizar que el nuevo identificador se asigne a la organización real. Con `did:elsi,` evitamos la verificación, ya que esta ya la realiza el proveedor de servicios de certificación cualificados (QTSP) que emitió el certificado para la firma/sello de la organización, como parte del proceso de inclusión de un identificador oficial en el certificado. Este proceso tiene un nivel de seguridad (NdA) alto, algo que ISBE no puede lograr (a menos que ISBE sea un QTSP, claro está).
-- **Mayor interoperabilidad** : Además, la creación de nuevos identificadores y la validación en ISBE limitan el uso de los identificadores a ISBE. El uso de los identificadores oficiales que ya cuentan con reconocimiento transfronterizo en la UE es una opción mucho mejor que permite una mayor interoperabilidad.
-- **Actualizabilidad automática** : En `did:elsi,` el material criptográfico asociado al identificador único de la organización se crea y gestiona de forma totalmente compatible con eIDAS, con pleno soporte regulatorio. Su ciclo de vida completo (inicialización, creación, revocación y actualización) ya es bien conocido y cumple con la normativa eIDAS. En otros métodos DID, como `did:ala` o `did:ebsi` , este proceso debe implementarse desde cero y no se ha probado en producción, por lo que están sujetos a numerosos errores y problemas, al menos al principio.
-
-  Otros métodos DID deben definir cómo actualizar las claves privadas y públicas y cómo garantizar que estén realmente asociadas a la identidad real de la organización. Toda esta complejidad no existe con `did:elsi` ; mejor dicho, esta complejidad ya se implementó hace muchos años y cumple plenamente con el reglamento eIDAS.
+La idea clave es que el certificado X.509 emitido por los proveedores de servicios de certificación cualificados (QTSP) ya incluye, por normativa, un atributo denominado `organizationIdentifier`, que **contiene uno de los identificadores oficiales únicos** mencionados anteriormente. No nos importa qué identificador se utilice, siempre que sea único. Sin embargo, en España, el identificador casi siempre es el NIF (esto aplica a las organizaciones del sector privado).
