@@ -8,6 +8,7 @@
     - [¿Quién puede ser designado como LEAR?](#quién-puede-ser-designado-como-lear)
   - [Generación de los documentos contractuales](#generación-de-los-documentos-contractuales)
   - [Firma de los documentos contractuales](#firma-de-los-documentos-contractuales)
+    - [Consideraciones sobre requerir firma con certificado cualificado](#consideraciones-sobre-requerir-firma-con-certificado-cualificado)
   - [Recepción y verificación de los documentos contractuales](#recepción-y-verificación-de-los-documentos-contractuales)
   - [Registro de la organización y creación de la cuenta inicial](#registro-de-la-organización-y-creación-de-la-cuenta-inicial)
 - [Segunda fase: Generación de la Credencial Verificable para el empleado designado](#segunda-fase-generación-de-la-credencial-verificable-para-el-empleado-designado)
@@ -146,6 +147,30 @@ En ISBE se deben evitar las firmas manuscritas, ya que implican procesos manuale
 > Hay que decidir si se acepta un contrato sellado (con un certificado cualificado de sello) o si solo aceptamos firmas (con un certificado cualificado de representante). Permitir sellos puede facilitar mucho el onboarding automatizado de organizaciones de otros países donde los certificados de representante no estén tan implantados como en España.
 > 
 > A primera vista, un sello debería ser suficiente para el onboarding de ISBE, y evita solicitar copias físicas del certificado mercantil y verificación manual en registros mercantiles nacionales (ej. vía e-Justice). Pero todo depende de si necesitamos la vinculación de un representante legal.
+
+### Consideraciones sobre requerir firma con certificado cualificado
+
+A primera vista puede parecer que el requerimiento de la firma del contrato con un certificado cualificado complica la vida a las empresas que quieren entrar en ISBE, sobre todo a las PYMES.
+
+En cambio, el requerir un certificado cualificado es la estrategia recomendada por diversas razones:
+
+En España el nivel de adopción en la empresa de firma electrónica con certificado cualificado es muy alto, por la obligación que tienen las empresas de relacionarse electrónicamente con la Administración pública. En caso de que una empresa no quiera realizar los trámites con la Administración de manera electrónica, puede usar un Gestor Administrativo (o una Gestoría), que si tienen la obligación y capacidad de usar certificado electrónico para identificación y firma electrónica de documentos.
+
+En ISBE debemos poder aceptar documentos firmados directamente por un representante legal de la organización, o por un Gestor Administrativo actuando en representación de la organización.
+Con esto se puede considerar que cubrimos la totalidad de organizaciones que son susceptibles de participar directamente en ISBE (y que por tanto deben realizar el proceso de onboarding).
+
+Por otra parte, la firma electrónica es el mecanismo más eficiente y seguro de conseguir interoperabilidad en las transacciones electrónicas en el mercado interior de la UE. Y es por eso que se está promocionando en todos los ámbitos, especialmente en el EUDIW. Requerir firmas electrónicas con certificado cualificado hace de ISBE una entidad alineada y promotora de la estrategia de la UE.
+
+Para las organizaciones de países de la UE/EEA diferentes a España, donde la adopción actual de firma electrónica es menor, el escenario no es muy diferente:
+
+- Si no se usa un certificado cualificado, ISBE debe realizar el proceso manual de verificación de la identidad de la organización y del representante legal, y la organización debe proporcionar esencialmente los mismos documentos que son necesarios para la obtención de un certificado cualificado.
+En este caso, el nivel de verificación realizado por ISBE seguramente será inferior al realizado por una entidad especializada, y en cambio para la organización no se simplifica el proceso significativamente.
+
+- La alternativa (que es la opción recomendada) es que la organización que no tenga ya el certificado cualificado lo obtenga de cualquiera de las muchas entidades Europeas que se lo pueden proporcionar. Es posible incluso solicitar un certificado cualificado a un QTSP que no es de su mismo país, ya que hay muchos que proporcionan el servicio a cualquier país de la UE/EEA, con identificación remota por videoconferencia. Y el precio de un certificado es menor que el equivalente monetario de una verificación manual por ISBE si la tuviéramos que realizar nosotros, que además tendría una calidad inferior ya que ISBE no es un QTSP.
+
+En resumen:
+- Si una organización ya tiene un certificado cualificado, no es ningún problema para ella el firmar el documento, y para ISBE es mucho mejor que verificar una firma manuscrita (que puede ser un simple copia/pega de una firma).
+- Si la organización no la tiene, el proceso de obtención del mismo para darse de alta en ISBE no representa ni más tiempo ni más esfuerzo que el que requerido para hacer el onboarding si ISBE tuviera que hacer manualmente las verificaciones.
 
 ## Recepción y verificación de los documentos contractuales
 
