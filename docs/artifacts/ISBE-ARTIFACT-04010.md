@@ -2,33 +2,33 @@
 
 ## **1. Identificación del Artefacto**
 
-| Campo                     | Valor                                                                                                                                                                                                                       |
-|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Nombre del artefacto**  | ISBE-ART-04010 — Onboarding de empresas a ISBE                                                                                                                                                                              |
-| **Origen**                | Conjunto de soluciones que permiten a las empresas poseedoras de un certificado digital realizar el onboarding a la plataforma ISBE de manera self-service y obtener una credencial verificable como resultado del proceso. |
-| **Estado**                | *En desarrollo*                                                                                                                                                                                                             |
-| **Versión del documento** | *0.1.0*                                                                                                                                                                                                                     |
-| **Fecha**                 | *2025-09-09*                                                                                                                                                                                                                |
-| **Repositorio**           | [https://github.com/alastria/isbe-gobernanza-onboarding](https://github.com/alastria/isbe-gobernanza-onboarding)                                                                                                            |
-| **Commit**                | N/A                                                                                                                                                                                                                         |
+| Campo                     | Valor                                                                                                                                                                                           |
+|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nombre del artefacto**  | ISBE-ART-04010 — Onboarding de empresas a ISBE                                                                                                                                                  |
+| **Origen**                | Solución que permite a las empresas poseedoras de un certificado digital realizar el onboarding en ISBE de manera self-service y obtener una credencial verificable como resultado del proceso. |
+| **Estado**                | *En desarrollo*                                                                                                                                                                                 |
+| **Versión del documento** | *0.1.0*                                                                                                                                                                                         |
+| **Fecha**                 | *2025-09-09*                                                                                                                                                                                    |
+| **Repositorio**           | [https://github.com/alastria/isbe-gobernanza-onboarding](https://github.com/alastria/isbe-gobernanza-onboarding)                                                                                |
+| **Commit**                | N/A                                                                                                                                                                                             |
 
 ## **2. Propósito del Artefacto**
 
-- **Objetivo funcional:** Facilitar el registro y acceso de empresas en ISBE mediante un flujo de alta 100% digital, utilizando certificados digitales cualificados. El sistema valida el certificado presentado, permite completar un formulario de datos básicos y emite una credencial verificable.
+- **Objetivo funcional:** Facilitar el registro y acceso de empresas en ISBE mediante un flujo de alta completamente digital, utilizando certificados digitales cualificados. El sistema valida el certificado presentado, permite completar un formulario de datos básicos y emite una credencial verificable.
 
 - **Beneficio para ISBE:** Asegura un onboarding ágil, estandarizado y conforme a normativa para empresas, reduciendo costes de verificación manual y garantizando interoperabilidad con el ecosistema europeo (EBSI).
 
 - **Stakeholders clave:**  
-  - **Equipos técnicos ISBE**: desarrollo, despliegue e integración de los componentes de Onboarding, Issuer y Verifier. 
-  - **Empresas usuarias**: identificación simplificada y acceso a los servicios y red ISBE. 
-  - **Reguladores y auditores**: cumplimiento de normativa eIDAS2, GDPR. 
+  - **Equipos técnicos ISBE**: desarrollo, despliegue e integración de la solución, 
+  - **Empresas usuarias**: identificación simplificada y acceso a ISBE. 
+  - **Reguladores y auditores**: cumplimiento de normativa eIDAS2 y GDPR. 
   - **Otros proveedores**: integraciones con Trust Anchor y Wallet externos.
 
 ## **3. Alcance y Ciclo de Vida**
 
 - **Fases cubiertas:**
 
-  - 🟡 **Planificación:** acotar alcance, dependencias externas (Trust Anchor ISBE/EBSI, Wallets), y plan de entregas (MVP y evolutivos). [Plan de proyecto](../proyecto/PLAN_DE_PROYECTO.md) 
+  - 🟡 **Planificación:** acotar alcance, dependencias externas y plan de entregas. [Plan de proyecto](../proyecto/PLAN_DE_PROYECTO.md) 
   
   - 🟡 **Análisis:** convertir el alcance en requisitos verificables y contratos funcionales. [Documento Técnico](../proyecto/DOCUMENTO_TECNICO.md)
   
@@ -36,32 +36,34 @@
   
   - 🟡 **Implementación:** construir y configurar los componentes comprometidos.
   
-  - 🟡 **Pruebas:** asegurar conformidad funcional, interoperabilidad y NFRs. [Plan de pruebas](../proyecto/PLAN_DE_PRUEBAS.md)
+  - 🟡 **Pruebas:** asegurar conformidad funcional, interoperabilidad y NFR. [Plan de pruebas](../proyecto/PLAN_DE_PRUEBAS.md)
   
-  - 🟡 **Despliegue:** poner el servicio en STG y PRD de forma segura y replicable. [Plan de despliegue](../proyecto/PLAN_DE_DESPLIEGUE.md)
+  - 🟡 **Despliegue:** poner el servicio en PRD de forma segura y replicable. [Plan de despliegue](../proyecto/PLAN_DE_DESPLIEGUE.md)
   
   - 🟡 **Mantenimiento:** asegurar continuidad operativa, cumplimiento y evolución. [Plan de mantenimiento](../proyecto/PLAN_DE_MANTENIMIENTO.md)
   
-  > NOTA: El artefacto cubre el ciclo completo siguiendo la metodología SDLC adaptada a ISBE.
+  > NOTA: El artefacto cubre el ciclo completo siguiendo la metodología de desarrollo ágil (Software Development Life Cycle - SDLC) y DevOps, garantizando entregas iterativas y mejora continua.
 
 - **Dependencias**:
 
-  - Trust Anchor (externo, operado por otros proveedores) - Red EBSI o ISBE (por definir). 
+  - **Trust Anchor**: sistema externo que mantiene las listas de confianza (EBSI/ISBE).
+  > NOTA: La disponibilidad y conformidad del Trust Anchor es crítica para la validación de certificados y registro de participantes. Aún no se ha definido el proveedor concreto.
   
-  - Wallet (externo, operado por terceros).
-  - Servicio de firma remoto (Digitel TS).
-  
-  > NOTA: El artefacto no incluye la provisión ni gestión de estos componentes externos, pero depende de su disponibilidad y conformidad.
+  - **Wallet**: sistema externo donde el usuario final almacena y gestiona sus credenciales verificables.
+  > NOTA: La solución no incluye la provisión ni gestión de Wallets, pero depende de su disponibilidad y conformidad con estándares OID4VCI/OID4VP.
+
+  - **Servicio de firma remoto**: sistema externo para la firma digital y su validación.
+  > NOTA: Dentro del proyecto ISBE este servicio es provisto por un tercero (DIGITEL TS) y es crítico para la firma de credenciales verificables.
   
 - **Mantenimiento:**
 
-  - Actualización periódica de librerías de validación de certificados.
+  - Actualización periódica de librerías de validación de certificados dentro del contrato de mantenimiento de servicio que se establezca al finalizar el proyecto y su periodo de garantía.
   
-  - Evolución del Issuer/Verifier en función de nuevas releases de protocolos OIDC4VCI / OID4VP. 
+  - Evolución del Issuer/Verifier en función de nuevas releases de protocolos OIDC4VCI / OID4VP. Estos componentes son open source y es responsabilidad del equipo de operaciones del proyecto el mantenerlos actualizados más allá del periodo de garantía.
   
-  - Soporte a nuevas versiones de credenciales verificables y estándares europeos.
+  - Cualquier ampliación o cambio en los flujos de onboarding deberá ser evaluado y planificado como parte del contrato de mantenimiento.
   
-  > NOTA: El mantenimiento del artefacto se realizará conforme al [Plan de Mantenimiento](../proyecto/PLAN_DE_MANTENIMIENTO.md).
+  > NOTA: El mantenimiento del artefacto se realizará conforme al Plan de mantenimiento y puede consultarse [aquí](../proyecto/PLAN_DE_MANTENIMIENTO.md).
 
 ## **4. Definición del Artefacto**
 
@@ -89,27 +91,25 @@ La arquitectura refleja el paradigma descentralizado de identidad digital:
 Diagrama C4-Level 2:
 ```mermaid
 C4Context
-    title Onboarding de empresas a ISBE - C4-Level 2
-
-    Enterprise_Boundary(b0, "Onboarding System") {
-      
-      Person(customerA, "ISBE Participant", "Empresa que desea unirse a la red ISBE")
-      
-      System(SystemE, "Wallet", "Aplicación donde el usuario almacena sus credenciales verificables")
-  
-      Enterprise_Boundary(b1, "") {
-        
+    Person(customerA, "ISBE Participant", "Empresa que desea unirse a la red ISBE")
+    System(SystemE, "Wallet", "Aplicación donde el usuario almacena sus credenciales verificables")
+    Enterprise_Boundary(b1, "") {
+        System(SystemA, "Onboarding Service", "Servicio que gestiona el proceso de onboarding de empresas mediante certificado digital y e-form")
         System(SystemB, "Issuer Service", "Servicio que emite credenciales verificables tras el onboarding")
-        
         System(SystemC, "Verifier Service", "Servicio que verifica las credenciales y gestiona la validación del certificado digital")
-      }
-  
-      Enterprise_Boundary(b2, "External Systems") {
-        
-        System(SystemD, "Trust Anchor", "Infraestructura de EBSI o ISBE que contiene las listas de confianza")
-      }
-  
     }
+    Enterprise_Boundary(b2, "External Systems") { 
+        System(SystemD, "Trust Anchor", "Infraestructura de EBSI o ISBE que contiene las listas de confianza")
+    }
+  
+    Rel(customerA, SystemA, "Inicia proceso de onboarding con certificado digital y e-form")
+    BiRel(SystemA, SystemC, "Autenticación y autorización con VC de servicio")
+    Rel(SystemC, SystemD, "Consulta listas de confianza")
+    Rel(SystemA, SystemB, "Solicita emisión de credencial verificable")
+    Rel(SystemB, customerA, "Notifica emisión de credencial")
+    Rel(customerA, SystemE, "Accede y controla sus credenciales")
+    BiRel(SystemB, SystemE, "Entrega credencial verificable")
+    Rel(SystemB, SystemD, "Registra participante en la Trust Anchor")
   
     UpdateElementStyle(customerA, $fontColor="white", $bgColor="#828282", $borderColor="#828282")
     UpdateElementStyle(SystemA, $fontColor="white", $bgColor="#10739E", $borderColor="#10739E")
@@ -119,18 +119,40 @@ C4Context
     UpdateElementStyle(SystemD, $fontColor="white", $bgColor="#F2931E", $borderColor="#F2931E")
 ```
 
-    BiRel(SystemB, SystemC, "Autenticación y autorización con VC de servicio")
-    Rel(SystemC, SystemD, "Consulta listas de confianza")
-    Rel(SystemA, SystemB, "Solicita emisión de credencial verificable")
-    Rel(SystemB, customerA, "Notifica emisión de credencial")
-    Rel(customerA, SystemE, "Accede y controla sus credenciales")
-    BiRel(SystemB, SystemE, "Entrega credencial verificable")
-    Rel(SystemB, SystemD, "Registra participante en la Trust Anchor")
-
-
 - **4.2. Trazabilidad:**
 
-    Con la arquitectura de referencia:
+**Onboarding Service**:
+
+- REQ-001: Proveer e-form multilingüe (ES/EN) para alta de empresas con validación de campos en cliente/servidor. 
+- REQ-002: Mostrar consentimiento y términos (GDPR) y registrar la aceptación con sello de tiempo. 
+- REQ-003: Accesibilidad WCAG 2.1 AA y diseño responsive. 
+- REQ-004: Generar desafío de firma y capturar prueba criptográfica del certificado cualificado del representante. 
+- REQ-005: Invocar la Verifier para validación de certificado (firma, cadena) y recibir veredicto (válido/no válido + motivos). 
+- REQ-006: Permitir reintento controlado ante fallos recuperables (p.ej., OCSP temporalmente no disponible). 
+- REQ-007: Solicitar al Issuer una credential con los datos recopilados del e-form tras validación exitosa.
+- REQ-008: Solicitar el token de acceso al Verifier con la LEARCredentialMachine de servicio para autenticar la petición al Issuer.
+
+**Issuer Service**:
+
+- REQ-030: Validar el token de acceso del Onboarding Service y la LEARCredentialMachine de servicio.
+- REQ-031: Generar y firmar la LEARCredentialEmployee conforme a OID4VCI con los datos del e-form y el certificado cualificado.
+- REQ-032: Incluir metadatos de emisor, esquema, políticas y términos de uso en la credencial.
+- REQ-033: Registrar al nuevo participante en la Trust Anchor (ISBE/EBSI).
+- REQ-034: Notificar al Onboarding Service el resultado de la emisión (éxito/fallo + motivos).
+- REQ-035: Soportar reintentos controlados ante fallos temporales (p.ej., Trust Anchor no disponible).
+
+**Verifier Service**:
+
+- REQ-060: Validar tokens de acceso y credenciales verificables conforme a OID4VP.
+- REQ-061: Validar certificados digitales cualificados (firma, cadena, revocación) usando listas de confianza del Trust Anchor.
+- REQ-062: Integración con el Trust Anchor para obtener listas de confianza actualizadas.
+- REQ-063: Integrar con el servicio de PDP para aplicar reglas de negocio de elegibilidad.
+
+**Transversal**:
+
+- REQ-090: Minimización de datos: almacenar solo lo necesario para trazabilidad legal y auditoría.
+
+Con la arquitectura de referencia:
     - Onboarding Service → responde a los requisitos de acceso self-service de empresas y actúa como orquestador del flujo de registro. 
     - Verifier Service → cubre los requisitos de validación de certificados digitales cualificados y de verificación de credenciales verificables en procesos de autorización posteriores. 
     - Issuer Service → se vincula con los requisitos de emisión de credenciales verificables de empresa registrada, asegurando su conformidad con estándares OID4VCI. 
@@ -146,7 +168,7 @@ C4Context
     - **ISBE-REQ-0140**: Acceso a servicios del catálogo mediante credenciales verificables → Verifier Service + Service Catalog.
   
     Con requisitos no funcionales (ejemplos):
-    - **Seguridad**: validación criptográfica de certificados y credenciales, conforme a eIDAS2 y OIDF. 
+    - **Seguridad**: validación criptográfica de certificados y credenciales, conforme a eIDAS2 y OID4VC. 
     - **Interoperabilidad**: alineamiento con OIDC4VCI (emisión) y OID4VP (presentación). 
     - **Privacidad**: cumplimiento de GDPR mediante minimización de datos y control por parte del participante. 
     - **Disponibilidad y rendimiento**: capacidad de validar certificados en <2s y garantizar 99,5% de uptime en servicios críticos.
@@ -289,7 +311,7 @@ C4Context
 - Frecuencia de revisión o actualizaciones planificadas.
 - Herramienta de control de cambios: repositorio, SharePoint, wiki técnica, etc.
 
-| Tipo de cambio | Versionado | Flujo de aprobación | Documentación requerida |
-|---------------|------------|---------------------|------------------------|
-| Evolutivo menor | X.Y+0.1 | Pull Request + revisión GT | Release notes detalladas |
-| Evolutivo mayor | X+1.0 | Al Comité de ¿?| Impacto |
+| Tipo de cambio  | Versionado | Flujo de aprobación        | Documentación requerida  |
+|-----------------|------------|----------------------------|--------------------------|
+| Evolutivo menor | X.Y+0.1    | Pull Request + revisión GT | Release notes detalladas |
+| Evolutivo mayor | X+1.0      | Al Comité de ¿?            | Impacto                  |
