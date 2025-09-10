@@ -69,6 +69,8 @@
 
 - **4.1. Artefacto de arquitectura de referencia:**
 
+[//]: # ([Diagrama] Documento maestro o plano arquitectónico que le da origen a alto nivel.)
+
 El artefacto **ISBE-ARTIFACT-04010** se fundamenta en una arquitectura de referencia de identidad digital distribuida, en la que el proceso de onboarding de empresas se articula en torno a tres componentes principales provistos por nuestro equipo: **Onboarding Service**, **Issuer Service** y **Verifier Service**.
 
 El diagrama de nivel 2 (C4) representa la interacción entre dichos componentes, los participantes externos y las infraestructuras de confianza:
@@ -121,131 +123,162 @@ C4Context
 
 - **4.2. Trazabilidad:**
 
-**Onboarding Service**:
+[//]: # (Mapeo con la arquitectura y requisitos funcionales/no funcionales.)
 
-- REQ-001: Proveer e-form multilingüe (ES/EN) para alta de empresas con validación de campos en cliente/servidor. 
-- REQ-002: Mostrar consentimiento y términos (GDPR) y registrar la aceptación con sello de tiempo. 
-- REQ-003: Accesibilidad WCAG 2.1 AA y diseño responsive. 
-- REQ-004: Generar desafío de firma y capturar prueba criptográfica del certificado cualificado del representante. 
-- REQ-005: Invocar la Verifier para validación de certificado (firma, cadena) y recibir veredicto (válido/no válido + motivos). 
-- REQ-006: Permitir reintento controlado ante fallos recuperables (p.ej., OCSP temporalmente no disponible). 
-- REQ-007: Solicitar al Issuer una credential con los datos recopilados del e-form tras validación exitosa.
-- REQ-008: Solicitar el token de acceso al Verifier con la LEARCredentialMachine de servicio para autenticar la petición al Issuer.
+**Requisitos funcionales**
 
-**Issuer Service**:
+- **Creación de una nueva cuenta**: los usuarios deben poder crear una cuenta en el sistema proporcionando un certificado digital cualificado y completando un formulario electrónico (e-form) con sus datos básicos.
 
-- REQ-030: Validar el token de acceso del Onboarding Service y la LEARCredentialMachine de servicio.
-- REQ-031: Generar y firmar la LEARCredentialEmployee conforme a OID4VCI con los datos del e-form y el certificado cualificado.
-- REQ-032: Incluir metadatos de emisor, esquema, políticas y términos de uso en la credencial.
-- REQ-033: Registrar al nuevo participante en la Trust Anchor (ISBE/EBSI).
-- REQ-034: Notificar al Onboarding Service el resultado de la emisión (éxito/fallo + motivos).
-- REQ-035: Soportar reintentos controlados ante fallos temporales (p.ej., Trust Anchor no disponible).
+    - **Consentimiento informado**: el sistema debe presentar los términos y condiciones, así como la política de privacidad, y registrar el consentimiento del usuario con un sello de tiempo.
+    - **Captura de datos mediante e-form**: el sistema debe proporcionar un e-form accesible y multilingüe (ES/EN) para que el usuario ingrese los datos necesarios para el registro de la empresa en ISBE, con validación de campos tanto en cliente como en servidor.
 
-**Verifier Service**:
+- **Validación del certificado digital**: el sistema debe validar la autenticidad y vigencia del certificado digital presentado por el usuario, incluyendo la verificación de la firma y la cadena de confianza.
 
-- REQ-060: Validar tokens de acceso y credenciales verificables conforme a OID4VP.
-- REQ-061: Validar certificados digitales cualificados (firma, cadena, revocación) usando listas de confianza del Trust Anchor.
-- REQ-062: Integración con el Trust Anchor para obtener listas de confianza actualizadas.
-- REQ-063: Integrar con el servicio de PDP para aplicar reglas de negocio de elegibilidad.
+    - **Validación de certificado digital**: el sistema debe validar la autenticidad y vigencia del certificado digital contra las listas de confianza de la Unión Europea recopiladas en la Lists of Trusted Lists (LOTL).
 
-**Transversal**:
+- **Emisión de credencial verificable**: tras la validación exitosa del certificado y los datos del e-form, el sistema debe emitir una credencial verificable conforme a OID4VCI que contenga los atributos necesarios para identificar a la empresa en ISBE.
 
-- REQ-090: Minimización de datos: almacenar solo lo necesario para trazabilidad legal y auditoría.
+    - **Autenticación del servicio emisor**: el sistema debe autenticarse antes de realizar la petición de emisión de credencial utilizando una LEARCredentialMachine de servicio con permisos adecuados con el Verifier.
+    - **Notificación de inicio de emisión**: el sistema debe notificar al usuario el inicio del proceso de emisión vía envío de la `credential_offer` por correo electrónico.
+    - **Firma de la credencial**: el sistema debe firmar la credencial utilizando un certificado digital cualificado emitido por un Prestador de Servicios de Confianza (QTSP) reconocido. El emisor del proyecto debe ser ISBE o Alastria.
 
-Con la arquitectura de referencia:
-    - Onboarding Service → responde a los requisitos de acceso self-service de empresas y actúa como orquestador del flujo de registro. 
-    - Verifier Service → cubre los requisitos de validación de certificados digitales cualificados y de verificación de credenciales verificables en procesos de autorización posteriores. 
-    - Issuer Service → se vincula con los requisitos de emisión de credenciales verificables de empresa registrada, asegurando su conformidad con estándares OID4VCI. 
-    - Trust Anchor (externo) → garantiza el cumplimiento de los requisitos de uso de listas de confianza EBSI/ISBE en validaciones. 
-    - Wallet (externo) → materializa el principio de soberanía del participante sobre su identidad digital, permitiendo almacenar y presentar las credenciales emitidas. 
-    - Service Catalog → demuestra la aplicabilidad de las credenciales emitidas y validadas en un caso de uso real de consumo de servicios ISBE.
-  
-    Con requisitos funcionales (ejemplos):
-    - **ISBE-REQ-0100**: Validación de certificado digital cualificado → Verifier Service + Trust Anchor. 
-    - **ISBE-REQ-0110**: Registro de empresa mediante formulario electrónico → Onboarding Service. 
-    - **ISBE-REQ-0120**: Emisión de credencial verificable de empresa → Issuer Service. 
-    - **ISBE-REQ-0130**: Custodia y presentación de credenciales → Wallet (no provisto por este artefacto). 
-    - **ISBE-REQ-0140**: Acceso a servicios del catálogo mediante credenciales verificables → Verifier Service + Service Catalog.
-  
-    Con requisitos no funcionales (ejemplos):
-    - **Seguridad**: validación criptográfica de certificados y credenciales, conforme a eIDAS2 y OID4VC. 
-    - **Interoperabilidad**: alineamiento con OIDC4VCI (emisión) y OID4VP (presentación). 
-    - **Privacidad**: cumplimiento de GDPR mediante minimización de datos y control por parte del participante. 
-    - **Disponibilidad y rendimiento**: capacidad de validar certificados en <2s y garantizar 99,5% de uptime en servicios críticos.
+- **Registro en la red de confianza**: el sistema debe registrar a la nueva empresa como participante válido en la red de confianza (Trust Anchor) de ISBE/EBSI.
+
+    - **Registro del Issuer en Trust Anchor**: el sistema de emisión debe estar registrado como emisor autorizado en el Trust Anchor (ISBE/EBSI) para poder emitir credenciales verificables.
+    - **Integración con Trust Anchor**: el sistema debe integrarse con el Trust Anchor para registrar a la nueva empresa como participante válido tras la emisión de la credencial.
+
+- **Revocación de la credencial**: el sistema debe permitir la revocación de la credencial verificable.
+
+    - **Revocación basada en SD-JWT**: dado que el sistema utiliza SD-JWT para la emisión de credenciales, debe implementar el mecanismo de revocación definido para invalidar la credencial en caso de ser necesario.
+
+
+**Requisitos no funcionales (NFR)**
+
+- **Seguridad**: el sistema debe garantizar la seguridad de los datos en tránsito y en reposo, utilizando protocolos de cifrado adecuados (TLS 1.2+ para datos en tránsito y AES-256 para datos en reposo). Además, debe implementar mecanismos robustos de autenticación y autorización entre los servicios (OAuth2.0, JWT).
+- **Usabilidad**: la interfaz del e-form debe ser intuitiva, accesible (cumpliendo WCAG 2.1 AA), multilingüe (ES/EN) y responsive para facilitar su uso en diferentes dispositivos.
+- **Interoperabilidad**: el sistema debe estar alineado con los estándares OID4VCI (emisión) y OID4VP (presentación) para garantizar la interoperabilidad con otros sistemas y servicios del ecosistema europeo.
+- **Privacidad**: el sistema debe cumplir con el RGPD mediante la minimización de datos y permitir al participante controlar sus datos personales.
+- **Disponibilidad y rendimiento**: el sistema debe ser capaz de validar certificados digitales en menos de 2 segundos y garantizar un uptime del 99.5% en los servicios críticos.
 
 
 - **4.3. Descripción funcional detallada:**
 
-    El artefacto implementa un conjunto de flujos de datos y casos de uso que permiten a una empresa integrarse en la red ISBE, obtener una credencial verificable de registro y utilizarla para acceder a los servicios del ecosistema.
+[//]: # (Flujos de datos, casos de uso, escenarios cubiertos.)
 
-    **Flujos de datos principales**
+**Flujos de datos**
 
-    1. **Inicio de Onboarding**
-       - El participante empresarial accede al Onboarding Service. 
-       - Se presenta un certificado digital cualificado (eIDAS QTSP). 
-       - El sistema recolecta datos básicos a través de un e-form.
-    2. **Validación de identidad**
-       - El Verifier Service valida la firma del certificado digital y comprueba su vigencia contra las listas de confianza del Trust Anchor (ISBE/EBSI). 
-       - Se aplican reglas de negocio de elegibilidad (certificado activo, no revocado, emitido por QTSP reconocido).
-    3. **Emisión de credencial verificable**
-       - Una vez validada la identidad, el Issuer Service genera una credencial verificable de empresa registrada en ISBE. 
-       - La credencial se entrega al Wallet de la empresa para su custodia.
-    4. **Registro en la red de confianza**
-       - El Issuer Service comunica al Trust Anchor el alta de la nueva empresa como participante válido de ISBE.
-    5. **Uso de credenciales**
-       - La empresa utiliza su Wallet para presentar la credencial verificable en procesos de acceso al Service Catalog.
-       - El Service Catalog delega en el Verifier Service la validación de la credencial, confirmando la autenticidad y vigencia de la empresa participante.
-  
-    **Casos de uso cubiertos**
+1. **Usuario → Onboarding Service**
+   - Datos enviados: Certificado digital cualificado + datos del e-form.
+   
+2. **Onboarding Service → Verifier Service**
+    - Datos enviados: Certificado digital para validación criptográfica contra listas de confianza (LOTL).
+   
+3. **Onboarding Service → Servicio de firma (TSA / Consentimiento GDPR)**
+   - Datos enviados: Evidencia de aceptación de condiciones y consentimiento.
+   
+4. **Onboarding Service → Issuer Service**
+   - Datos enviados: Datos verificados del e-form y resultado de validación del certificado.
+   
+5. **Issuer Service → Servicio de firma digital**
+   - Datos enviados: Digest de la credencial para firma conforme a JOSE/JWT.
+   
+6. **Issuer Service → Wallet del usuario**
+   - Datos enviados: Oferta de credencial (credential_offer) y, tras la aceptación, la credencial verificable emitida.
+   
+7. **Issuer Service → Trust Anchor (ISBE/EBSI)**
+   - Datos enviados: Registro de la empresa como participante confiable en la red.
 
-    - **CU-01**. Onboarding self-service de empresa: Alta autónoma en ISBE mediante certificado digital. 
-    - **CU-02**. Validación de certificado cualificado: Comprobación criptográfica + listas de confianza. 
-    - **CU-03**. Emisión de credencial verificable de empresa: Generación conforme a OIDC4VCI. 
-    - **CU-04**. Custodia de credenciales: Delegado a Wallet externo gestionado por la empresa. 
-    - **CU-05**. Presentación de credenciales: Uso de OID4VP en el acceso al catálogo de servicios. 
-    - **CU-06**. Registro en red de confianza: Alta del participante en Trust Anchor ISBE/EBSI.
-    
-    **Escenarios cubiertos**
+**Casos de uso**
 
-    - **Escenario A**: Onboarding exitoso 
-      - El certificado es válido y se emite la credencial. 
-      - La empresa queda registrada en la red ISBE.
-    - **Escenario B**: Certificado inválido o revocado 
-      - El Verifier rechaza la validación. 
-      - No se emite credencial, se notifica al usuario.
-    - **Escenario C**: Acceso a servicios ISBE
-      - La empresa presenta la credencial en el catálogo de servicios. 
-      - El Verifier confirma validez y el catálogo otorga acceso.
-    - **Escenario D**: Renovación / actualización de credencial
-      - En caso de cambio o caducidad del certificado digital, el flujo de onboarding se reinicia para emitir una nueva credencial.
+- **CU-01**. Onboarding self-service de empresa: Alta autónoma en ISBE mediante certificado digital.
+
+- **CU-02**. Validación de certificado cualificado: Comprobación criptográfica y listas de confianza (LOTL).
+
+- **CU-03**. Emisión de credencial verificable de empresa: Generación conforme a OIDC4VCI.
+
+- **CU-04**. Registro en red de confianza: Alta del participante en Trust Anchor ISBE/EBSI.
+
+- **CU-05**. Custodia de credenciales: Delegado a Wallet externo gestionado por la empresa.
+
+**Escenarios cubiertos**
+
+- **Escenario A**: Onboarding exitoso (Happy Path)
+    - El certificado proporcionado es válido y no está revocado.
+    - El usuario completa el e-form con datos correctos.
+    - El sistema valida el certificado y los datos.
+    - El sistema registra la conformidad del usuario (GDPR).
+    - El Issuer emite la credencial verificable.
+    - El usuario recibe la `credential_offer` y acepta.
+    - La credencial se entrega al Wallet del usuario.
+    - El Issuer registra a la empresa en la red de confianza (Trust Anchor).
+    - La empresa puede utilizar la credencial para acceder a servicios en ISBE.
+
+
+- **Escenario B**: Certificado inválido o revocado
+    - El usuario presenta un certificado que ha sido revocado o no es válido.
+    - El sistema intenta validar el certificado.
+    - El sistema detecta que el certificado no es válido (revocado, expirado, no emitido por QTSP reconocido).
+    - El sistema notifica vía email (proporcionado en el e-form) al usuario del error y no permite continuar con el onboarding.
+    - El proceso de onboarding se detiene y no se emite ninguna credencial.
+    - Los datos del e-form no se almacenan.
+
+
+- **Escenario C**: Error durante el proceso de tratamiento de datos del e-form
+    - El usuario completa el e-form, pero ocurre un error técnico (p. ej., fallo en la base de datos, fallo en el TSA de la conformidad del GDPR, error en alguno de los datos informados en el e-form, etc.).
+    - El sistema detecta el error durante el procesamiento de los datos.
+    - El sistema notifica al usuario del error y le solicita que intente nuevamente.
+    - El proceso de onboarding se detiene y no se emite ninguna credencial.
+    - Los datos del e-form no se almacenan.
+
+[//]: # (TODO: Revisar si el proceso definido para este escenario es el correcto.)
+
+- **Escenario D**: Error durante la emisión de la credencial
+    - El usuario ha completado el e-form y el certificado es válido, pero ocurre un error técnico durante la emisión de la credencial (p. ej., fallo en la comunicación con el Issuer, error en la firma digital, etc.).
+    - El sistema detecta el error durante el proceso de emisión.
+    - El sistema notifica al usuario del error y le solicita que intente nuevamente.
+    - En el supuesto que el error sea debido a un fallo en la comunicación con el sistema de firma digital, se reintentará la operación hasta un máximo de 3 veces antes de notificar el error al operador de la solución el cual deberá revisar el estado del sistema de firma digital, resolver el problema y reintentar la operación manualmente.
+    - El proceso de onboarding se detiene y no se emite ninguna credencial.
+    - Los datos del e-form se almacenan de forma segura y se establece el estado del proceso como "pendiente de firma".
 
 - **4.4. Modelos o diagramas específicos:**
 
-    Diagrama de componentes, interfaces, secuencias, flujos.
+[//]: # (Diagrama de componentes, interfaces, secuencias, flujos.)
 
-  ```mermaid
-      sequenceDiagram
-  
-        participant P as Customer
-        participant W as Wallet (tercero)
-        
-        participant A as Onboarding Service
-        participant I as Issuer Service
-        
-        participant T as Trust Anchor (ISBE/EBSI)
-        
-        P ->>A: e-form + Cert. cualificado
-        A -->>V: |Validación cert.| V
-        V -->T: |Listas de confianza / OCSP/CRL| T
-        A -->I: |Solicitud emisión| I
-        I -->T: |Registro participante| T
-        I -->W: |Credential Offer / VC| W
-        W -->W: |Almacena VC| W
-        S -->V: |AuthZ & VP request| V
-        W -->V: |vp_token + presentation_submission| V
-        V -->T: |Validación emisor/estado| T
-        V -->S: |Tokens/Resultado verificación| S
-  ```
+**Diagrama de secuencia del proceso de onboarding**
+
+```mermaid
+  sequenceDiagram
+
+    participant P as Customer
+    participant W as Wallet (tercero)
+    
+    participant A as Onboarding Service
+    participant I as Issuer Service
+    participant V as Verifier Service
+    
+    participant T as Trust Anchor (ISBE/EBSI/LOTL)
+    
+    P ->>+ A: e-form + Cert. cualificado
+
+    A ->>+ V: validación cert.
+    V -->>- A: resultado validación
+
+    A ->>+ I: solicitud emisión VC
+    I ->> I: lanza proceso emisión (async)
+    I -->>- A: solicitud aceptada
+    deactivate A
+
+    note over I: proceso emisión VC (async)
+    I ->>+ P: notifica usuario + envío credential_offer
+    P ->>- W: acceso al wallet
+    activate W
+    W --> I: escanear QR + aceptar oferta
+    W ->>+ I: proceso emisión VC
+    I ->>+ T: registro participante
+    T -->>- I: confirmación registro
+    I -->>- W: envía VC emitida
+    deactivate W
+```
 
 - **4.5. Reglas de negocio asociadas:**
 
